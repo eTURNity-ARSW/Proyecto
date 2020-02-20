@@ -1,7 +1,12 @@
+[![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://eturnity.herokuapp.com)
+[![CircleCI](https://circleci.com/gh/julianagarzond/AREP-LAB4.svg?style=svg)](https://circleci.com/gh/julianagarzond/AREP-LAB4)
+
+
 # Proyecto ARSW
+
 Nombre : eTURNity
 
-[![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://eturnity.herokuapp.com)
+
 
 ## Integrantes
 - Juan Carlos Garcia Garzón
