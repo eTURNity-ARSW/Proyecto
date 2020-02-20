@@ -4,8 +4,7 @@
 
 
 # Proyecto ARSW
-
-Nombre : eTURNity
+![Capture](https://user-images.githubusercontent.com/43153078/74990273-dea84100-5410-11ea-9347-56698d71c23f.PNG)
 
 
 
