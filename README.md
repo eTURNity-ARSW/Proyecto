@@ -8,6 +8,9 @@ Nombre : eTURNity
 
 ## Descripción 
 
-## Backlog
+## Mockups
 
+
+## Backlog
+La tareas se planean en Taiga
 https://tree.taiga.io/project/julianagarzond-eturnity/backlog
