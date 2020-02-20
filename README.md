@@ -26,5 +26,5 @@ https://tree.taiga.io/project/julianagarzond-eturnity/backlog
 
 ## Heroku 
 
-https://dashboard.heroku.com/apps/eturnity 
+https://eturnity.herokuapp.com/
 
