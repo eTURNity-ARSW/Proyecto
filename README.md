@@ -7,3 +7,7 @@ Nombre : eTURNity
 - Sarah Camila Vieda Castro
 
 ## Descripción 
+
+## Backlog
+
+https://tree.taiga.io/project/julianagarzond-eturnity/backlog
