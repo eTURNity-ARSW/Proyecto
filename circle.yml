@@ -6,4 +6,4 @@ deployment:
   staging:
     branch: master
     heroku: 
-      appname: arep-lab3-serverweb
+      appname: eturnity
