@@ -1,6 +1,3 @@
-[![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://eturnity.herokuapp.com)
-
-[![CircleCI](https://circleci.com/gh/julianagarzond/AREP-LAB4.svg?style=svg)](https://circleci.com/gh/julianagarzond/AREP-LAB4)
 
 
 # Proyecto ARSW
@@ -14,6 +11,13 @@
 - Sarah Camila Vieda Castro
 
 ## Descripción 
+Nuestra aplicación web busca resolver la problemática de los largos tiempos de espera en diferentes entidades bancarias, daremos la posibilidad de los usuarios hagan cola en el servicio que necesitan de manera virtual de modo que el usuario no tenga que esperar largo tiempo dentro de la entidad sino que pueda aprovechar su tiempo en otras actividades, cuando el tiempo estimado de espera se cumpla se enviará un recordatorio 10 minutos antes de que el usuario sea atendido para que se remita al establecimiento donde solicitó el turno.
+
+## Despliegue 
+[![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://eturnity.herokuapp.com)
+
+[![CircleCI](https://circleci.com/gh/julianagarzond/AREP-LAB4.svg?style=svg)](https://circleci.com/gh/julianagarzond/AREP-LAB4)
+
 
 ## Mockups
 - ![proyecto1](https://user-images.githubusercontent.com/43153078/74982676-941fc800-5402-11ea-9abf-a7f5234e221e.PNG)
@@ -28,7 +32,9 @@
 
 
 ## Backlog
-La tareas se planean en Taiga
+
+La tareas que se realizaran a lo largo del proyecto, se presentan a continuación por medio de Taiga. 
+
 https://tree.taiga.io/project/julianagarzond-eturnity/backlog
 
 ## Heroku 
