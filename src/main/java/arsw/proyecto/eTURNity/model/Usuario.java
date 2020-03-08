@@ -1,11 +1,19 @@
-package arsw.proyecto.eTURNity.controllers;
+package arsw.proyecto.eTURNity.model;
 
-public class UsuarioController {
+public class Usuario {
     private String username;
     private String nombre;
     private String correo;
     private String documento;
-    private String contraseña;
+    private String contrasena;
+
+    public Usuario(String username, String nombre, String correo, String documento, String contrasena) {
+        this.username=username;
+        this.contrasena=contrasena;
+        this.correo=correo;
+        this.documento=documento;
+        this.nombre=nombre;
+    }
 
     public String getUsername(){
         return username;
@@ -23,8 +31,8 @@ public class UsuarioController {
         return documento;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
     public void setUsername(String username) {
@@ -43,7 +51,7 @@ public class UsuarioController {
         this.documento = documento;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 }
