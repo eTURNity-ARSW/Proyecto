@@ -1,9 +1,41 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Mi pagina de prueba</title>
-  </head>
-  <body>
-  </body>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>login</title>
+  <link rel ="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Sign In </h2>
+
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="logo.png" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+
+      <form action="home.html" method="get" target="_blank">
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+
+
+
+        <a target="_blank" href="home.html" ><input type="button" class="fadeIn fourth" value="Log In"></a>
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>
+</body>
+
 </html>
+
