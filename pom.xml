@@ -165,11 +165,7 @@
 						<goals>
 							<goal>execute</goal>
 						</goals>
-						<configuration>
-							<srcFiles>
-								<srcFile>tables.sql</srcFile>
-							</srcFiles>
-						</configuration>
+						
 					</execution>
 				</executions>
 			</plugin>
