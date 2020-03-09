@@ -1,10 +1,24 @@
-package arsw.proyecto.eTURNity.model;
+package edu.eci.arsw.Eturnity.model;
 
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="usuario")
 public class Usuario {
+    @Id
+    @Column(name="username")
     private String username;
+    @Column(name="nombre")
     private String nombre;
+    @Column(name="correo")
     private String correo;
+    @Column(name="documento")
     private String documento;
+    @Column(name="contraseña")
     private String contrasena;
 
     public Usuario(String username, String nombre, String correo, String documento, String contrasena) {
