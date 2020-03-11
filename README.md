@@ -55,6 +55,7 @@ Para la organización hemos decidido los siguientes:
 ![Diagrama E_R BD Extendido](https://user-images.githubusercontent.com/49318314/75055599-5161fc80-54a3-11ea-9650-97bb46c032ae.png)
 
 ![componenres](https://user-images.githubusercontent.com/43153078/76469700-ca76b480-63bc-11ea-8040-163945065266.PNG) 
+![DEPLOY](https://user-images.githubusercontent.com/43153078/76471574-027ff680-63c1-11ea-8aa5-19beb2bdfa5e.PNG)
 
 
 
