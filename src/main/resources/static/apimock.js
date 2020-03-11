@@ -5,6 +5,7 @@ var apimock = (function () {
         getUser:function(username,password,callback){
         callback(
             mockdata[username,password]
+            alert("entre");
           );
         }
     };
