@@ -35,6 +35,6 @@ public class EturnityApplication implements CommandLineRunner {
 		System.out.println("\nfindById(1)");
 		repository.findById("1").ifPresent(x -> System.out.println(x));
 		System.out.println("\nfindByName('Pepito')");
-		repository.findByNombre("Pepito").forEach(x -> System.out.println(x));
+		System.out.println(repository.findByNombre("Pepito").toString());
 	}
 }
