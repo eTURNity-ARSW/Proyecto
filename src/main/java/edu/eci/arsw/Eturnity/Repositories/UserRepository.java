@@ -1,14 +1,16 @@
 package edu.eci.arsw.Eturnity.Repositories;
 
 import edu.eci.arsw.Eturnity.model.Usuario;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface UserRepository {
+public interface UserRepository extends CrudRepository<Usuario,String> {
 
-    public boolean saveUser(Usuario user) throws Exception;
-    public Usuario getUser(String username);
-    public List<Usuario> getAll();
+    public List<Usuario> findByNombre(String name);
+    public Usuario findByUsername(String username);
+    public List<Usuario> findByCorreo(String correo);
+    public List<Usuario> findByDocumento(String documento);
+    public List<Usuario> findByContrasena(String password);
 }

@@ -6,8 +6,9 @@ public class UserException extends Exception {
     public static String USUARIO_INVALIDO ="El usuario no es valido";
     public static String CORREO_INVALIDO ="Correo no es valido";
     public static String DOCUMENTO_INVALIDO="Este número de documento no es valido";
-
+    public static String SIN_TURNOS = "El usuario no ha generado turnos";
     public UserException(String message){
         super(message);
     }
+
 }
