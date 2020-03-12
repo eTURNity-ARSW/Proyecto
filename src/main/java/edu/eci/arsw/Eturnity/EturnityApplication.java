@@ -25,7 +25,7 @@ public class EturnityApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		log.info(" Hola muy buenas StartApplication...");
+		log.info(" Iniciando Eturnity Application...");
 
 		repository.save(new Usuario("1","Pepito", "pepito@gmail.com", "1072", "123"));
 
@@ -33,7 +33,6 @@ public class EturnityApplication implements CommandLineRunner {
 		repository.findAll().forEach(x -> System.out.println(x));
 
 		System.out.println("\nfindById(1)");
-		//repository.findById("1").ifPresent(x -> System.out.println(x));
 		repository.findById("1").ifPresent(x -> System.out.println(x));
 		System.out.println("\nfindByName('Pepito')");
 		repository.findByNombre("Pepito").forEach(x -> System.out.println(x));

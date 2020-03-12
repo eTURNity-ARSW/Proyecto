@@ -4,8 +4,6 @@ package edu.eci.arsw.Eturnity.model;
 import edu.eci.arsw.Eturnity.Persistence.UserException;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.ArrayList;
 
@@ -13,15 +11,17 @@ import java.util.ArrayList;
 public class Usuario {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
     private String username;
     private String nombre;
     private String correo;
     private String documento;
     private String contrasena;
     private ArrayList<Turno> turnos;
+    private ArrayList<Entidad> entidades;
+
     public Usuario(){
     }
+
     public Usuario(String username, String nombre, String correo, String documento, String contrasena) {
         this.username=username;
         this.contrasena=contrasena;
@@ -29,12 +29,26 @@ public class Usuario {
         this.documento=documento;
         this.nombre=nombre;
         this.turnos = new ArrayList<>();
+        this.entidades = new ArrayList<>();
     }
 
     public ArrayList<Turno> getTurnos() throws UserException {
         if(turnos.isEmpty()){throw new UserException(UserException.SIN_TURNOS);}
         return turnos;
     }
+    public void setTurnos(ArrayList<Turno> turnos){
+        this.turnos = turnos;
+    }
+
+    public ArrayList<Entidad> getEntidades() throws  UserException{
+        if(entidades.isEmpty()){throw new UserException((UserException.SIN_ENTIDADES));}
+        return entidades;
+    }
+
+    public void setEntidades(ArrayList<Entidad> entidades) {
+        this.entidades = entidades;
+    }
+
 
     public String getUsername(){
         return username;

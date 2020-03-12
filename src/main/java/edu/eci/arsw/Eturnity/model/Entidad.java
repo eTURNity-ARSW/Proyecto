@@ -1,4 +1,5 @@
 package edu.eci.arsw.Eturnity.model;
 
-public class Empresa {
+
+public class Entidad {
 }
