@@ -50,7 +50,7 @@ Para la organización hemos decidido los siguientes:
 
 ### Diagramas
 
-![Diagrama E_R BD](https://user-images.githubusercontent.com/49318314/75055600-51fa9300-54a3-11ea-96de-2509ce1252e1.png)
+![Diagrama E_R BD](https://user-images.githubusercontent.com/49318314/76807151-62a3dd80-67b1-11ea-9ea8-23486034be56.png)
 
 ![Diagrama E_R BD Extendido](https://user-images.githubusercontent.com/49318314/75055599-5161fc80-54a3-11ea-9650-97bb46c032ae.png)
 
