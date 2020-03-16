@@ -1,7 +1,7 @@
 package edu.eci.arsw.Eturnity.Persistence;
 import java.util.Set;
 import edu.eci.arsw.Eturnity.model.Turno;
-import edu.eci.arsw.Eturnity.model.Usuario;
+import org.springframework.stereotype.Repository;
 
 
 public interface TurnoPersistence {

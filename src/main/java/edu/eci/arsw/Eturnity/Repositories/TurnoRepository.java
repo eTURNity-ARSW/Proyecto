@@ -1,7 +1,6 @@
 package edu.eci.arsw.Eturnity.Repositories;
 
 import edu.eci.arsw.Eturnity.model.Turno;
-import edu.eci.arsw.Eturnity.model.Usuario;
 import org.springframework.data.repository.CrudRepository;
 
 
