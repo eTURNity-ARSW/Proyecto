@@ -4,5 +4,8 @@ public class TurnoException extends Exception {
     public static String TURNO_REGISTRADO="El turno ya existe";
 
 
+    public TurnoException(String message){
+        super(message);
+    }
+    }
 
-}

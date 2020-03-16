@@ -1,7 +1,10 @@
 package edu.eci.arsw.Eturnity.model;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 public class Turno {
+    @Id
     private String id;
     private String tipo;
     private String username;
@@ -11,8 +14,6 @@ public class Turno {
     private String sede;
 
     public Turno(){
-
-
     }
 
     public String getId() {
