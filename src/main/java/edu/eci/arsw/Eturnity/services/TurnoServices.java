@@ -14,8 +14,8 @@ import java.util.Set;
 public class TurnoServices {
     @Autowired
     private TurnoPersistence tp;
-    @Autowired
-    private TurnoFilter tpf;
+    //@Autowired
+    //private TurnoFilter tpf;
 
     public void agregarNuevoTurno(Turno t){
         try{
@@ -25,13 +25,13 @@ public class TurnoServices {
     }
 
     public Turno getTurno(String id, String username) throws TurnoException{
-        return tpf.filtering(tp.getTurno(id,username));
+        return null;//tpf.filtering(tp.getTurno(id,username));
     }
 
     public Set<Turno> getTotalTurnos() throws TurnoException{
         Set<Turno>filter=new HashSet<>();
         for(Turno t:tp.getTotalTurnos()){
-            filter.add(tpf.filtering(t));
+            //filter.add(tpf.filtering(t));
         }
         return filter;
     }
@@ -39,7 +39,7 @@ public class TurnoServices {
     public Set<Turno> getTurnosUsuario(String usuario) throws TurnoException{
         Set<Turno>filter=new HashSet<>();
         for(Turno t:tp.getTurnosUsuario(usuario)){
-            filter.add(tpf.filtering(t));
+            //filter.add(tpf.filtering(t));
         }
         return filter;
     }
