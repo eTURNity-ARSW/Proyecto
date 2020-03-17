@@ -2,12 +2,12 @@ package edu.eci.arsw.Eturnity.Persistence.impl;
 
 import edu.eci.arsw.Eturnity.Persistence.TurnoException;
 import edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
-import edu.eci.arsw.Eturnity.Persistence.UserException;
 import edu.eci.arsw.Eturnity.Repositories.TurnoRepository;
 import edu.eci.arsw.Eturnity.model.Turno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
@@ -49,8 +49,13 @@ public class MyTurnPersistence implements TurnoPersistence {
     }
 
     @Override
-    public Set<Turno> getTotalTurnos() throws TurnoException {
-        return null;
+    public List<Turno> getTotalTurnos() throws TurnoException {
+        return (List<Turno>) turnorep.findAll();
+    }
+
+    @Override
+    public void updateTurno(Turno t, String id) throws TurnoException {
+
     }
 
 
