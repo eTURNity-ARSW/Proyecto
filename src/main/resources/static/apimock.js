@@ -21,8 +21,9 @@ var apimock=(function () {
         }
     ]
 
-    var login =(function (username,password) {
+    var login =(function (username,password,callback) {
         if(username==mockdata[username].username){
+            callback(null,username);
 
         } else {
             console.log("No está registrado");
