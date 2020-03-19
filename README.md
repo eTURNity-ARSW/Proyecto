@@ -55,11 +55,13 @@ Para la organización hemos decidido los siguientes:
 
 ![Diagrama E_R BD Extendido](https://user-images.githubusercontent.com/49318314/75055599-5161fc80-54a3-11ea-9650-97bb46c032ae.png)
 
-## Diagrama de omponentes
+## Diagrama de Componentes
 
 ![diagrama](https://user-images.githubusercontent.com/43153078/77063864-6a7ba180-69ac-11ea-8e0f-ec4453256ac8.PNG)
 
 ## Diagrama de Despliegue
+
+![DEPLOY](https://user-images.githubusercontent.com/43153078/76471574-027ff680-63c1-11ea-8aa5-19beb2bdfa5e.PNG)
 
 
 
