@@ -57,11 +57,11 @@ Para la organización hemos decidido los siguientes:
 
 ## Diagrama de omponentes
 
-![componenres](https://user-images.githubusercontent.com/43153078/76469700-ca76b480-63bc-11ea-8040-163945065266.PNG) 
+![diagrama](https://user-images.githubusercontent.com/43153078/77063864-6a7ba180-69ac-11ea-8e0f-ec4453256ac8.PNG)
 
 ## Diagrama de Despliegue
 
-![DEPLOY](https://user-images.githubusercontent.com/43153078/76471574-027ff680-63c1-11ea-8aa5-19beb2bdfa5e.PNG)
+
 
 ## Diagrama de Base de Datos 
 
