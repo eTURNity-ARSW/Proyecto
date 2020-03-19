@@ -61,7 +61,8 @@ Para la organización hemos decidido los siguientes:
 
 ## Diagrama de Despliegue
 
-![DEPLOY](https://user-images.githubusercontent.com/43153078/76471574-027ff680-63c1-11ea-8aa5-19beb2bdfa5e.PNG)
+![Capture2](https://user-images.githubusercontent.com/43153078/77064926-5cc71b80-69ae-11ea-8144-ffa3c85b1b66.PNG)
+
 
 
 
