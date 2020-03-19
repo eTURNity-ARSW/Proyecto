@@ -40,7 +40,7 @@ public class MyTurnPersistence implements TurnoPersistence {
 
     @Override
     public Turno getTurnoByUsername(String username) throws TurnoException {
-        Turno byUsername = turnorep.findByUsername(username);
+        Turno byUsername = (Turno) TurnoRepository.findByUsername(username);
         if(byUsername != null){
             return byUsername;
         }
