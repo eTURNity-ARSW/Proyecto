@@ -1,9 +1,11 @@
 package edu.eci.arsw.Eturnity.controllers;
 import java.util.List;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import edu.eci.arsw.Eturnity.Persistence.TurnoException;
 import edu.eci.arsw.Eturnity.model.Turno;
 import edu.eci.arsw.Eturnity.services.TurnoServices;
+import edu.eci.arsw.Eturnity.Repositories.TurnoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,15 +20,18 @@ public class TurnoController {
     TurnoServices ts;
 
     @RequestMapping(method=RequestMethod.GET)
-    public ResponseEntity getAllTurnos() throws TurnoException{
+    public ResponseEntity<?> getAllTurnos() throws TurnoException{
         ResponseEntity ans;
         try{
             List<Turno> turnos= ts.getAllTurnos();
             ans=new ResponseEntity<>(turnos, HttpStatus.ACCEPTED);
         }catch(TurnoException ex){
+            Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE,null,ex);
             ans = new ResponseEntity<> ("ERROR",HttpStatus.NOT_FOUND);
         }
         return ans;
     }
+
+
 }
 

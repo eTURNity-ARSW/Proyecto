@@ -42,11 +42,11 @@ public class Entidad {
         this.direccion = direccion;
     }
 
-     public String getTelefono() {
+     public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 

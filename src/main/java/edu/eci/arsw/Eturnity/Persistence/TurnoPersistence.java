@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 
 public interface TurnoPersistence {
+
    public boolean guardarTurno(Turno t) throws TurnoException;
    public Turno getTurnoById(String id)throws TurnoException;
    public Turno getTurnoByUsername(String id)throws TurnoException;
