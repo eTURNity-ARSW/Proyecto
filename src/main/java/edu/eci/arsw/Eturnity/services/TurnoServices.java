@@ -24,13 +24,8 @@ public class TurnoServices {
         }
         return null;
     }
-    public List<Turno> getAllTurns(){
-        try {
+    public List<Turno> getAllTurnos() throws TurnoException {
             return tp.getTotalTurnos();
-        } catch (TurnoException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
     public List<Turno> getTurnsBySede(String sede){
         return tp.getTurnsByOffice(sede);

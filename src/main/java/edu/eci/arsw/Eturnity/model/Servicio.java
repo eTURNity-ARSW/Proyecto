@@ -6,22 +6,22 @@ import javax.persistence.Id;
 @Entity
 public class Servicio {
     @Id
-    String type;
+    TipoServicio type;
     String description;
 
     public Servicio(){}
 
-    public Servicio(String type, String description){
+    public Servicio(TipoServicio type, String description){
         this.type = type;
         this.description = description;
 
     }
 
-    public String getType() {
+    public TipoServicio getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(TipoServicio type) {
         this.type = type;
     }
 
