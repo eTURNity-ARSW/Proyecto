@@ -16,6 +16,7 @@ public class Usuario {
     private String correo;
     private String documento;
     private String contrasena;
+    private String ubicacion;
     private ArrayList<Turno> turnos;
     private ArrayList<Entidad> entidades;
 
@@ -28,6 +29,7 @@ public class Usuario {
         this.correo=correo;
         this.documento=documento;
         this.nombre=nombre;
+        this.ubicacion = "";
         this.turnos = new ArrayList<>();
         this.entidades = new ArrayList<>();
     }
@@ -36,6 +38,7 @@ public class Usuario {
         if(turnos.isEmpty()){throw new UserException(UserException.SIN_TURNOS);}
         return turnos;
     }
+
     public void setTurnos(ArrayList<Turno> turnos){
         this.turnos = turnos;
     }
@@ -49,6 +52,9 @@ public class Usuario {
         this.entidades = entidades;
     }
 
+    public String getUbicacion(){return ubicacion;}
+
+    public void setUbicacion(String ubicacion){this.ubicacion =  ubicacion;}
 
     public String getUsername(){
         return username;

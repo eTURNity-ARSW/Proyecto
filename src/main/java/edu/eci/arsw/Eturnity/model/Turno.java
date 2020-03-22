@@ -6,23 +6,30 @@ import javax.persistence.Id;
 @Entity
 public class Turno {
     @Id
-    private String id;
+    private String identifier;
     private String tipo;
-    private String username;
     private boolean valido;
     private Date fecha;
-    private String documento;
+    private String user;
     private String sede;
 
     public Turno(){
     }
 
-    public String getId() {
-        return id;
+    public Turno(String identifier, String tipo, String user, String sede, Date fecha, boolean valido){
+        this.identifier = identifier;
+        this.tipo = tipo;
+        this. user = user;
+        this.sede = sede;
+        this. fecha = fecha;
+        this. valido = valido;
+    }
+    public String getIdentifier() {
+        return identifier;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdentifier(String id) {
+        this.identifier = id;
     }
 
     public String getTipo() {
@@ -33,12 +40,12 @@ public class Turno {
         this.tipo = tipo;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUser() {
+        return user;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public boolean isValido() {
@@ -57,19 +64,16 @@ public class Turno {
         this.fecha = fecha;
     }
 
-    public String getDocumento() {
-        return documento;
-    }
-
-    public void setDocumento(String documento) {
-        this.documento = documento;
-    }
-
     public String getSede() {
         return sede;
     }
 
     public void setSede(String sede) {
         this.sede = sede;
+    }
+
+    @Override
+    public String toString() {
+        return "Turno{id: " + identifier + ", tipo: " + tipo + ", User: " + user + ", fecha: " + fecha +", sede: " + sede + '}';
     }
 }

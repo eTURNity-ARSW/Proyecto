@@ -2,16 +2,56 @@ package edu.eci.arsw.Eturnity.services;
 
 import edu.eci.arsw.Eturnity.Persistence.TurnoException;
 import edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
+import edu.eci.arsw.Eturnity.model.Turno;
+import edu.eci.arsw.Eturnity.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
 public class TurnoServices {
     @Autowired
     private TurnoPersistence tp;
-    public void getUser() throws TurnoException {
-        tp.getTurnoByUsername("pepito");
+
+
+    public List<Turno> getTurnsByUser(String user) {
+        try {
+            return tp.getTurnsByUsername(user);
+        } catch (TurnoException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public List<Turno> getAllTurns(){
+        try {
+            return tp.getTotalTurnos();
+        } catch (TurnoException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public List<Turno> getTurnsBySede(String sede){
+        return tp.getTurnsByOffice(sede);
+    }
+    public Turno getTurn(String id){
+        try {
+            return tp.getTurnoById(id);
+        } catch (TurnoException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public boolean saveTurn(Turno turno){
+        try {
+            return tp.guardarTurno(turno);
+
+        } catch (TurnoException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 

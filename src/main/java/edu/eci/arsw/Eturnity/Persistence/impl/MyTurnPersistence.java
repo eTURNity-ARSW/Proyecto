@@ -2,14 +2,15 @@ package edu.eci.arsw.Eturnity.Persistence.impl;
 
 import edu.eci.arsw.Eturnity.Persistence.TurnoException;
 import edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
-import edu.eci.arsw.Eturnity.Persistence.UserException;
 import edu.eci.arsw.Eturnity.Repositories.TurnoRepository;
+import edu.eci.arsw.Eturnity.Repositories.UserRepository;
+import edu.eci.arsw.Eturnity.model.Sede;
 import edu.eci.arsw.Eturnity.model.Turno;
+import edu.eci.arsw.Eturnity.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
-import java.util.regex.Pattern;
+import java.util.List;
 
 
 @Service
@@ -20,9 +21,7 @@ public class MyTurnPersistence implements TurnoPersistence {
 
     @Override
     public boolean guardarTurno(Turno t) throws TurnoException {
-        String pattern = "^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@"+"[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$";;
-        Pattern pat = Pattern.compile(pattern);
-        if(turnorep.findByid(t.getId())!=null) throw  new TurnoException(TurnoException.TURNO_REGISTRADO);
+        if(turnorep.findByIdentifier(t.getIdentifier())!=null) throw  new TurnoException(TurnoException.TURNO_REGISTRADO);
         Turno save = turnorep.save(t);
         if (save!=null) return true;
         return false;
@@ -31,7 +30,7 @@ public class MyTurnPersistence implements TurnoPersistence {
 
     @Override
     public Turno getTurnoById(String id) throws TurnoException {
-        Turno byId = turnorep.findByid(id);
+        Turno byId = turnorep.findByIdentifier(id);
         if(byId!=null){
             return byId;
         }
@@ -39,18 +38,19 @@ public class MyTurnPersistence implements TurnoPersistence {
     }
 
     @Override
-    public Turno getTurnoByUsername(String username) throws TurnoException {
-        Turno byUsername = turnorep.findByUsername(username);
-        if(byUsername != null){
-            return byUsername;
-        }
-        return null;
+    public List<Turno> getTurnsByUsername(String user) throws TurnoException {
+        return turnorep.findByUser(user);
 
     }
 
     @Override
-    public Set<Turno> getTotalTurnos() throws TurnoException {
-        return null;
+    public List<Turno> getTotalTurnos() throws TurnoException {
+        return (List<Turno>) turnorep.findAll();
+    }
+
+    @Override
+    public List<Turno> getTurnsByOffice(String sede) {
+        return turnorep.findBySede(sede);
     }
 
 
