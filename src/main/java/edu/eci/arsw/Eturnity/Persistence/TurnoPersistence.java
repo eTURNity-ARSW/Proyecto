@@ -12,5 +12,6 @@ public interface TurnoPersistence {
    public List<Turno> getTurnsByUsername(String user)throws TurnoException;
    public List<Turno> getTotalTurnos() throws TurnoException;
    public List<Turno> getTurnsByOffice(String sede);
+   public boolean updateTurno(Turno t, String id) throws TurnoException;
 
 }

@@ -7,6 +7,7 @@ import edu.eci.arsw.Eturnity.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,7 +15,6 @@ import java.util.List;
 public class TurnoServices {
     @Autowired
     private TurnoPersistence tp;
-
 
     public List<Turno> getTurnsByUser(String user) {
         try {

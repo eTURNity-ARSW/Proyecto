@@ -39,6 +39,11 @@ public class MyTurnPersistence implements TurnoPersistence {
 
     @Override
     public List<Turno> getTurnsByUsername(String user) throws TurnoException {
+        if(user.equals("Anybody")){
+            return null;
+        } else if(user.equals("none")){
+            return null;
+        }
         return turnorep.findByUser(user);
 
     }
@@ -51,6 +56,11 @@ public class MyTurnPersistence implements TurnoPersistence {
     @Override
     public List<Turno> getTurnsByOffice(String sede) {
         return turnorep.findBySede(sede);
+    }
+
+    @Override
+    public boolean updateTurno(Turno t, String id) throws TurnoException {
+        return false;
     }
 
 
