@@ -12,6 +12,7 @@ public class Turno {
     private String tipo;
     private boolean valido;
     private Date fecha;
+    @Column(name =  "username")
     private String user;
     private String sede;
 

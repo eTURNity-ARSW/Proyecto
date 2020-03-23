@@ -38,7 +38,7 @@ public class EturnityApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		log.info(" Iniciando Eturnity Application...");
 		Usuario Pepito = new Usuario("1", "Pepito", "pepito@gmail.com", "1072", "123");
-		Entidad entidad = new Entidad("123-1", "Daviplata", "Excelente empresa", "Por ahí", "Bogotá", 123);
+		Entidad entidad = new Entidad("123-1", "Daviplata",  "Por ahí", "Bogotá", 123);
 		Sede sede = new Sede("123-1.1", "Bogota", "Calle 222", new Date(), "123-1");
 		Turno turno = new Turno("T1", "Transaccionn", "1", "123-1.1", new Date(), true);
 		repository.save(Pepito);

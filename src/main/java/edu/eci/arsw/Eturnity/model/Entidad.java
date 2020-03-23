@@ -1,6 +1,7 @@
 package edu.eci.arsw.Eturnity.model;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.ArrayList;
@@ -8,20 +9,20 @@ import java.util.ArrayList;
 @Entity
 public class Entidad {
     @Id
+    @Column(name = "id")
     private String nit;
-    private String nombre, referencias, direccion, ciudad;
+    private String nombre, direccion, ciudad;
     private long telefono;
     private ArrayList<Sede> sedes;
 
     public Entidad(){
 
     }
-    public Entidad(String nit, String nombre, String referencias, String  direccion, String ciudad, long telefono){
+    public Entidad(String nit, String nombre, String  direccion, String ciudad, long telefono){
         this.ciudad = ciudad;
         this.direccion = direccion;
         this.nit = nit;
         this.nombre = nombre;
-        this.referencias = referencias;
         this.telefono = telefono;
         this.sedes =  new ArrayList<>();
     }
@@ -48,14 +49,6 @@ public class Entidad {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getReferencias() {
-        return referencias;
-    }
-
-    public void setReferencias(String referencias) {
-        this.referencias = referencias;
     }
 
     public String getDireccion() {
@@ -87,7 +80,6 @@ public class Entidad {
         return "Entidad{" +
                 "nit='" + nit + '\'' +
                 ", nombre='" + nombre + '\'' +
-                ", referencias='" + referencias + '\'' +
                 ", direccion='" + direccion + '\'' +
                 ", ciudad='" + ciudad + '\'' +
                 ", telefono=" + telefono +
