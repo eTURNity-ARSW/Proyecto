@@ -11,7 +11,9 @@ public class Entidad {
     @Id
     @Column(name = "id")
     private String nit;
-    private String nombre, direccion, ciudad;
+    private String nombre;
+    private String direccion;
+    private String ciudad;
     private long telefono;
     private ArrayList<Sede> sedes;
 

@@ -73,7 +73,7 @@ public class EturnityApplication implements CommandLineRunner {
 
 		System.out.println("\nfindById(T1)");
 		erepo.findById("123-1").ifPresent(x -> System.out.println(x));
-		System.out.println("\nfindByUserName('Daviplata')");
+		System.out.println("\nfindByName('Daviplata')");
 		erepo.findByNombre("Daviplata").forEach(x -> System.out.println(x));
 	}
 }
