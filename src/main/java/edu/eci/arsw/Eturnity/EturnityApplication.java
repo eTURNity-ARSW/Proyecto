@@ -64,7 +64,7 @@ public class EturnityApplication implements CommandLineRunner {
 		trepo.findByUser("1").forEach(x -> System.out.println(x));
 		System.out.println("\nfindByUserName(Sede)");
 		trepo.findBySede("123-1.1").forEach(x -> System.out.println(x));
-		*/
+
 		erepo.save(entidad);
 		log.info(" PROBANDO ENTERPRISE REPOSITORY...");
 
@@ -75,5 +75,6 @@ public class EturnityApplication implements CommandLineRunner {
 		erepo.findById("123-1").ifPresent(x -> System.out.println(x));
 		System.out.println("\nfindByName('Daviplata')");
 		erepo.findByNombre("Daviplata").forEach(x -> System.out.println(x));
+		 */
 	}
 }
