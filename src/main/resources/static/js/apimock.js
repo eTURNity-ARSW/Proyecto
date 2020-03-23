@@ -21,21 +21,12 @@ var apimock=(function () {
         }
     ]
 
-    var login =(function (username,password,callback) {
-        if(username==mockdata[username].username){
-            callback(null,username);
-
-        } else {
-            console.log("No está registrado");
-        }
-
-    })
-
     return{
+        login : function (username,callback) {
+            callback(mockdata[username]);
 
-        login:login
-
-
+        }
     }
+
 
 })();
