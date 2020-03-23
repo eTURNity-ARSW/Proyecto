@@ -24,6 +24,28 @@ public class Turno {
         this. fecha = fecha;
         this. valido = valido;
     }
+    
+    public int CompareTo(Turno turno){
+        if(turno==null){return 1;}
+        if(turno.identifier.charAt(0)==this.identifier.charAt(0)) {
+            if (this.valido) {
+                int i = this.identifier.compareTo(turno.identifier);
+                return i > 0 ? 1 : 0;
+            }
+        }
+        return 0;
+    }
+    public int CompareTo(Turno turno, char service){
+        if(turno==null && this.identifier.charAt(0) == service){return 1;}
+        if(turno.identifier.charAt(0)==this.identifier.charAt(0) && this.identifier.charAt(0)==service) {
+            if (this.valido) {
+                int i = this.identifier.compareTo(turno.identifier);
+                return i > 0 ? 1 : 0;
+            }
+        }
+        return 0;
+    }
+    
     public String getIdentifier() {
         return identifier;
     }

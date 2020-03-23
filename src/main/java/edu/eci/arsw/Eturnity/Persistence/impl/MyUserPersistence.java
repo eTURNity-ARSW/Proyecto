@@ -18,12 +18,13 @@ public class MyUserPersistence implements UserPersistence {
     private UserRepository repository;
 
     @Override
-    public Usuario getUsuarioByUsername(String username) {
+    public Usuario getUsuarioByUsername(String username) throws UserException {
         Usuario byUsername = repository.findByUsername(username);
-        if(byUsername != null){
-            return byUsername;
+        if(byUsername == null) {
+            throw new UserException(UserException.USUARIO_INVALIDO);
         }
-        return null;
+        return byUsername;
+
     }
 
     @Override

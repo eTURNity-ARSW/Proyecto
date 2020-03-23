@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserPersistence  {
 
-    public Usuario getUsuarioByUsername(String name);
+    public Usuario getUsuarioByUsername(String name) throws UserException;
     public boolean saveUser(Usuario user) throws UserException;
     public Usuario getUserByName(String username);
     public List<Usuario> getAll();
