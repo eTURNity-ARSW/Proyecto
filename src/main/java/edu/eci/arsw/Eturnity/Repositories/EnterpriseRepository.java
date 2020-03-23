@@ -1,8 +1,6 @@
 package edu.eci.arsw.Eturnity.Repositories;
 
 import edu.eci.arsw.Eturnity.model.Entidad;
-import edu.eci.arsw.Eturnity.model.Turno;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

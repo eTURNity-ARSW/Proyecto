@@ -6,10 +6,7 @@ import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.Date;
 
-@Entity
 public class Sede {
-    @Id
-    @Column(name =  "id")
     private String identificador;
     private String ciudad;
     private String direccion;

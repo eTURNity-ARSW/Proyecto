@@ -16,9 +16,11 @@ public class Usuario {
     private String correo;
     private String documento;
     private String contrasena;
-    //private String ubicacion;
     private ArrayList<Turno> turnos;
     private ArrayList<Entidad> entidades;
+
+
+    //private String ubicacion;
 
     public Usuario(){
     }
@@ -29,9 +31,11 @@ public class Usuario {
         this.correo=correo;
         this.documento=documento;
         this.nombre=nombre;
-        //this.ubicacion = "";
         this.turnos = new ArrayList<>();
         this.entidades = new ArrayList<>();
+
+
+        //this.ubicacion = "";
     }
 
     public ArrayList<Turno> getTurnos() throws UserException {
@@ -51,10 +55,6 @@ public class Usuario {
     public void setEntidades(ArrayList<Entidad> entidades) {
         this.entidades = entidades;
     }
-
-    //public String getUbicacion(){return ubicacion;}
-
-    //public void setUbicacion(String ubicacion){this.ubicacion =  ubicacion;}
 
     public String getUsername(){
         return username;
@@ -100,4 +100,10 @@ public class Usuario {
     public String toString(){
         return "Usuario{Username: "+username+" Nombre: "+nombre+" Correo: "+correo+"}";
     }
+
+
+    //public String getUbicacion(){return ubicacion;}
+
+    //public void setUbicacion(String ubicacion){this.ubicacion =  ubicacion;}
+
 }

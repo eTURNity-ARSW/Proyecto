@@ -3,9 +3,7 @@ package edu.eci.arsw.Eturnity.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
 public class Servicio {
-    @Id
     TipoServicio type;
     String description;
 
