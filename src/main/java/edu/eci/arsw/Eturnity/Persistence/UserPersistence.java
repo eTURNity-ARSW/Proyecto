@@ -1,7 +1,7 @@
 package edu.eci.arsw.Eturnity.Persistence;
 
 import edu.eci.arsw.Eturnity.model.Usuario;
-import org.springframework.stereotype.Repository;
+
 
 import java.util.List;
 

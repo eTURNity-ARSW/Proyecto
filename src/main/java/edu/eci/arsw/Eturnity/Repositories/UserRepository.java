@@ -1,10 +1,8 @@
 package edu.eci.arsw.Eturnity.Repositories;
-
-import edu.eci.arsw.Eturnity.model.Turno;
 import edu.eci.arsw.Eturnity.model.Usuario;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
+
 
 public interface UserRepository extends CrudRepository<Usuario,String> {
 

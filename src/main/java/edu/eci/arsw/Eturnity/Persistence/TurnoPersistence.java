@@ -1,4 +1,5 @@
 package edu.eci.arsw.Eturnity.Persistence;
+import java.util.Date;
 import java.util.List;
 
 import edu.eci.arsw.Eturnity.model.Sede;
@@ -13,5 +14,7 @@ public interface TurnoPersistence {
    public List<Turno> getTotalTurnos() throws TurnoException;
    public List<Turno> getTurnsByOffice(String sede);
    public boolean updateTurno(Turno t, String id) throws TurnoException;
+   public List<Turno> getAllValidTurnos(String id) throws TurnoException;
+   public List<Turno> getTurnosFecha(Date fecha) throws TurnoException;
 
 }
