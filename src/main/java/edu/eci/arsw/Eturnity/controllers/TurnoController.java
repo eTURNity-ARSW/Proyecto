@@ -7,9 +7,6 @@ import java.util.logging.Logger;
 import edu.eci.arsw.Eturnity.Persistence.TurnoException;
 import edu.eci.arsw.Eturnity.model.Turno;
 import edu.eci.arsw.Eturnity.services.TurnoServices;
-import edu.eci.arsw.Eturnity.Repositories.TurnoRepository;
-
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

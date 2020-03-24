@@ -2,7 +2,7 @@ package edu.eci.arsw.Eturnity.Persistence.impl;
 
 import edu.eci.arsw.Eturnity.Persistence.UserException;
 import edu.eci.arsw.Eturnity.Persistence.UserPersistence;
-import edu.eci.arsw.Eturnity.Repositories.UserRepository;
+import edu.eci.arsw.Eturnity.repositories.UserRepository;
 import edu.eci.arsw.Eturnity.model.Turno;
 import edu.eci.arsw.Eturnity.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;

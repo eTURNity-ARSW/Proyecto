@@ -1,8 +1,8 @@
 package edu.eci.arsw.Eturnity;
 
-import edu.eci.arsw.Eturnity.Repositories.EnterpriseRepository;
-import edu.eci.arsw.Eturnity.Repositories.TurnoRepository;
-import edu.eci.arsw.Eturnity.Repositories.UserRepository;
+import edu.eci.arsw.Eturnity.repositories.EnterpriseRepository;
+import edu.eci.arsw.Eturnity.repositories.TurnoRepository;
+import edu.eci.arsw.Eturnity.repositories.UserRepository;
 import edu.eci.arsw.Eturnity.model.Entidad;
 import edu.eci.arsw.Eturnity.model.Sede;
 import edu.eci.arsw.Eturnity.model.Turno;
@@ -12,15 +12,18 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.Date;
-
 @SpringBootApplication
-@EnableAutoConfiguration
-@ComponentScan(basePackages = {"edu.eci.arsw.Eturnity"})
+/*@EnableAutoConfiguration*/
+@ComponentScan(basePackages = {"edu.eci.arsw.Eturnity.services", "edu.eci.arsw.Eturnity.controllers"})
+@EnableJpaRepositories("edu.eci.arsw.Eturnity.repositories")
+@EntityScan("edu.eci.Eturnity.model")
+
 public class EturnityApplication implements CommandLineRunner {
 	private static final Logger log = LoggerFactory.getLogger(EturnityApplication.class);
 	@Autowired
