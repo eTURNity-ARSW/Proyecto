@@ -45,6 +45,7 @@ public class EturnityApplication implements CommandLineRunner {
 		log.info(" PROBANDO USER REPOSITORY...");
 
 		System.out.println("\nfindAll()");
+		System.out.println("HOLA");
 		repository.findAll().forEach(x -> System.out.println(x));
 
 		System.out.println("\nfindById(1)");
