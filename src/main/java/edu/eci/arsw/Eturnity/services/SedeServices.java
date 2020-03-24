@@ -26,7 +26,7 @@ public class SedeServices {
             return false;
         }
     }*/
-    public Sede getSede(String identificador){
+    /*public Sede getSede(String identificador){
         try {
             return sp.getSede(identificador);
         } catch (SedeException e) {
@@ -35,9 +35,9 @@ public class SedeServices {
             //Falta tratarla
         }
 
-    }
+    }*/
     
-
+/*
     public List<Servicio> getServicesBySede(String identificador) throws SedeException {
 
         ArrayList<Servicio> servicios = new ArrayList<>();
@@ -47,7 +47,7 @@ public class SedeServices {
         return servicios;
 
     }
-
+*/
     public List<Sede> getSedeByCity(String ciudad) throws SedeException {
 
         return sp.getSedeByCiudad(ciudad);
@@ -72,9 +72,7 @@ public class SedeServices {
         }
         return turnos;
     }*/
-	public List<Sede> getAllSedes()throws SedeException{
-		return sp.getAll();
-	}
+	
 
 
 }

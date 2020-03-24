@@ -12,7 +12,7 @@ import java.util.List;
 public class MySedePersistence implements SedePersistence {
     @Autowired
     private SedeRepository sederep;
-
+/*
     @Override 
     public Sede getSede(String identificador) throws SedeException{
         List<Sede> sede = sederep.findByIdentifier(identificador);
@@ -22,7 +22,7 @@ public class MySedePersistence implements SedePersistence {
         }
         throw new SedeException(SedeException.INVALID_IDENTIFIER);
     }
-
+*/
     @Override
     public List<Sede> getAll(){
         return (List<Sede>) sederep.findAll();
