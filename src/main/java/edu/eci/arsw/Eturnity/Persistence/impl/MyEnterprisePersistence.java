@@ -2,7 +2,7 @@ package edu.eci.arsw.Eturnity.Persistence.impl;
 
 import edu.eci.arsw.Eturnity.Persistence.EnterpriseException;
 import edu.eci.arsw.Eturnity.Persistence.EnterprisePersistence;
-import edu.eci.arsw.Eturnity.repositories.EnterpriseRepository;
+import edu.eci.arsw.Eturnity.Repositories.EnterpriseRepository;
 import edu.eci.arsw.Eturnity.model.Entidad;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
