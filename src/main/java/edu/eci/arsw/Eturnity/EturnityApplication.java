@@ -1,6 +1,6 @@
 package edu.eci.arsw.Eturnity;
 
-import edu.eci.arsw.Eturnity.Repositories.EnterpriseRepository;
+import edu.eci.arsw.Eturnity.Repositories.EntidadRepository;
 import edu.eci.arsw.Eturnity.Repositories.TurnoRepository;
 import edu.eci.arsw.Eturnity.Repositories.UserRepository;
 import edu.eci.arsw.Eturnity.model.Entidad;
@@ -28,7 +28,7 @@ public class EturnityApplication implements CommandLineRunner {
 	@Autowired
 	TurnoRepository trepo;
 	@Autowired
-	EnterpriseRepository erepo;
+	EntidadRepository erepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(EturnityApplication.class, args);
