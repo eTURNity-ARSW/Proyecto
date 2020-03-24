@@ -25,9 +25,11 @@
             hora = momentoActual.getHours()
             minuto = momentoActual.getMinutes()
             segundo = momentoActual.getSeconds()
-            horaImprimible = hora + ":" + minuto + segundo
+            horaImprimible = hora + ":" + minuto + ":" + segundo
             document.form_reloj.reloj.value=horaImprimible
             setTimeout("mueveReloj()",1000)
+            text.style.top=window.event.y
+            text.styple.left=window.event.x
             }
     </script>
     }
