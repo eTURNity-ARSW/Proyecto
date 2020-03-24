@@ -36,8 +36,20 @@ var apimock=(function () {
 
         }
     }
+
+    function add() {
+        var username = document.getElementById("usuario").value;
+
+        var password = document.getElementById("password").value;
+
+        mockdata=mockdata[username];
+        mockdata.push({username,password});
+
+
+    }
     return{
-        validate:validate
+        validate:validate,
+        add:add
 
         }
 
