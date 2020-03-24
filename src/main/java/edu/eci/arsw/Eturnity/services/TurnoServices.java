@@ -49,9 +49,9 @@ public class TurnoServices {
             return false;
         }
     }
-	public List<Turno> getAllValidTurnos(String id)throws TurnoException{
-		return tp.getAllValidTurnos(id);
-	}
+	/*public List<Turno> getAllValidTurnos()throws TurnoException{
+		return tp.getAllValidTurnos();
+	}*/
 	public List<Turno> getTurnosFecha(Date fecha) throws TurnoException {
 		return tp.getTurnosFecha(fecha);
 	}

@@ -12,6 +12,6 @@ public interface TurnoRepository  extends CrudRepository<Turno,String> {
     public Turno findByIdentifier(String id);
     public List<Turno> findByUser(String user);
     public List<Turno> findBySede(String sede);
-    public List<Turno> findByValido(String id);
+    public List<Turno> findByValido();
     public List<Turno> findByFecha(Date fecha);
 }

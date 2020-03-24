@@ -34,7 +34,7 @@ public class TurnoController {
         return ans;
     }
 
-    @RequestMapping(method=RequestMethod.GET)
+    @RequestMapping(path ="/turno/{user}",method=RequestMethod.GET)
     public ResponseEntity<?> getTurnoByUsuario(@PathVariable("usuario") String usuario) throws TurnoException{
         ResponseEntity<?> ans;
         try{
@@ -47,20 +47,20 @@ public class TurnoController {
         return ans;
     }
 
-    @RequestMapping(method=RequestMethod.GET)
-    public ResponseEntity<?> getTurnosValidos(@PathVariable("id") String id) throws TurnoException{
+    /*@RequestMapping(path="/turno",method=RequestMethod.GET)
+    public ResponseEntity<?> getTurnosValidos() throws TurnoException{
         ResponseEntity<?> ans;
         try{
-            List<Turno> turnos = ts.getAllValidTurnos(id);
+            List<Turno> turnos = ts.getAllValidTurnos();
             ans = new ResponseEntity<>(turnos,HttpStatus.ACCEPTED);
         }catch(Exception ex){
             Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE,null, ex);
             ans = new ResponseEntity<>("ERROR", HttpStatus.NOT_FOUND);
         }
         return ans;
-    }
+    }*/
 
-    @RequestMapping(method=RequestMethod.GET)
+    @RequestMapping(path="/turno/{fecha}",method=RequestMethod.GET)
     public ResponseEntity<?> getTurnosByFecha(@PathVariable("fecha") Date fecha) throws TurnoException{
         ResponseEntity<?> ans;
         try{
@@ -73,7 +73,7 @@ public class TurnoController {
         return ans;
     }
 
-    @RequestMapping(method=RequestMethod.GET)
+    @RequestMapping(path="/turno/{sede}",method=RequestMethod.GET)
     public ResponseEntity<?> getTurnosBySede(@PathVariable("sede") String sede) throws TurnoException{
         ResponseEntity<?> ans;
         try{

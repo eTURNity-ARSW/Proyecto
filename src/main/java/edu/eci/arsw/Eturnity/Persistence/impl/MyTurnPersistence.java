@@ -61,14 +61,13 @@ public class MyTurnPersistence implements TurnoPersistence {
         return false;
     }
 
-    @Override
-    public List<Turno> getAllValidTurnos(String id) throws TurnoException {
-        return turnorep.findByValido(id);
-    }
+  /*  @Override
+    public List<Turno> getAllValidTurnos() throws TurnoException {
+        //return turnorep.findByValido();
+    }*/
 
     @Override
     public List<Turno> getTurnosFecha(Date fecha) throws TurnoException {
-        
         return  turnorep.findByFecha(fecha);
     }
 
