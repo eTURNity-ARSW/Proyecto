@@ -1,14 +1,13 @@
-var app =(function () {
-    var _username;
+var app =( function () {
 
-    var login = function (username) {
-        if (username == null || username == "") {
-            alert("invalid");
-        } else {
-            apimock.login(username,null);
 
-        }
+// Below function Executes on click of login button.
 
+<<<<<<< HEAD
+
+
+})();
+=======
     }
     
     return {
@@ -16,3 +15,4 @@ var app =(function () {
       
     };
 })();
+>>>>>>> 37640139c488bc7766b018666bd0b919d6943a48
