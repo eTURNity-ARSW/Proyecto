@@ -19,27 +19,16 @@
 
         tr:nth-child(even) {background-color: crimson;}
     </style>
-    <script>
-            function mueveReloj(){
-            momentoActual=new Date()
-            hora = momentoActual.getHours()
-            minuto = momentoActual.getMinutes()
-            segundo = momentoActual.getSeconds()
-            horaImprimible = hora + ":" + minuto + ":" + segundo
-            document.form_reloj.reloj.value=horaImprimible
-            setTimeout("mueveReloj()",1000)
-            text.style.top=window.event.y
-            text.styple.left=window.event.x
-            }
-    </script>
-    }
+
     
 </head>
-<body onload="mueveReloj()">
-<form name="form_reloj">
-    <input type="text" name="reloj" size="25">
-</form>
 
+<div style="text-align:center;padding:1em 0;">
+    <h4><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/es/country/co">
+        <span style="color:black;"></span><br /></a></h4>
+    <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=small&timezone=America%2FBogota" width="100%" height="90" frameborder="0" seamless>
+    </iframe>
+</div>
 
 <table>
 
