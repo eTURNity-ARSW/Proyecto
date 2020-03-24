@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 @RestController
 @RequestMapping( value = "/usuario")
-public class EturnityController {
+public class UsuarioController {
 
     @Autowired
     private UserServices us = null;
@@ -25,7 +25,7 @@ public class EturnityController {
         try {
             return new ResponseEntity<>(us.getAllUsers(), HttpStatus.ACCEPTED);
         } catch (UserException e) {
-            Logger.getLogger(EturnityController.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, e);
             return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
         }
     }
@@ -35,7 +35,7 @@ public class EturnityController {
         try {
             return new ResponseEntity<>(us.getUser(username),HttpStatus.ACCEPTED);
         } catch (UserException ex) {
-            Logger.getLogger(EturnityController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
         }
     }
@@ -45,7 +45,7 @@ public class EturnityController {
         try {
             return new ResponseEntity<>(us.getUser(username).getTurnos(),HttpStatus.ACCEPTED);
         } catch (UserException ex) {
-            Logger.getLogger(EturnityController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
         }
     }
