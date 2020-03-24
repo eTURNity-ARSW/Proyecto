@@ -1,7 +1,7 @@
 package edu.eci.arsw.Eturnity.services;
 
-import edu.eci.arsw.Eturnity.Persistence.EnterpriseException;
-import edu.eci.arsw.Eturnity.Persistence.EnterprisePersistence;
+import edu.eci.arsw.Eturnity.Persistence.EntidadException;
+import edu.eci.arsw.Eturnity.Persistence.EntidadPersistence;
 import edu.eci.arsw.Eturnity.Persistence.TurnoException;
 import edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
 import edu.eci.arsw.Eturnity.model.Entidad;
@@ -16,16 +16,16 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
-public class EnterpriseServices {
+public class EntidadServices {
     @Autowired
-    private EnterprisePersistence esp;
+    private EntidadPersistence esp;
     @Autowired
     private TurnoPersistence tsp;
 
     public boolean saveEnterprise(Entidad e){
         try {
             return esp.Save(e);
-        } catch (EnterpriseException ex) {
+        } catch (EntidadException ex) {
             ex.printStackTrace();
             return false;
         }
@@ -33,21 +33,21 @@ public class EnterpriseServices {
     public Entidad getEnterprise(String nit){
         try {
             return esp.getEnterprise(nit);
-        } catch (EnterpriseException e) {
+        } catch (EntidadException e) {
             e.printStackTrace();
             return null;
             //Falta tratarla
         }
 
     }
-    public List<Sede> getOfficeByEnterprise(String nit) throws EnterpriseException {
+    public List<Sede> getOfficeByEnterprise(String nit) throws EntidadException {
 
         esp.getEnterprise(nit).getSedes().forEach(x-> System.out.println(x));
         return esp.getEnterprise(nit).getSedes();
 
     }
 
-    public List<Servicio> getServicesByEnterprise(String nit) throws EnterpriseException {
+    public List<Servicio> getServicesByEnterprise(String nit) throws EntidadException {
 
         ArrayList<Servicio> servicios = new ArrayList<>();
         for (Sede x : esp.getEnterprise(nit).getSedes()) {
@@ -58,13 +58,13 @@ public class EnterpriseServices {
         return servicios;
 
     }
-    public List<Entidad> getEnterpriseByCity(String city) throws EnterpriseException {
+    public List<Entidad> getEnterpriseByCity(String city) throws EntidadException {
 
         return esp.getEnterpriseByCity(city);
 
     }
 
-    public HashMap<Sede, ArrayList<Turno>> getTurnByEnterprise(String nit) throws EnterpriseException, TurnoException {
+    public HashMap<Sede, ArrayList<Turno>> getTurnByEnterprise(String nit) throws EntidadException, TurnoException {
         HashMap<Sede, ArrayList<Turno>> turnos = new HashMap<>();
         for (Sede sede : esp.getEnterprise(nit).getSedes()){
             for(Turno t: tsp.getTotalTurnos()){
@@ -82,6 +82,9 @@ public class EnterpriseServices {
         }
         return turnos;
     }
+	public List<Entidad> getAllEntidades()throws EntidadException{
+		return esp.getAll();
+	}
 
 
 }
