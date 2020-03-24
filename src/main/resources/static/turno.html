@@ -19,9 +19,24 @@
 
         tr:nth-child(even) {background-color: crimson;}
     </style>
+    <script>
+            function mueveReloj(){
+            momentoActual=new Date()
+            hora = momentoActual.getHours()
+            minuto = momentoActual.getMinutes()
+            segundo = momentoActual.getSeconds()
+            horaImprimible = hora + ":" + minuto + segundo
+            document.form_reloj.reloj.value=horaImprimible
+            setTimeout("mueveReloj()",1000)
+            }
+    </script>
+    }
+    
 </head>
-<body>
-
+<body onload="mueveReloj()">
+<form name="form_reloj">
+    <input type="text" name="reloj" size="25">
+</form>
 
 
 <table>
