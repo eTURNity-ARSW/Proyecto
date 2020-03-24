@@ -9,6 +9,7 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
+  background-image: linear-gradient(to right top, #9b81d5, #8a72d9, #7664dd, #5a57e2, #2b4be7);
 }
 
 a {
@@ -267,7 +268,7 @@ input[type=text]:placeholder {
   bottom: -10px;
   width: 0;
   height: 2px;
-  background-color: #56baed;
+  //background-color: #56baed;
   content: "";
   transition: width 0.2s;
 }
