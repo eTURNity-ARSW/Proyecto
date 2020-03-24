@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import edu.eci.arsw.Eturnity.model.Sede;
 
-public interface SedeRepository extends CrudRepository {
+public interface SedeRepository extends CrudRepository<Sede,String> {
     public List<Sede> findByIdentifier(String identificador);
     public List<Sede> findAll();
     public List<Sede> findByCiudad(String ciudad);
