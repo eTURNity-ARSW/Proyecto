@@ -36,6 +36,7 @@ public class EturnityApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		System.out.println("HOLA1");
 		log.info(" Iniciando Eturnity Application...");
 		Usuario Pepito = new Usuario("1", "Pepito", "pepito@gmail.com", "1072", "123");
 		Entidad entidad = new Entidad("123-1", "Daviplata",  "Por ahí", "Bogotá", 123);

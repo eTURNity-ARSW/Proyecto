@@ -2,7 +2,7 @@ package edu.eci.arsw.Eturnity.services;
 
 import edu.eci.arsw.Eturnity.Persistence.SedeException;
 import edu.eci.arsw.Eturnity.Persistence.SedePersistence;
-import edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
+//mport edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
 import edu.eci.arsw.Eturnity.model.Sede;
 import edu.eci.arsw.Eturnity.model.Servicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +15,8 @@ import java.util.List;
 public class SedeServices {
     @Autowired
     private SedePersistence sp;
-    @Autowired
-    private TurnoPersistence tsp;
+    /*@Autowired
+    private TurnoPersistence tsp;*/
 
    /* public boolean saveSede(Sede s){
         try {

@@ -3,11 +3,11 @@ package edu.eci.arsw.Eturnity.services;
 import edu.eci.arsw.Eturnity.Persistence.TurnoException;
 import edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
 import edu.eci.arsw.Eturnity.model.Turno;
-import edu.eci.arsw.Eturnity.model.Usuario;
+//import edu.eci.arsw.Eturnity.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
