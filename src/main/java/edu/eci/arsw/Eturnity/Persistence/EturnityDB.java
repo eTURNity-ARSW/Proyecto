@@ -55,25 +55,6 @@ public class EturnityDB{
     
     }
 
-    public void createNewUser(Usuario u){
-        Statement stmt = null;
-        try{
-            Class.forName("org.postgresql.Driver");
-            getConnection();
-            c.setAutoCommit(false);
-            stmt = c.createStatement();
-            String sql = "INSERT INTO usuario (username,nombre,correo,documento,contrasena)" + "VALUES ('"+u.getUsername()+"','"+u.getNombre()+"','"+u.getCorreo()+"','"+u.getDocumento()+"','"+u.getContrasena()+"');";
-            stmt.executeUpdate(sql);
-            stmt.close();
-            c.commit();
-        } catch(Exception ex){
-            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE,null,ex);
-
-        }
-
-
-
-
-    }
+   
 }
 
