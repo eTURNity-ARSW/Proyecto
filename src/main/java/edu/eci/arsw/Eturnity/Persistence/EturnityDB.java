@@ -35,7 +35,7 @@ public class EturnityDB{
     public List<Usuario> getAllUsers(){
         List<Usuario> users = new ArrayList<Usuario>();
         Statement stmt = null;
-        try{
+        /*try{
             Class.forName("org.postgresql.Driver");
             getConnection();
             c.setAutoCommit(false);
@@ -44,10 +44,13 @@ public class EturnityDB{
             while (rs.next()){
                 //u = new Usuario(rs.getString(""))
             }
-        }
-    }
+        
+        } */
+        return users;
+        
 
 
 
 
+}
 }

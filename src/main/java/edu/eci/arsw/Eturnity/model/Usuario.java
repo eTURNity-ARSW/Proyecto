@@ -11,7 +11,8 @@ import java.util.ArrayList;
 public class Usuario {
 
     @Id
-    private String username;
+    public String username;
+
     private String nombre;
     private String correo;
     private String documento;
@@ -31,8 +32,8 @@ public class Usuario {
         this.correo=correo;
         this.documento=documento;
         this.nombre=nombre;
-        this.turnos = new ArrayList<>();
-        this.entidades = new ArrayList<>();
+        //this.turnos = new ArrayList<>();
+        //this.entidades = new ArrayList<>();
 
 
         //this.ubicacion = "";
