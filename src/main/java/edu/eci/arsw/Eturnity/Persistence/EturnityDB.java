@@ -33,27 +33,48 @@ public class EturnityDB{
     }
 
     public List<Usuario> getAllUsers(){
+        System.out.println("Entro5");
         List<Usuario> users = new ArrayList<Usuario>();
         Statement stmt = null;
         try{
             Class.forName("org.postgresql.Driver");
             getConnection();
+            System.out.println(c + "      conection");
             c.setAutoCommit(false);
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM usuario;");
             while (rs.next()){
+                System.out.println(rs.getString("username"));
                 u = new Usuario(rs.getString("username"),rs.getString("nombre"),rs.getString("correo"),rs.getString("documento"),rs.getString("contrasena"));
                 users.add(u);
             }
             c.close();
             stmt.close();
             rs.close();
+            System.out.println(users);
         } catch(Exception ex){
             Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE,null,ex);
         }
         return users;
     
     }
+
+    public void createNewUser(Usuario u){
+        Statement stmt = null;
+        try{
+            Class.forName("org.postgresql.Driver");
+            getConnection();
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String sql = "INSERT INTO usuario (username,nombre,correo,documento,contrasena)" + "VALUES ('"+u.getUsername()+"','"+u.getNombre()+"','"+u.getCorreo()+"','"+u.getDocumento()+"','"+u.getContrasena()+"');";
+            stmt.executeUpdate(sql);
+            stmt.close();
+            c.commit();
+        } catch(Exception ex){
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE,null,ex);
+
+        }
+
 
    
 }

@@ -1,5 +1,6 @@
 package edu.eci.arsw.Eturnity.Persistence.impl;
 
+import edu.eci.arsw.Eturnity.Persistence.EturnityDB;
 import edu.eci.arsw.Eturnity.Persistence.UserException;
 import edu.eci.arsw.Eturnity.Persistence.UserPersistence;
 import edu.eci.arsw.Eturnity.Repositories.UserRepository;
@@ -60,9 +61,17 @@ public class MyUserPersistence implements UserPersistence {
     }
 
 
+    //@Override
+    public void createNewUser(Usuario u){
+        System.out.println("Entro a crear user");
+        EturnityDB db = new EturnityDB();
+        db.createNewUser(u);
+    }
 
     @Override
     public List<Usuario> getAll() {
-        return (List<Usuario>) repository.findAll();
+        System.out.println("Entro4");
+        EturnityDB db = new EturnityDB();
+        return db.getAllUsers();
     }
 }
