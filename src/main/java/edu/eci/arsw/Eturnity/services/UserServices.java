@@ -31,6 +31,13 @@ public class UserServices {
     public List<Usuario> getAllUsers() throws UserException {
         return usp.getAll();
     }
+
+    public void createNewUser(Usuario u){
+         usp.createNewUser(u);
+    }
+
+
+
     public List<Turno> ConsultTurnsByUser(String username) throws UserException {
         return usp.getUsuarioByUsername(username).getTurnos();
     }

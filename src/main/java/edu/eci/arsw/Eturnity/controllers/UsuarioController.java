@@ -2,6 +2,7 @@ package edu.eci.arsw.Eturnity.controllers;
 
 import com.google.gson.Gson;
 import edu.eci.arsw.Eturnity.Persistence.UserException;
+import edu.eci.arsw.Eturnity.model.Usuario;
 import edu.eci.arsw.Eturnity.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,6 +34,18 @@ public class UsuarioController {
             return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
         }
     }
+
+    /**@RequestMapping(method=RequestMethod.POST , path= "/newuser")
+    public ResponseEntity<?> createNewUser(@RequestBody Usuario u){
+        try{
+            return new ResponseEntity<>(resp,HttpStatus.CREATED);
+        }catch(UserException e){
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.ALREADY_REPORTED);
+        }
+
+        
+    }**/
 
 
     @RequestMapping(path ="/{user}",method = RequestMethod.GET)

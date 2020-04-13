@@ -12,4 +12,5 @@ public interface UserPersistence  {
     public boolean saveUser(Usuario user) throws UserException;
     public Usuario getUserByName(String username);
     public List<Usuario> getAll();
+	public void createNewUser(Usuario u);
 }
