@@ -1,18 +1,13 @@
 package edu.eci.arsw.Eturnity.model;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
-@Entity
+
+
 public class Turno {
-    @Id
-    @Column(name="id")
     private String identifier;
     private String tipo;
     private boolean valido;
     private Date fecha;
-    @Column(name =  "username")
     private String user;
     private String sede;
 
@@ -27,7 +22,7 @@ public class Turno {
         this. fecha = fecha;
         this. valido = valido;
     }
-    
+
     public int CompareTo(Turno turno){
         if(turno==null){return 1;}
         if(turno.identifier.charAt(0)==this.identifier.charAt(0)) {
@@ -48,7 +43,7 @@ public class Turno {
         }
         return 0;
     }
-    
+
     public String getIdentifier() {
         return identifier;
     }

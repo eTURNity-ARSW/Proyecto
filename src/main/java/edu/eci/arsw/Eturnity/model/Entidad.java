@@ -1,15 +1,9 @@
 package edu.eci.arsw.Eturnity.model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.util.ArrayList;
 
-@Entity
 public class Entidad {
-    @Id
-    @Column(name = "id")
     private String nit;
     private String nombre;
     private String direccion;

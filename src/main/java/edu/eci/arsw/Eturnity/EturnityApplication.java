@@ -1,8 +1,6 @@
 package edu.eci.arsw.Eturnity;
 
-import edu.eci.arsw.Eturnity.Repositories.EntidadRepository;
-import edu.eci.arsw.Eturnity.Repositories.TurnoRepository;
-import edu.eci.arsw.Eturnity.Repositories.UserRepository;
+
 import edu.eci.arsw.Eturnity.model.Entidad;
 import edu.eci.arsw.Eturnity.model.Sede;
 import edu.eci.arsw.Eturnity.model.Turno;

@@ -1,14 +1,8 @@
 package edu.eci.arsw.Eturnity.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Column;
 
 
-@Entity
 public class Servicio {
-    @Id
-    @Column(name = "id")
     TipoServicio type;
     String description;
     public Servicio(){}

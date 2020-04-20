@@ -37,21 +37,27 @@ public class UsuarioController {
 
     /**@RequestMapping(method=RequestMethod.POST , path= "/newuser")
     public ResponseEntity<?> createNewUser(@RequestBody Usuario u){
-        try{
-            return new ResponseEntity<>(resp,HttpStatus.CREATED);
-        }catch(UserException e){
-            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, e);
-            return new ResponseEntity<>(e.getMessage(),HttpStatus.ALREADY_REPORTED);
-        }
+    try{
+    return new ResponseEntity<>(resp,HttpStatus.CREATED);
+    }catch(UserException e){
+    Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, e);
+    return new ResponseEntity<>(e.getMessage(),HttpStatus.ALREADY_REPORTED);
+    }
 
-        
+
     }**/
 
 
-    @RequestMapping(path ="/{user}",method = RequestMethod.GET)
-    public ResponseEntity<?> GetUser(@PathVariable("user") String username){
+    @RequestMapping(path ="/users/{username}",method = RequestMethod.GET)
+    public ResponseEntity<?> GetUser(@PathVariable("username") String username){
         try {
-            return new ResponseEntity<>(us.getUser(username),HttpStatus.ACCEPTED);
+            System.out.println(username + "  <--- username");
+
+            Usuario u = us.getUser(username);
+
+            String data = new Gson().toJson(u);
+
+            return new ResponseEntity<>(data,HttpStatus.ACCEPTED);
         } catch (UserException ex) {
             Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);

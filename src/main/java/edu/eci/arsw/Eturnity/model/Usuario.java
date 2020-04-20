@@ -3,14 +3,10 @@ package edu.eci.arsw.Eturnity.model;
 
 import edu.eci.arsw.Eturnity.Persistence.UserException;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
 import java.util.ArrayList;
 
-@Entity
 public class Usuario {
-
-    @Id
     public String username;
 
     private String nombre;
