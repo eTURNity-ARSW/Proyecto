@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.google.gson.Gson;
 import edu.eci.arsw.Eturnity.Persistence.EntidadException;
 import edu.eci.arsw.Eturnity.Persistence.TurnoException;
 import edu.eci.arsw.Eturnity.model.Entidad;
@@ -25,19 +27,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value="/entidades")
 public class EntidadController {
     @Autowired
-    EntidadServices es;
+    private EntidadServices es=null;
 
-    @RequestMapping(method=RequestMethod.GET)
-    public ResponseEntity<?> getAllEntidades() throws EntidadException{
-        ResponseEntity<?> ans;
+    @RequestMapping(method=RequestMethod.GET, path="entities")
+    public ResponseEntity<?> getAllEntidades() {
         try{
-            List<Entidad> entidades= es.getAllEntidades();
-            ans=new ResponseEntity<>(entidades, HttpStatus.ACCEPTED);
+            System.out.println("entra");
+            String resp = new Gson().toJson(es.getAllEntidades());
+            return new ResponseEntity<>(resp, HttpStatus.ACCEPTED);
         }catch(EntidadException ex){
             Logger.getLogger(EntidadController.class.getName()).log(Level.SEVERE,null,ex);
-            ans = new ResponseEntity<> ("ERROR",HttpStatus.NOT_FOUND);
+             return new ResponseEntity<> (ex.getMessage(),HttpStatus.NOT_FOUND);
         }
-        return ans;
+
     }
 
     @RequestMapping(path="/entidad/{sede}",method=RequestMethod.GET)
