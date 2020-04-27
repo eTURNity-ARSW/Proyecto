@@ -8,7 +8,7 @@
 ## Integrantes
 - Juan Carlos Garcia Garzón
 - Juliana Garzón Duque
-- Sarah Camila Vieda Castro
+- Sarah Camila Vieda Castro.
 
 ## Descripción 
 Nuestra aplicación web busca resolver la problemática de los largos tiempos de espera en diferentes entidades bancarias permitiendo a los usuarios tener la posibilidad de solicitar sus turnos en la fila por medio de nuestra aplicación web, de esta manera daremos al usuario libertad en el manejo del tiempo que perdería haciendo las largas filas en la entidad, permitiendo que el tiempo sea mejor aprovechado. De igual manera buscamos ofrecer a la entidad que recibe a los usuarios mantener un registro y control de los turnos solicitados, lo cual ayudaría en el análisis de los datos obtenidos a partir de nuestra aplicación. 
