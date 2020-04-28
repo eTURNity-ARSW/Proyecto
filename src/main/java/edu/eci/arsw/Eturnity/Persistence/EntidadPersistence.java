@@ -6,9 +6,10 @@ import java.util.List;
 
 public interface EntidadPersistence {
 
-    public Entidad getEnterprise(String nit) throws EntidadException;
+    public Entidad getEnterprise(String nombre) throws EntidadException;
     public List<Entidad> getAll();
     public Entidad getEnterpriseByName(String name) throws EntidadException;
     public List<Entidad> getEnterpriseByCity(String city) throws EntidadException;
     public boolean Save(Entidad e) throws EntidadException;
+    public void createNewEnterprise(Entidad e);
 }

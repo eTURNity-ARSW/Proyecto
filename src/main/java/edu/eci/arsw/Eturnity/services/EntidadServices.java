@@ -22,22 +22,12 @@ public class EntidadServices {
     @Autowired
     private TurnoPersistence tsp;
 
-    public boolean saveEnterprise(Entidad e){
-        try {
-            return esp.Save(e);
-        } catch (EntidadException ex) {
-            ex.printStackTrace();
-            return false;
-        }
+    public boolean saveEnterprise(Entidad e) throws EntidadException{
+        return esp.Save(e);
     }
-    public Entidad getEnterprise(String nit){
-        try {
-            return esp.getEnterprise(nit);
-        } catch (EntidadException e) {
-            e.printStackTrace();
-            return null;
-            //Falta tratarla
-        }
+
+    public Entidad getEnterprise(String nombre) throws EntidadException {
+        return esp.getEnterprise(nombre);
 
     }
     public List<Sede> getOfficeByEnterprise(String nit) throws EntidadException {

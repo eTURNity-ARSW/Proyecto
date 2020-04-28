@@ -34,5 +34,10 @@ public class MyEntidadPersistence implements EntidadPersistence {
     public boolean Save(Entidad e) throws EntidadException{
         return false;
     }
+
+    @Override
+    public void createNewEnterprise(Entidad e) {
+        
+    }
 }
 

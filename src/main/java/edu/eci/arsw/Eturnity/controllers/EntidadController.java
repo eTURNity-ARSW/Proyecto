@@ -42,8 +42,21 @@ public class EntidadController {
 
     }
 
+    @RequestMapping(path="/entidad/{nombre}", method = RequestMethod.GET)
+    public ResponseEntity<?> getEntity(@PathVariable("nombre") String nombre){
+        try{
+
+            Entidad e =es.getEnterprise(nombre);
+            String data = new Gson().toJson(e);
+            return new ResponseEntity<>(data,HttpStatus.ACCEPTED);
+        } catch (EntidadException e) {
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, e);
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
+        }
+    }
+
     @RequestMapping(path="/entidad/{sede}",method=RequestMethod.GET)
-    public ResponseEntity<?> getSedeByEntidad(@PathVariable("nit") String nit) throws EntidadException{
+    public ResponseEntity<?> getSedeByEntidad(@PathVariable("nit") String nit){
         ResponseEntity<?> ans;
         try{
             List<Sede> entidades=es.getOfficeByEnterprise(nit);
