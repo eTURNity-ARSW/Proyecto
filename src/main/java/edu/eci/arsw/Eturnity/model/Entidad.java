@@ -2,8 +2,11 @@ package edu.eci.arsw.Eturnity.model;
 
 
 import java.util.ArrayList;
+import org.springframework.data.annotation.Id;
+
 
 public class Entidad {
+    @Id
     private String nit;
     private String nombre;
     private String direccion;

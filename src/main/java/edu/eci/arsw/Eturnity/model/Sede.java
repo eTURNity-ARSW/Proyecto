@@ -3,9 +3,12 @@ package edu.eci.arsw.Eturnity.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import org.springframework.data.annotation.Id;
+
 
 
 public class Sede {
+    @Id
     private String identificador;
     private String ciudad;
     private String direccion;

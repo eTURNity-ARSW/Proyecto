@@ -1,9 +1,10 @@
 package edu.eci.arsw.Eturnity.model;
 import java.util.Date;
-
+import org.springframework.data.annotation.Id;
 
 
 public class Turno {
+    @Id
     private String identifier;
     private String tipo;
     private boolean valido;
