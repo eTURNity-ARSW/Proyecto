@@ -36,6 +36,10 @@ public class UserServices {
          usp.createNewUser(u);
     }
 
+    public void deleteUser(String u){
+        usp.deleteUser(u);
+    }
+
 
 
     public List<Turno> ConsultTurnsByUser(String username) throws UserException {

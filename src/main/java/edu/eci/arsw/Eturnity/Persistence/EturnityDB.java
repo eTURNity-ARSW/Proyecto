@@ -95,6 +95,27 @@ public class EturnityDB {
         }
     }
 
+    public void deleteUser(String username){
+        Statement pstmt = null;
+        try{
+            u = getUsuarioByUsername(username);
+            Class.forName("org.postgresql.Driver");
+            getConnection();
+            c.setAutoCommit(false);
+            pstmt=c.createStatement();
+            String sql = "DELETE FROM usuario WHERE username = '" + username + "'";
+            pstmt = c.createStatement();
+            pstmt.executeUpdate(sql);
+            c.commit();
+            c.close();
+        }catch(Exception ex){
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+
+
+
     public Usuario getUsuarioByUsername(String username) {
         PreparedStatement pstmt = null;
         Usuario u = null;
@@ -141,6 +162,14 @@ public class EturnityDB {
 
         return allTurnos;
     }
+
+	
+
+
+
+
+
+
 
     /*
     public void createNewTurno(Turno t){
