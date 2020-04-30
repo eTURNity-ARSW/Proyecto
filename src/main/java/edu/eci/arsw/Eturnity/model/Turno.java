@@ -15,6 +15,15 @@ public class Turno {
     public Turno(){
     }
 
+    
+    public Turno(String identifier, String tipo, String user, String sede){
+        this.identifier=identifier;
+        this.tipo=tipo;
+        this.user=user;
+        this.sede=sede;
+    }
+
+
     public Turno(String identifier, String tipo, String user, String sede, Date fecha, boolean valido){
         this.identifier = identifier;
         this.tipo = tipo;
