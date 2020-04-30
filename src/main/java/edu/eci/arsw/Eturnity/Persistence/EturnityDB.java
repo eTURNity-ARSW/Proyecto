@@ -118,4 +118,43 @@ public class EturnityDB {
         return u;
     }
 
+    public List<Turno> getAllTurnos(){
+        List<Turno> allTurnos = new ArrayList<Turno>();
+        Statement pstmt = null;
+        try{
+            Class.forName("org.postgresql.Driver");
+            getConnection();
+            c.setAutoCommit(false);
+            pstmt = c.createStatement();
+            ResultSet r = pstmt.executeQuery("SELECT * FROM turno;");
+            while(r.next()){
+                t = new Turno(r.getString("identifier"),r.getString("tipo"), r.getString("user"),r.getString("sede"));
+                allTurnos.add(t);
+            }
+            c.close();
+            pstmt.close();
+            r.close();
+        } catch(Exception ex){
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+        return allTurnos;
+    }
+
+    /*
+    public void createNewTurno(Turno t){
+        Statement pstmt=null;
+        try{
+            Class.forName("org.postgresql.Driver");
+            getConnection();
+            c.setAutoCommit(false);
+            pstmt=c.createStatement();
+            String sql = "INSERT INTO turno (identifier,tipo,valido,fecha,turnousuario,turnosede)" 
+            + "VALUES ('" + t.getIdentifier()+"','"+t.getTipo()+"','"+t.isValido()
+            + "','"+t.getFecha()+"','"+t.
+        }
+    }*/
+
+
 }
