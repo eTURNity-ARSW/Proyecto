@@ -52,8 +52,6 @@ public class UsuarioController {
             Map<String,Usuario> resp = new Gson().fromJson(u, list);
             Object [] key = resp.keySet().toArray();
             Usuario user = resp.get(key[0]);
-            ObjectId idUser = new ObjectId(new Date());
-            user.setUsername(idUser.toHexString());
             us.createNewUser(user);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch(Exception e){
