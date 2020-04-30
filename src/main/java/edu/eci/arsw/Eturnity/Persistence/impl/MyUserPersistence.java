@@ -49,4 +49,13 @@ public class MyUserPersistence implements UserPersistence {
         EturnityDB db = new EturnityDB();
         return db.getAllUsers();
     }
+
+
+
+    public void deleteUser(String u){
+        System.out.println("Entro a borrar user");
+        EturnityDB db=new EturnityDB();
+        db.deleteUser(u);
+
+    }
 }

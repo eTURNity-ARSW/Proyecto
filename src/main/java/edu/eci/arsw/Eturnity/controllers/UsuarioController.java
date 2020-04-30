@@ -3,6 +3,8 @@ package edu.eci.arsw.Eturnity.controllers;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.xml.ws.Response;
+
 import com.google.gson.Gson;
 import java.util.List;
 import java.util.ArrayList;
@@ -34,7 +36,6 @@ public class UsuarioController {
     @RequestMapping(method = RequestMethod.GET, path = "users")
     public ResponseEntity<?> getAllUsers(){
         try {
-            System.out.println("Entro1");
             String resp = new Gson().toJson(us.getAllUsers());
             return new ResponseEntity<>(resp, HttpStatus.ACCEPTED);
         } catch (UserException e) {
@@ -46,7 +47,7 @@ public class UsuarioController {
     @RequestMapping(method=RequestMethod.POST , path= "login")
     public ResponseEntity<?> loginUser(@RequestBody String u){
         try{
-            System.out.println("Entro login");
+           // System.out.println("Entro login");
             Type list = new TypeToken<Map<Integer,Usuario>>(){
             }.getType();
             Map<String,Usuario> resp = new Gson().fromJson(u, list);
@@ -61,10 +62,21 @@ public class UsuarioController {
        
     }
 
+
+    @RequestMapping (method=RequestMethod.DELETE,path="deleted/{username}")
+    public ResponseEntity<?> deleteByUsername(@PathVariable ("username") String username){
+        try{
+            us.deleteUser(username);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch(Exception ex){
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(ex.getMessage(),HttpStatus.ALREADY_REPORTED);
+        }
+    }
+
     @RequestMapping(path ="/users/{username}",method = RequestMethod.GET)
     public ResponseEntity<?> getUser(@PathVariable("username") String username){
         try {
-            System.out.println(username + "  <--- username");
             Usuario u = us.getUser(username);
             String data = new Gson().toJson(u);
             return new ResponseEntity<>(data,HttpStatus.ACCEPTED);
@@ -74,14 +86,5 @@ public class UsuarioController {
         }
     }
 
-    @RequestMapping(path ="/{user}/turns",method = RequestMethod.GET)
-    public ResponseEntity<?> getTurnsByUser(@PathVariable("user") String username){
-        try {
-            return new ResponseEntity<>(us.getUser(username).getTurnos(),HttpStatus.ACCEPTED);
-        } catch (UserException ex) {
-            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
-        }
-    }
 
 }
