@@ -4,6 +4,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.google.gson.Gson;
+import java.util.List;
+import java.util.ArrayList;
+import java.lang.reflect.Type;
+import com.google.gson.reflect.TypeToken;
+import java.util.Map;
 import edu.eci.arsw.Eturnity.Persistence.TurnoException;
 import edu.eci.arsw.Eturnity.model.Turno;
 import edu.eci.arsw.Eturnity.services.TurnoServices;
@@ -16,35 +22,34 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value="/turnos")
+@RequestMapping(value="/turno")
 public class TurnoController {
     @Autowired
     TurnoServices ts;
 
-    @RequestMapping(method=RequestMethod.GET)
+    @RequestMapping(method=RequestMethod.GET, path="turnos")
     public ResponseEntity<?> getAllTurnos() throws TurnoException{
-        ResponseEntity<?> ans;
         try{
-            List<Turno> turnos= ts.getAllTurnos();
-            ans=new ResponseEntity<>(turnos, HttpStatus.ACCEPTED);
+            String resp = new Gson().toJson(ts.getAllTurnos());
+            return new ResponseEntity<>(resp,HttpStatus.ACCEPTED);       
         }catch(TurnoException ex){
             Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE,null,ex);
-            ans = new ResponseEntity<> ("ERROR",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<> ("ERROR",HttpStatus.NOT_FOUND);
         }
-        return ans;
     }
 
-    @RequestMapping(path ="/turno/{user}",method=RequestMethod.GET)
+    @RequestMapping(method=RequestMethod.GET,path ="/turno/{user}")
     public ResponseEntity<?> getTurnoByUsuario(@PathVariable("usuario") String usuario) throws TurnoException{
-        ResponseEntity<?> ans;
         try{
-            List<Turno> turnos = ts.getTurnsByUser(usuario);
-            ans = new ResponseEntity<>(turnos,HttpStatus.ACCEPTED);
+            List<Turno> turnos = new ArrayList<>();
+            turnos = ts.getTurnsByUser(usuario);
+            String resp = new Gson().toJson(turnos);
+            return  new ResponseEntity<>(resp,HttpStatus.ACCEPTED);
         } catch(Exception ex){
             Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null, ex);
-            ans = new ResponseEntity<> ("ERROR",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<> ("ERROR",HttpStatus.NOT_FOUND);
         }
-        return ans;
+       
     }
 
     /*@RequestMapping(path="/turno",method=RequestMethod.GET)
