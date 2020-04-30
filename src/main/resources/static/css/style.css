@@ -8,7 +8,8 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
-  background-image: linear-gradient(to right top, #9b81d5, #8a72d9, #7664dd, #5a57e2, #2b4be7);
+  background-image: linear-gradient(to right top, #0f53ed, #006df7, #0083fb, #0097fc, #00aafa, #00b8fb, #00c4f8, #00d0f4, #00dbf2, #00e6eb, #00f0df, #07f9cf);
+
 }
 
 a {
