@@ -23,15 +23,5 @@ apicli = (function() {
             });
 
         },
-        getEntidades: function( entidad, callback) {
 
-            jQuery.get({
-                dataType: "json",
-                url: "/entidades",
-                success: function (data) {
-                    callback(data)
-                }
-            });
-
-    }
 }})();
