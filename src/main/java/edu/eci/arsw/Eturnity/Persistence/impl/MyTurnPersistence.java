@@ -1,5 +1,6 @@
 package edu.eci.arsw.Eturnity.Persistence.impl;
 
+import edu.eci.arsw.Eturnity.Persistence.EturnityDB;
 import edu.eci.arsw.Eturnity.Persistence.TurnoException;
 import edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
 import edu.eci.arsw.Eturnity.model.Turno;
@@ -55,5 +56,12 @@ public class MyTurnPersistence implements TurnoPersistence {
         return null;
     }
 
+   /*
+    public void createTurno(String t){
+        System.out.println("Entro a crear user");
+        EturnityDB db = new EturnityDB();
+        db.createTurno(t);
+    }
+*/
 
 }

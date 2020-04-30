@@ -54,8 +54,12 @@ public class TurnoServices {
 	}*/
 	public List<Turno> getTurnosFecha(Date fecha) throws TurnoException {
 		return tp.getTurnosFecha(fecha);
-	}
-	
+    }
+    
+   /* public void createTurno(Turno t){
+        tp.createTurno(t);
+   }
+	*/
 
 
 

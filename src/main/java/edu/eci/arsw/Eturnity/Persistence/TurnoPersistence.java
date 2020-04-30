@@ -16,5 +16,6 @@ public interface TurnoPersistence {
    public boolean updateTurno(Turno t, String id) throws TurnoException;
    /*public List<Turno> getAllValidTurnos() throws TurnoException;*/
    public List<Turno> getTurnosFecha(Date fecha) throws TurnoException;
+   /*public void createTurno(Turno t);*/
 
 }

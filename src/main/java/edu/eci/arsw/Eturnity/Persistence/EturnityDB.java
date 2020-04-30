@@ -163,16 +163,8 @@ public class EturnityDB {
         return allTurnos;
     }
 
-	
-
-
-
-
-
-
-
     /*
-    public void createNewTurno(Turno t){
+    public void createTurno(Turno t){
         Statement pstmt=null;
         try{
             Class.forName("org.postgresql.Driver");
@@ -185,5 +177,5 @@ public class EturnityDB {
         }
     }*/
 
-
+    
 }
