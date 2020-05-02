@@ -4,7 +4,7 @@ package edu.eci.arsw.Eturnity.model;
 import edu.eci.arsw.Eturnity.Persistence.UserException;
 import org.springframework.data.annotation.Id;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Usuario {
 
@@ -15,8 +15,8 @@ public class Usuario {
     private String correo;
     private String documento;
     private String contrasena;
-    private ArrayList<Turno> turnos;
-    private ArrayList<Entidad> entidades;
+    private List turnos;
+    private List entidades;
 
     public Usuario(){
 
@@ -36,23 +36,19 @@ public class Usuario {
         //this.ubicacion = "";
     }
 
-    public ArrayList<Turno> getTurnos() throws UserException {
-        if(turnos.isEmpty()){
-            throw new UserException(UserException.SIN_TURNOS);
-        }
+    public List getTurnos()  {
         return turnos;
     }
 
-    public void setTurnos(ArrayList<Turno> turnos){
+    public void setTurnos(List turnos){
         this.turnos = turnos;
     }
 
-    public ArrayList<Entidad> getEntidades() throws  UserException{
-        if(entidades.isEmpty()){throw new UserException((UserException.SIN_ENTIDADES));}
+    public List getEntidades() {
         return entidades;
     }
 
-    public void setEntidades(ArrayList<Entidad> entidades) {
+    public void setEntidades(List entidades) {
         this.entidades = entidades;
     }
 

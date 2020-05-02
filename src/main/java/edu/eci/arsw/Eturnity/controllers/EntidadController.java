@@ -95,7 +95,7 @@ public class EntidadController {
         return ans;
     }
 
-
+/*
     @RequestMapping(path="/entidad/{turno}",method=RequestMethod.GET)
     public ResponseEntity<?> getTurnoByEntidad(@PathVariable("nit")String nit) throws EntidadException, TurnoException{
         ResponseEntity<?> ans;
@@ -108,7 +108,7 @@ public class EntidadController {
         }
         return ans;
     }
-
+*/
 
 
 

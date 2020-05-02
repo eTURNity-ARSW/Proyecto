@@ -12,56 +12,31 @@ import org.springframework.stereotype.Service;
 @Service
 public class MyTurnPersistence implements TurnoPersistence {
 
-    @Override
-    public boolean guardarTurno(Turno t) throws TurnoException {
 
-        return false;
-
-    }
 
     @Override
-    public Turno getTurnoById(String id) throws TurnoException {
-
-        return null;
-    }
-
-    @Override
-    public List<Turno> getTurnsByUsername(String user) throws TurnoException {
-        return null;
-
-    }
-
-    @Override
-    public List<Turno> getTotalTurnos() throws TurnoException {
-        return null;
-    }
-
-    @Override
-    public List<Turno> getTurnsByOffice(String sede) {
-        return null;
-    }
-
-    @Override
-    public boolean updateTurno(Turno t, String id) throws TurnoException {
-        return false;
-    }
-
-  /*  @Override
-    public List<Turno> getAllValidTurnos() throws TurnoException {
-        //return turnorep.findByValido();
-    }*/
-
-    @Override
-    public List<Turno> getTurnosFecha(Date fecha) throws TurnoException {
-        return null;
-    }
-
-   /*
-    public void createTurno(String t){
-        System.out.println("Entro a crear user");
+    public void createTurno(Turno turn) {
+        System.out.println("Entro a crear turno");
         EturnityDB db = new EturnityDB();
-        db.createTurno(t);
+        db.createTurno(turn);
+
     }
-*/
+
+    @Override
+    public List<Turno> getAllTurnos() {
+        System.out.println("Entro get allturnos");
+        EturnityDB db=new EturnityDB();
+        return db.getAllTurnos();
+    }
+
+    @Override
+    public List<Turno> getTurnosByUsername(String username) {
+        System.out.println("Entro a turnos by name");
+        EturnityDB db= new EturnityDB();
+        return db.getTurnosByUsername(username);
+    }
+
+   
+
 
 }

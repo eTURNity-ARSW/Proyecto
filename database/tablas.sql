@@ -10,7 +10,7 @@ CREATE TABLE turno (
 	identifier varchar NOT NULL,
 	tipo varchar NOT NULL,
 	valido bool NOT NULL,
-	fecha date NOT NULL,
+	fecha varchar NOT NULL,
 	turnouserid varchar NOT NULL,
 	turnosedeid varchar NOT NULL,
 	CONSTRAINT turno_pk PRIMARY KEY (identifier)

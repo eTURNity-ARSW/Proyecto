@@ -29,7 +29,7 @@ public class MyUserPersistence implements UserPersistence {
         return false;
     }
 
-    public ArrayList<Turno> getTurnosByUsername(String username) throws UserException {
+    public List<Turno> getTurnosByUsername(String username) throws UserException {
         Usuario usuarioByUsername = getUsuarioByUsername(username);
         if (usuarioByUsername!=null) {return usuarioByUsername.getTurnos();}
         throw new UserException(UserException.USUARIO_INVALIDO);

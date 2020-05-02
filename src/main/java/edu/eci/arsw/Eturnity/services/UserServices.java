@@ -49,7 +49,7 @@ public class UserServices {
     public List<Entidad> ConsultEnterpriseByUser(String username) throws UserException {
         return usp.getUsuarioByUsername(username).getEntidades();
     }
-
+    /*
     public Turno consultCurrentTurnBySede(String sede) throws TurnoException {
         List<Turno> turnos = tsp.getTurnsByOffice(sede);
         Turno currentTurn = null;
@@ -69,7 +69,7 @@ public class UserServices {
         }
         return currentTurn;
 
-    }
+    }*/
 
 }
 

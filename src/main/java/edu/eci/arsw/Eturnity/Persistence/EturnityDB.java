@@ -26,6 +26,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -113,9 +114,6 @@ public class EturnityDB {
         }
     }
 
-
-
-
     public Usuario getUsuarioByUsername(String username) {
         PreparedStatement pstmt = null;
         Usuario u = null;
@@ -140,6 +138,7 @@ public class EturnityDB {
     }
 
     public List<Turno> getAllTurnos(){
+        System.out.println("Entre turnos");
         List<Turno> allTurnos = new ArrayList<Turno>();
         Statement pstmt = null;
         try{
@@ -149,12 +148,13 @@ public class EturnityDB {
             pstmt = c.createStatement();
             ResultSet r = pstmt.executeQuery("SELECT * FROM turno;");
             while(r.next()){
-                t = new Turno(r.getString("identifier"),r.getString("tipo"), r.getString("user"),r.getString("sede"));
+                t = new Turno(r.getString("identifier"),r.getString("tipo"), r.getBoolean("valido"),r.getString("fecha"),r.getString("turnouserid"),r.getString("turnosedeid"));
                 allTurnos.add(t);
             }
             c.close();
             pstmt.close();
             r.close();
+            System.out.println(allTurnos);
         } catch(Exception ex){
             Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -162,8 +162,6 @@ public class EturnityDB {
 
         return allTurnos;
     }
-
-    /*
     public void createTurno(Turno t){
         Statement pstmt=null;
         try{
@@ -171,11 +169,47 @@ public class EturnityDB {
             getConnection();
             c.setAutoCommit(false);
             pstmt=c.createStatement();
-            String sql = "INSERT INTO turno (identifier,tipo,valido,fecha,turnousuario,turnosede)" 
+            String sql = "INSERT INTO turno (identifier,tipo,valido,fecha,turnouserid,turnosedeid)" 
             + "VALUES ('" + t.getIdentifier()+"','"+t.getTipo()+"','"+t.isValido()
-            + "','"+t.getFecha()+"','"+t.
+            + "','"+t.getFecha()+"','"+t.getUser()+"','"+t.getSede()+"');";
+            pstmt.executeUpdate(sql);
+            pstmt.close();
+            c.commit();
+            c.close();
+        }catch(Exception ex){
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }*/
+    }
+
+	public List<Turno> getTurnosByUsername(String username) {
+        String sql = "SELECT * FROM turno WHERE turnouserid = ?";
+        List<Turno> allTurnosUsername=new ArrayList<Turno>();
+        try{
+            if(u==null){
+                u=getUsuarioByUsername(username);
+            }
+            getConnection();
+            PreparedStatement pstmt=c.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,
+                ResultSet.CONCUR_UPDATABLE);
+            pstmt.setString(1, u.getUsername());
+            ResultSet r = pstmt.executeQuery();
+            while(r.next()){
+                t = new Turno(r.getString("identifier"),r.getString("tipo"),r.getBoolean("valido"),r.getString("fecha"),r.getString("turnouserid"),r.getString("turnosedeid"));
+                allTurnosUsername.add(t);
+            }
+            u.setTurnos(allTurnosUsername);
+            c.close();
+            pstmt.close();
+        }catch(Exception ex){
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null,ex);
+        }
+        return allTurnosUsername;
+	}
+
+	
+
+
+
 
     
 }

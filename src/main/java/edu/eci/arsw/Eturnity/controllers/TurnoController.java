@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.lang.reflect.Type;
@@ -17,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,21 +31,21 @@ public class TurnoController {
     TurnoServices ts;
 
     @RequestMapping(method=RequestMethod.GET, path="turnos")
-    public ResponseEntity<?> getAllTurnos() throws TurnoException{
+    public ResponseEntity<?> getAllTurnos(){
         try{
             String resp = new Gson().toJson(ts.getAllTurnos());
             return new ResponseEntity<>(resp,HttpStatus.ACCEPTED);       
-        }catch(TurnoException ex){
+        }catch(Exception ex){
             Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE,null,ex);
             return new ResponseEntity<> ("ERROR",HttpStatus.NOT_FOUND);
         }
     }
 
-    @RequestMapping(method=RequestMethod.GET,path ="/turno/{user}")
-    public ResponseEntity<?> getTurnoByUsuario(@PathVariable("usuario") String usuario) throws TurnoException{
+    @RequestMapping(method=RequestMethod.GET,path ="/turnos/{user}")
+    public ResponseEntity<?> getTurnosByUsername(@PathVariable("usuario") String usuario) throws TurnoException{
         try{
             List<Turno> turnos = new ArrayList<>();
-            turnos = ts.getTurnsByUser(usuario);
+            turnos = ts.getTurnosByUsername(usuario);
             String resp = new Gson().toJson(turnos);
             return  new ResponseEntity<>(resp,HttpStatus.ACCEPTED);
         } catch(Exception ex){
@@ -51,6 +54,27 @@ public class TurnoController {
         }
        
     }
+    @RequestMapping (method = RequestMethod.POST, path="turnocre")
+    public ResponseEntity<?> createTurno(@RequestBody String turno){
+        try{
+            Type lisType = new TypeToken<Map<Integer,Turno>>(){
+            }.getType();
+            //Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").create();
+            Map<String,Turno> resp = new Gson().fromJson(turno, lisType);
+            Object [] key = resp.keySet().toArray();
+            Turno turn = resp.get(key[0]);
+            ts.createTurno(turn);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }catch(Exception ex){
+            Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("ERROR",HttpStatus.NOT_FOUND);
+        }
+    }
+
+
+
+
+
 
     /*@RequestMapping(path="/turno",method=RequestMethod.GET)
     public ResponseEntity<?> getTurnosValidos() throws TurnoException{
@@ -64,6 +88,7 @@ public class TurnoController {
         }
         return ans;
     }*/
+    /*
 
     @RequestMapping(path="/turno/{fecha}",method=RequestMethod.GET)
     public ResponseEntity<?> getTurnosByFecha(@PathVariable("fecha") Date fecha) throws TurnoException{
@@ -92,7 +117,7 @@ public class TurnoController {
         return ans;
 
     }
-
+*/
 
 
 }

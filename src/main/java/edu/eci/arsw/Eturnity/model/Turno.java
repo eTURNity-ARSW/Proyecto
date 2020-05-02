@@ -8,29 +8,24 @@ public class Turno {
     private String identifier;
     private String tipo;
     private boolean valido;
-    private Date fecha;
-    private String user;
-    private String sede;
+    private String fecha;
+    private String turnouserid;
+    private String turnosedeid;
 
     public Turno(){
     }
 
     
-    public Turno(String identifier, String tipo, String user, String sede){
-        this.identifier=identifier;
-        this.tipo=tipo;
-        this.user=user;
-        this.sede=sede;
-    }
-
-
-    public Turno(String identifier, String tipo, String user, String sede, Date fecha, boolean valido){
+    
+    public Turno(String identifier, String tipo, boolean valido, String fecha, String turnouserid, String turnosedeid ){
         this.identifier = identifier;
         this.tipo = tipo;
-        this. user = user;
-        this.sede = sede;
-        this. fecha = fecha;
         this. valido = valido;
+        this. fecha = fecha;
+        this. turnouserid = turnouserid;
+        this.turnosedeid = turnosedeid;
+       
+        
     }
 
     public int CompareTo(Turno turno){
@@ -71,11 +66,11 @@ public class Turno {
     }
 
     public String getUser() {
-        return user;
+        return turnouserid;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setUser(String turnouserid) {
+        this.turnouserid = turnouserid;
     }
 
     public boolean isValido() {
@@ -86,24 +81,24 @@ public class Turno {
         this.valido = valido;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
     public String getSede() {
-        return sede;
+        return turnosedeid;
     }
 
-    public void setSede(String sede) {
-        this.sede = sede;
+    public void setSede(String turnosedeid) {
+        this.turnosedeid = turnosedeid;
     }
 
     @Override
     public String toString() {
-        return "Turno{id: " + identifier + ", tipo: " + tipo + ", User: " + user + ", fecha: " + fecha +", sede: " + sede + '}';
+        return "Turno{id: " + identifier + ", tipo: " + tipo + ", User: " + turnouserid + ", fecha: " + fecha +", sede: " + turnosedeid + '}';
     }
 }

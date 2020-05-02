@@ -53,7 +53,7 @@ public class EntidadServices {
         return esp.getEnterpriseByCity(city);
 
     }
-
+/*
     public HashMap<Sede, ArrayList<Turno>> getTurnByEnterprise(String nit) throws EntidadException, TurnoException {
         HashMap<Sede, ArrayList<Turno>> turnos = new HashMap<>();
         for (Sede sede : esp.getEnterprise(nit).getSedes()){
@@ -71,7 +71,7 @@ public class EntidadServices {
             }
         }
         return turnos;
-    }
+    }*/
 	public List<Entidad> getAllEntidades()throws EntidadException{
 		return esp.getAll();
 	}
