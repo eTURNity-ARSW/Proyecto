@@ -52,6 +52,8 @@ public class EturnityDB {
         }
     }
 
+    /* USUARIO */
+
     public List<Usuario> getAllUsers() {
         System.out.println("Entro4");
         List<Usuario> users = new ArrayList<Usuario>();
@@ -137,6 +139,9 @@ public class EturnityDB {
         return u;
     }
 
+    /*TURNO*/
+
+
     public List<Turno> getAllTurnos(){
         System.out.println("Entre turnos");
         List<Turno> allTurnos = new ArrayList<Turno>();
@@ -204,7 +209,11 @@ public class EturnityDB {
             Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null,ex);
         }
         return allTurnosUsername;
-	}
+    }
+    
+
+
+
 
 	
 

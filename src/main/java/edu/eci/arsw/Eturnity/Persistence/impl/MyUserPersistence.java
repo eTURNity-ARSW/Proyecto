@@ -6,8 +6,12 @@ import edu.eci.arsw.Eturnity.Persistence.UserPersistence;
 import edu.eci.arsw.Eturnity.model.Turno;
 import edu.eci.arsw.Eturnity.model.Usuario;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -37,10 +41,23 @@ public class MyUserPersistence implements UserPersistence {
 
 
     //@Override
-    public void createNewUser(Usuario u){
+    public void createNewUser(Usuario u) {
         System.out.println("Entro a crear user");
         EturnityDB db = new EturnityDB();
-        db.createNewUser(u);
+        try {
+            if (getUsuarioByUsername(u.getUsername()) == null) {
+                db.createNewUser(u);
+            } else {
+                try {
+                    throw new UserException(UserException.USUARIO_REGISTRADO);
+                } catch (UserException ex) {
+                    Logger.getLogger(MyUserPersistence.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } catch (UserException e) {
+            e.printStackTrace();
+        }
+        
     }
 
     @Override
