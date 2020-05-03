@@ -210,6 +210,36 @@ public class EturnityDB {
         }
         return allTurnosUsername;
     }
+/*
+    public  List<Turno> getAllTurnosValidos(boolean valido) {
+        List<Turno> allTurnosValidos = new ArrayList<Turno>();
+        Statement pstmt = null;
+        try{
+            Class.forName("org.postgresql.Driver");
+            getConnection();
+            c.setAutoCommit(false);
+            String sql = "Select * from turno where valido = ?";
+            pstmt = c.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            pstmt.setPoolable(valido);
+            ResultSet rs = pstmt.executeQuery();
+            rs.next();
+            u = new Usuario(rs.getString("username"), rs.getString("nombre"), rs.getString("correo"), rs.getString("documento"), rs.getString("contrasena"));
+            c.close();
+            pstmt.close();
+            rs.close();
+            return u;
+        } catch (Exception ex) {
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return u;
+    }
+        }
+
+        
+    }
+    
+    */
+
 
     public void deleteTurnoByUsername(String identifier, String username){
         System.out.println("Entre borrar turno ETURNITY DB");
@@ -227,6 +257,8 @@ public class EturnityDB {
             Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE,null, ex);
         }
     }
+
+	
     
 
 

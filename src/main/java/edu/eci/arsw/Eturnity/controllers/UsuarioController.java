@@ -76,14 +76,10 @@ public class UsuarioController {
     @RequestMapping(path ="/users/{username}",method = RequestMethod.GET)
     public ResponseEntity<?> getUser(@PathVariable("username") String username){
         try {
-            System.out.println("holi1");
             Usuario u = us.getUser(username);
-            System.out.println("holi2");
             String data = new Gson().toJson(u);
-            System.out.println("holi3");
             return new ResponseEntity<>(data,HttpStatus.ACCEPTED);
         } catch (UserException ex) {
-            System.out.println("holi4");
             Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(ex.getMessage(),HttpStatus.NOT_FOUND);
         }

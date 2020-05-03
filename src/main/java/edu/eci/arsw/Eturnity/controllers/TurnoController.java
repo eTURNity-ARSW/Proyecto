@@ -60,6 +60,18 @@ public class TurnoController {
         }
        
     }
+    /*
+    @RequestMapping(method=RequestMethod.GET,path="turnovalido")
+    public ResponseEntity<?> getTurnosValidos(@PathVariable("valido") boolean valido){
+        try{
+            List <Turno> turnos = new ArrayList<>();
+            turnos = ts.getAllTurnosValido(valido);
+        }
+
+    }
+}*/
+
+
     @RequestMapping (method = RequestMethod.POST, path="turnocre")
     public ResponseEntity<?> createTurno(@RequestBody String turno){
         try{
@@ -89,6 +101,7 @@ public class TurnoController {
         }
     }
 
+   
 
 
     /*@RequestMapping(path="/turno",method=RequestMethod.GET)

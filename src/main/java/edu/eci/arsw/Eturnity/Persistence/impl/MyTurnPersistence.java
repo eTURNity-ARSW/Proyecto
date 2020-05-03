@@ -42,4 +42,13 @@ public class MyTurnPersistence implements TurnoPersistence {
         EturnityDB db = new EturnityDB();
         db.deleteTurnoByUsername(identifier, username);
     }
+    /*
+    @Override 
+    public List<Turno> getAllTurnosValidos(boolean valido){
+        System.out.println("Entro a consultar turnos validos");
+        EturnityDB db = new EturnityDB();
+       return db.getAllTurnosValidos(valido);
+    }
+    */
+   
 }
