@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TurnoController {
     @Autowired
     TurnoServices ts;
+    @Autowired
     UserServices us;
 
     @RequestMapping(method=RequestMethod.GET, path="turnos")
@@ -76,18 +77,13 @@ public class TurnoController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, path="turnodeleted/{username}")
-    public ResponseEntity<?> deleteTurnoByUsername(@PathVariable ("username") String username){
-        String identifier="A1";
+    @RequestMapping(method = RequestMethod.DELETE, path="turnodeleted/{username}/{identifier}")
+    public ResponseEntity<?> deleteTurnoByUsername(@PathVariable ("identifier") String identifier, @PathVariable ("username") String username){
         try{
-            System.out.println("ENTRE A TRY");
             Usuario u = us.getUser(username);
-            System.out.println("user.getuser");
             ts.deleteTurnoByUsername(identifier, u.getUsername());
-            System.out.println("ts.deleteturno");
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         }catch(Exception ex){
-            System.out.println("catch");
             Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("ERROR AL ELIMINAR EL TURNO"+identifier,HttpStatus.FORBIDDEN);
         }
