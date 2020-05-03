@@ -64,7 +64,7 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #fff;
   text-align: left;
   background-image: linear-gradient(to right top, #0f53ed, #006df7, #0083fb, #0097fc, #00aafa, #00b8fb, #00c4f8, #00d0f4, #00dbf2, #00e6eb, #00f0df, #07f9cf);
 }
@@ -159,7 +159,7 @@ sup {
 }
 
 a {
-  color: #3a84f4;
+  color: #fff;
   text-decoration: none;
   background-color: transparent;
 }
