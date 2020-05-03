@@ -51,6 +51,11 @@ public class TurnoServices {
         return tp.getAllTurnos();
     }
     
+    public void  deleteTurnoByUsername(String identifier, String username){
+        System.out.println("ENTRE A SERVICE");
+        tp.deleteTurnoByUsername(identifier, username);
+        
+    }
 
 
 

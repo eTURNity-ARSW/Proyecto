@@ -36,7 +36,10 @@ public class MyTurnPersistence implements TurnoPersistence {
         return db.getTurnosByUsername(username);
     }
 
-   
-
-
+    @Override
+    public void  deleteTurnoByUsername(String identifier, String username){
+        System.out.println("Entro a eliminar turno MYPERSISTENCE");
+        EturnityDB db = new EturnityDB();
+        db.deleteTurnoByUsername(identifier, username);
+    }
 }

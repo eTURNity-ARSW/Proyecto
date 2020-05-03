@@ -25,6 +25,8 @@ public class UserServices {
         return usp.saveUser(user);
     }
     public Usuario getUser(String username) throws UserException {
+        System.out.println("Entre a try");
+        System.out.println("username"+username);
         return usp.getUsuarioByUsername(username);
     }
 

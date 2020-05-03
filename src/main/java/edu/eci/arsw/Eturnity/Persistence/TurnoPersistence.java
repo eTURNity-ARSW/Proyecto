@@ -17,5 +17,7 @@ public interface TurnoPersistence {
    //public List<Turno> getTurnosFecha(Date fecha) throws TurnoException;
    public void createTurno(Turno turn);
    public List<Turno> getTurnosByUsername(String user);
+   
+   public void deleteTurnoByUsername(String identifier, String username);
 
 }

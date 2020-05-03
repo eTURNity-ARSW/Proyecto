@@ -210,6 +210,23 @@ public class EturnityDB {
         }
         return allTurnosUsername;
     }
+
+    public void deleteTurnoByUsername(String identifier, String username){
+        System.out.println("Entre borrar turno ETURNITY DB");
+        Statement pstmt = null;
+        try{
+            Class.forName("org.postgresql.Driver");
+            getConnection();
+            c.setAutoCommit(false);
+            String sql = "DELETE FROM turno WHERE turnouserid = '" + username + "' AND identifier = '" + identifier + "'";
+            pstmt = c.createStatement();
+            pstmt.executeUpdate(sql);
+            c.commit();
+            c.close();
+        } catch(Exception ex){
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE,null, ex);
+        }
+    }
     
 
 
