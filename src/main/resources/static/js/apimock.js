@@ -39,15 +39,11 @@ var apimock=(function () {
 
     function addUser() {
     var empty=false;
-    var log;
     if(document.getElementById("nombre").value === ''){
         empty=true;
         alert= 'Ingrese su nombre'
         }
-     if(document.getElementById("apellido").value === ''){
-             empty=true;
-             alert= 'Ingrese su apellido'
-         }
+
      if(document.getElementById("usuario").value === ''){
               empty=true;
               alert= 'Ingrese su usuario'
@@ -66,8 +62,8 @@ var apimock=(function () {
       }
 
       if(!empty){
-        axios.post('/usuario/login',{
-        "1": { username:document.getElementById("usuario").value,
+        axios.post('/usuario/login/',{
+        "1": {username:document.getElementById("usuario").value,
              nombre :document.getElementById("nombre").value,
              correo :document.getElementById("correo").value,
              documento: document.getElementById("cedula").value,
@@ -79,9 +75,8 @@ var apimock=(function () {
             .then(function(input){
                 console.log(input.data);
                 var message =["Registro exitoso","usuario registado"];
-                var next ="login.html"
+                var next ="login.html";
                 alert(message[1]);
-                callAlert(message,next);
                 })
             }else{
                 alert("error");
@@ -94,7 +89,6 @@ var apimock=(function () {
 
     function logIn(){
         var vacio=false;
-        var log;
         if(document.getElementById("login").value === ''){
         vacio=true;
         alert("no ingresó su usario");
