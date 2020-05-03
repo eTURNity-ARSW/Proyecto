@@ -42,7 +42,7 @@ public class TurnoController {
     }
 
     @RequestMapping(method=RequestMethod.GET,path ="/turnos/{user}")
-    public ResponseEntity<?> getTurnosByUsername(@PathVariable("usuario") String usuario) throws TurnoException{
+    public ResponseEntity<?> getTurnosByUsername(@PathVariable("user") String usuario){
         try{
             List<Turno> turnos = new ArrayList<>();
             turnos = ts.getTurnosByUsername(usuario);
