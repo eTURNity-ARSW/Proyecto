@@ -37,19 +37,98 @@ var apimock=(function () {
         }
     }
 
-    function add() {
-        var username = document.getElementById("usuario").value;
+    function addUser() {
+    var empty=false;
+    var log;
+    if(document.getElementById("nombre").value === ''){
+        empty=true;
+        alert= 'Ingrese su nombre'
+        }
+     if(document.getElementById("apellido").value === ''){
+             empty=true;
+             alert= 'Ingrese su apellido'
+         }
+     if(document.getElementById("usuario").value === ''){
+              empty=true;
+              alert= 'Ingrese su usuario'
+      }
+     if(document.getElementById("password").value === ''){
+              empty=true;
+              alert= 'Ingrese su contraseña'
+     }
+     if(document.getElementById("cedula").value === ''){
+            empty=true;
+            alert= 'Ingrese su cedula'
+            }
+      if(document.getElementById("correo").value === ''){
+             empty=true;
+             alert= 'Ingrese su correo'
+      }
 
-        var password = document.getElementById("password").value;
+      if(!empty){
+        axios.post('/usuario/login',{
+        "1": { username:document.getElementById("usuario").value,
+             nombre :document.getElementById("nombre").value,
+             correo :document.getElementById("correo").value,
+             documento: document.getElementById("cedula").value,
+             contrasena:document.getElementById("password").value
 
-        mockdata=mockdata[username];
-        mockdata.push({username,password});
 
-
+             }
+        })
+            .then(function(input){
+                console.log(input.data);
+                var message =["Registro exitoso","usuario registado"];
+                var next ="login.html"
+                alert(message[1]);
+                callAlert(message,next);
+                })
+            }else{
+                alert("error");
+            }
     }
+    function iniciarLocalStorageUser(username) {
+        localStorage.setItem('Actual', username);
+    }
+
+
+    function logIn(){
+        var vacio=false;
+        var log;
+        if(document.getElementById("login").value === ''){
+        vacio=true;
+        alert("no ingresó su usario");
+        }
+        if(document.getElementById("password").value === ''){
+        vacio=true;
+        alert("no ingresó su contraseña");
+
+        }
+
+        if(!vacio){
+        axios.get('/usuario/users/' +document.getElementById("login").value)
+            .then(function(input) {
+
+                if(input.data["contrasena"]=== document.getElementById("password").value){
+                iniciarLocalStorageUser(document.getElementById("login").value);
+                location.href="home.html";
+                } else{
+
+                    alert("Incorrecto");
+                    }
+
+
+                })
+            .catch(function(input){
+            alert("Incorrecto")
+            })
+        }
+    }
+
     return{
         validate:validate,
-        add:add
+        logIn:logIn,
+        addUser:addUser
 
         }
 
