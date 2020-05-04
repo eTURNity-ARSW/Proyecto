@@ -2,57 +2,188 @@
 <html>
 <head>
     <style>
-        body {
-            background-color: dodgerblue;
-            font-family: "Poppins", sans-serif;
-            height: 100vh;
-        }
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
+      html {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+body{
+background-image: linear-gradient(to right top, #0f53ed, #006df7, #0083fb, #0097fc, #00aafa, #00b8fb, #00c4f8, #00d0f4, #00dbf2, #00e6eb, #00f0df, #07f9cf);}
 
-        th, td {
-            text-align: left;
-            padding: 8px;
-        }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 
-        tr:nth-child(even) {background-color: crimson;}
+.background {
+  padding: 0 25px 25px;
+  position: relative;
+  width: 100%;
+}
+
+.background::after {
+  content: '';
+  height: 350px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .background {
+    padding: 0 0 25px;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 50px 0 0;
+  max-width: 960px;
+  width: 100%;
+}
+
+.panel {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px 25px;
+  position: relative;
+  width: 100%;
+  z-index: 10;
+}
+
+.pricing-table {
+  box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.08), 0px 20px 31px 3px rgba(0, 0, 0, 0.09), 0px 8px 20px 7px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 900px) {
+  .pricing-table {
+    flex-direction: row;
+  }
+}
+
+.pricing-table * {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.pricing-plan {
+  border-bottom: 1px solid #e1f1ff;
+  padding: 25px;
+}
+
+.pricing-plan:last-child {
+  border-bottom: none;
+}
+
+@media (min-width: 900px) {
+  .pricing-plan {
+    border-bottom: none;
+    border-right: 1px solid #e1f1ff;
+    flex-basis: 100%;
+    padding: 25px 50px;
+  }
+
+  .pricing-plan:last-child {
+    border-right: none;
+  }
+}
+
+.pricing-img {
+  margin-bottom: 25px;
+  max-width: 100%;
+}
+
+.pricing-header {
+  color: #888;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.pricing-features {
+  color: gray;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 50px 0 25px;
+}
+
+.pricing-features-item {
+  border-top: 1px solid #e1f1ff;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 15px 0;
+}
+
+.pricing-features-item:last-child {
+  border-bottom: 1px solid #e1f1ff;
+}
+
+.pricing-price {
+  color: gray;
+  display: block;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.pricing-button {
+  border: 1px solid #9dd1ff;
+  border-radius: 10px;
+  color: #348EFE;
+  display: inline-block;
+  margin: 25px 0;
+  padding: 15px 35px;
+  text-decoration: none;
+  transition: all 150ms ease-in-out;
+}
+
+.pricing-button:hover,
+.pricing-button:focus {
+  background-color: #F51422;
+}
+
+.pricing-button.is-featured {
+  background-color: #48aaff;
+  color: #fff;
+}
+
+.pricing-button.is-featured:hover,
+.pricing-button.is-featured:active {
+  background-color: #269aff;
+}
     </style>
 
     
 </head>
 
-<div style="text-align:center;padding:1em 0;">
-    <h4><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/es/country/co">
-        <span style="color:black;"></span><br /></a></h4>
-    <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=small&timezone=America%2FBogota" width="100%" height="90" frameborder="0" seamless>
-    </iframe>
+
+
+<body>
+<div class="background">
+    <div class="container">
+        <div class="panel pricing-table">
+
+
+            <div class="pricing-plan">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Check_green_icon.svg" alt="" class="pricing-img">
+                <h2 class="pricing-header">Solicitud Exitosa</h2>
+                <ul class="pricing-features">
+                    <li class="pricing-features-item">Modulo 5</li>
+                    <li class="pricing-features-item">Turnos restantes:3 </li>
+                </ul>
+                <span class="pricing-price">Recuerde estar 10 minutos antes de la hora asignada</span>
+                <br>
+                <br>
+                <a href="#/" class="pricing-button is-featured">Cancelar turno</a>
+                <a href="#selectedbank.html" class="pricing-button is-featured">Pedir un nuevo turno</a>
+
+            </div>
+
+
+
+        </div>
+    </div>
 </div>
-
-<table>
-
-    <tr>
-        <td>Tiempo de espera</td>
-        <td> 1 hora</td>
-
-    </tr>
-    <tr>
-        <td>Turnos restante</td>
-        <td>6</td>
-
-    </tr>
-    <tr>
-        <td>Sede de atencion</td>
-        <td>C.C Santafe</td>
-
-    </tr>
-    <tr>
-        <td>Modulo</td>
-        <td>8</td>
-
-    </tr>
-</table>
 
 </body>
 </html>
