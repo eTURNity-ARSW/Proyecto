@@ -4,7 +4,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=100000">
     <link rel ="stylesheet" href="css/menu.css">
 
+    <script>
+        $('label').on('click', function(){
+var color = $(this).next().css('color');
+  console.log(color);
+  if (color == 'rgb(177, 177, 177)') {
+    $(this).next().addClass('grey');
+  }
+  else {
+    $(this).next().removeClass('grey');
+  }
+});
 
+$.fn.digits = function(){
+    return this.each(function(){
+        $(this).text( $(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") );
+    })
+}
+
+$('#slider').slider({
+	range: true,
+	min: 0,
+	max: 20000,
+	values: [ 1300, 14000 ],
+	slide: function(event, ui) {
+
+		$('.minPrice').html(ui.values[ 0 ]).digits();
+		$('.maxPrice').html(ui.values[ 1 ]).digits();
+		$('.price-range-both').html('<i>$' + ui.values[ 0 ] + ' - </i>$' + ui.values[ 1 ] );
+	}
+});
+
+
+$('.ui-slider-handle:eq(0)').append('<span class="price-range-min value">' + $('#slider').slider('values', 0 ) + '</span>');
+
+$('.ui-slider-handle:eq(1)').append('<span class="price-range-max value">' + $('#slider').slider('values', 1 ) + '</span>');
+
+var navHeight;
+  navHeight = $(window).height() - 70;
+  if ($(window).scrollTop() > navHeight) {
+    $('nav').addClass('fixed');
+  } else {
+    $('nav').removeClass('fixed');
+  }
+
+$(window).on('scroll', function() {
+	var navHeight = $(window).height() - 55;
+  if ($(window).scrollTop() > navHeight){
+  	$('#topBar').addClass('fixed');
+  }else{
+    $('#topBar').removeClass('fixed');
+    }
+});
+
+    </script>
 </head>
 <body>
 <br>
@@ -16,48 +69,57 @@
 <br>
 
 
-<div class="columns">
-    <ul class="price">
-        <li class="header" id="grad1">Asesoria</li>
-        <li class="grey">Tiempo de espera : 1 h</li>
-        <li class="grey">Turnos restantes : 5</li>
-        <li class="grey">Sede de atenci&oacute;n: C.C Santa fe</li>
-        <li class="grey">Modulo: 8 </li>
-        <li class="grey"><a  id="grad2" href="#popup1" class="button">Pedir Turno</a></li>
-    </ul>
-</div>
 
-<div class="columns">
-    <ul class="price">
-        <li class="header" id="grad1">Caja</li>
-        <li class="grey">Tiempo de espera : 15 m</li>
-        <li class="grey">Turnos restantes : 5</li>
-        <li class="grey">Sede de atenci&oacute;n: C.C Santa fe</li>
-        <li class="grey">Modulo: 5</li>
-        <li class="grey"><a id="grad2" href="#popup1" class="button">Pedir Turno</a></li>
-    </ul>
-</div>
 
-<div class="columns">
-    <ul class="price">
-        <li class="header" id="grad1">Solicitudes</li>
-        <li class="grey">Tiempo de espera : 30 m</li>
-        <li class="grey">Turnos restantes : 5</li>
-        <li class="grey">Sede de atenci&oacute;n: C.C Santa fe</li>
-        <li class="grey">Modulo: 3</li>
-        <li class="grey"><a id="grad2" href="#popup1" class="button">Pedir Turno</a></li>
-    </ul>
-</div>
 
-<div id="popup1" class="overlay">
-    <div class="popup">
-        <h2>Se ha generado su turno exitosamente</h2>
-        <a class="close" href="#">&times;</a>
-        <div class="content">
-            Recuerde estar al menos 5 minutos antes de la hora indicada .
+<aside id="filters">
+
+
+    <div id="sucursal" class="clearfix">
+        <h1>SUCURSAL</h1>
+        <div class="specBump">
+            <div class="box2">
+                <input type="checkbox" id="onSale">
+                <label for="onSale" class="check-box"></label>
+                <h4>Santa Fe</h4>
+            </div>
+            <div class="box2">
+                <input type="checkbox" id="newest">
+                <label for="newest" class="check-box"></label>
+                <h4>Parque la colina</h4>
+            </div>
+            <div class="box2">
+                <input type="checkbox" id="featured">
+                <label for="featured" class="check-box"></label>
+                <h4>Exito Norte</h4>
+            </div>
         </div>
     </div>
-</div>
+
+
+    <div id="specials" class="clearfix">
+        <h1>ATENCI&Oacute;N</h1>
+        <div class="specBump">
+            <div class="box2">
+                <input type="checkbox" id="onSale">
+                <label for="onSale" class="check-box"></label>
+                <h4>Asesoria</h4>
+            </div>
+            <div class="box2">
+                <input type="checkbox" id="newest">
+                <label for="newest" class="check-box"></label>
+                <h4>Caja</h4>
+            </div>
+            <div class="box2">
+                <input type="checkbox" id="featured">
+                <label for="featured" class="check-box"></label>
+                <h4>Solicitud</h4>
+            </div>
+        </div>
+    </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d31723.701648242142!2d-75.52696320000001!3d6.3340544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sco!4v1588556371877!5m2!1ses!2sco" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" align="middle" margine="auto" ></iframe>
+
+</aside>
 
 </body>
 </html>
