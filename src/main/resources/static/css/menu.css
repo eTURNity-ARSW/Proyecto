@@ -4,14 +4,34 @@ body {
   font-family: 'Titillium Web', sans-serif;
   background-image: linear-gradient(to right top, #0f53ed, #006df7, #0083fb, #0097fc, #00aafa, #00b8fb, #00c4f8, #00d0f4, #00dbf2, #00e6eb, #00f0df, #07f9cf);
   color: rgb(252, 252, 252);
-  padding: 0px 500px;
+  padding: 0px 0px;
+}
+.example_b {
+color: #fff !important;
+text-transform: uppercase;
+text-decoration: none;
+background: #32CD32;
+padding: 20px;
+border-radius: 50px;
+display: inline-block;
+border: none;
+transition: all 0.4s ease 0s;
 }
 
+.example_b:hover {
+text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.4s ease 0s;
+}
 aside,
 section {
   width: 400px;
-  border-right: 1px solid #14DAF3;
   padding-right: 100px;
+  float:right;
+}
+#map{
+    float:left;
 }
 
 #topBar {
@@ -49,7 +69,7 @@ section {
 }
 
 #specials,
-#sucursal
+#sucursal,
 #priceRange,
 #sports,
 #type,
