@@ -56,7 +56,7 @@ Para la organización hemos decidido los siguientes:
 
 ## Diagrama de Componentes
 
-![diagrama](https://user-images.githubusercontent.com/43153078/77063864-6a7ba180-69ac-11ea-8e0f-ec4453256ac8.PNG)
+![image](https://user-images.githubusercontent.com/43153078/80940336-1b939b00-8da5-11ea-8e58-8689bb859dbe.png)
 
 ## Diagrama de Despliegue
 
