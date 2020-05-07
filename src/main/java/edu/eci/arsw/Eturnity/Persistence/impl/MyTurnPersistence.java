@@ -49,6 +49,12 @@ public class MyTurnPersistence implements TurnoPersistence {
         EturnityDB db = new EturnityDB();
         return db.getAllTurnosValidos(valido);
     }
+
+    @Override
+    public List<Turno> getTurnoByFecha(String fecha) {
+        EturnityDB db = new EturnityDB();
+        return db.getTurnoByFecha(fecha);
+    }
     
    
 }

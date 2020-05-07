@@ -22,9 +22,7 @@ public class EntidadServices {
     @Autowired
     private TurnoPersistence tsp;
 
-    public boolean saveEnterprise(Entidad e) throws EntidadException{
-        return esp.Save(e);
-    }
+    
 
     public Entidad getEnterprise(String nombre) throws EntidadException {
         return esp.getEnterprise(nombre);
@@ -53,7 +51,20 @@ public class EntidadServices {
         return esp.getEnterpriseByCity(city);
 
     }
-/*
+
+	public List<Entidad> getAllEntidades(){
+        System.out.println("SERVICIOS");
+		return esp.getAll();
+	}
+
+	public void createEntidad(Entidad e) {
+        esp.createEntidad(e);
+    }
+    public void deleteEntidad(String e){
+        esp.deleteEntidad(e);
+    }
+
+    /*
     public HashMap<Sede, ArrayList<Turno>> getTurnByEnterprise(String nit) throws EntidadException, TurnoException {
         HashMap<Sede, ArrayList<Turno>> turnos = new HashMap<>();
         for (Sede sede : esp.getEnterprise(nit).getSedes()){
@@ -72,9 +83,6 @@ public class EntidadServices {
         }
         return turnos;
     }*/
-	public List<Entidad> getAllEntidades()throws EntidadException{
-		return esp.getAll();
-	}
 
 
 }

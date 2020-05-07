@@ -61,5 +61,10 @@ public class TurnoServices {
 	public List<Turno> getAllTurnosValido(boolean valido) {
         return tp.getAllTurnosValido(valido);
     }
-    
+
+
+	public List<Turno> getTurnoByFecha(String fecha) {
+		return tp.getTurnoByFecha(fecha);
+	}
+
 }

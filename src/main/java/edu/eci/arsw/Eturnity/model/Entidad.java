@@ -11,13 +11,13 @@ public class Entidad {
     private String nombre;
     private String direccion;
     private String ciudad;
-    private long telefono;
+    private String telefono;
     private ArrayList<Sede> sedes;
 
     public Entidad(){
 
     }
-    public Entidad(String nit, String nombre, String  direccion, String ciudad, long telefono){
+    public Entidad(String nit, String nombre, String  direccion, String ciudad, String telefono){
         this.ciudad = ciudad;
         this.direccion = direccion;
         this.nit = nit;
@@ -66,11 +66,11 @@ public class Entidad {
         this.ciudad = ciudad;
     }
 
-    public long getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(long telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

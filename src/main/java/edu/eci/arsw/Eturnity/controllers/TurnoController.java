@@ -4,6 +4,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.xml.ws.Response;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -60,6 +63,24 @@ public class TurnoController {
         }
        
     }
+
+
+    @RequestMapping(method=RequestMethod.GET, path = {"turnofecha/{fecha}"})
+    public ResponseEntity<?> getTurnosByFecha(@PathVariable("fecha") String fecha){
+        try{
+            System.out.println("controller");
+            List<Turno> turnos = new ArrayList<>();
+            turnos = ts.getTurnoByFecha(fecha);
+            String resp = new Gson().toJson(turnos);
+            return new ResponseEntity<>(resp,HttpStatus.ACCEPTED);
+        }catch(Exception ex){
+            Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("ERROR",HttpStatus.NOT_FOUND);
+        }
+    }
+        
+
+    
     
     @RequestMapping(method=RequestMethod.GET,path="valido")
     public ResponseEntity<?> getTurnosValidos(){
@@ -74,8 +95,6 @@ public class TurnoController {
         }
 
     }
-
-
 
     @RequestMapping (method = RequestMethod.POST, path="turnocre")
     public ResponseEntity<?> createTurno(@RequestBody String turno){
@@ -106,21 +125,14 @@ public class TurnoController {
         }
     }
 
+
+    
+
+    
+
    
 
 
-    /*@RequestMapping(path="/turno",method=RequestMethod.GET)
-    public ResponseEntity<?> getTurnosValidos() throws TurnoException{
-        ResponseEntity<?> ans;
-        try{
-            List<Turno> turnos = ts.getAllValidTurnos();
-            ans = new ResponseEntity<>(turnos,HttpStatus.ACCEPTED);
-        }catch(Exception ex){
-            Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE,null, ex);
-            ans = new ResponseEntity<>("ERROR", HttpStatus.NOT_FOUND);
-        }
-        return ans;
-    }*/
     /*
 
     @RequestMapping(path="/turno/{fecha}",method=RequestMethod.GET)

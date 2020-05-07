@@ -10,6 +10,7 @@ public interface EntidadPersistence {
     public List<Entidad> getAll();
     public Entidad getEnterpriseByName(String name) throws EntidadException;
     public List<Entidad> getEnterpriseByCity(String city) throws EntidadException;
-    public boolean Save(Entidad e) throws EntidadException;
-    public void createNewEnterprise(Entidad e);
+	public void createEntidad(Entidad e);
+    public void deleteEntidad(String e);
+    public List<Entidad> getAllEntidades();
 }

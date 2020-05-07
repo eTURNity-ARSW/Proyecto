@@ -20,5 +20,6 @@ public interface TurnoPersistence {
   // public List<Turno> getAllTurnosValidos(boolean valido);
    public void deleteTurnoByUsername(String identifier, String username);
    public List<Turno> getAllTurnosValido(boolean valido);
+   public List<Turno> getTurnoByFecha(String fecha);
 
 }

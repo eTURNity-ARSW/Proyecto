@@ -211,6 +211,36 @@ public class EturnityDB {
         return allTurnosUsername;
     }
 
+    
+	public List<Turno> getTurnoByFecha(String fecha) {
+        System.out.println("eturnitydb");
+        String sql = "SELECT * FROM turno WHERE fecha = ?";
+        List<Turno> allTurnosFecha = new ArrayList<Turno>();
+        try{
+            getConnection();
+            PreparedStatement pstmt = c.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,
+                ResultSet.CONCUR_UPDATABLE);
+            pstmt.setString(1,fecha);
+            ResultSet r = pstmt.executeQuery();
+            while (r.next()){
+                t = new Turno(r.getString("identifier"),r.getString("tipo"),r.getBoolean("valido"),r.getString("fecha"),r.getString("turnouserid"),r.getString("turnosedeid"));
+                allTurnosFecha.add(t);
+            }
+            c.close();
+            pstmt.close();
+        }catch(Exception ex){
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null,ex);
+        }
+        return allTurnosFecha;
+        
+		
+	}
+
+
+
+
+
+
     public  List<Turno> getAllTurnosValidos(boolean valido) {
         String sql = "Select * from turno where valido = true";
         List<Turno> allTurnosValidos = new ArrayList<Turno>();
@@ -253,6 +283,105 @@ public class EturnityDB {
         }
     }
 
+
+
+    /*ENTIDAD*/
+
+    public List<Entidad> getAllEntidades() {
+        System.out.println("Entro4");
+        List<Entidad> entidades = new ArrayList<Entidad>();
+        Statement stmt = null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            getConnection();
+            //System.out.println(c + "      conection");
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM entidad;");
+            while (rs.next()) {
+                System.out.println(rs.getString("nit"));
+                e = new Entidad(rs.getString("nit"), rs.getString("nombre"), rs.getString("direccion"), rs.getString("ciudad"), rs.getString("telefono"));
+                entidades.add(e);
+            }
+            c.close();
+            stmt.close();
+            rs.close();
+            System.out.println(entidades);
+        } catch (Exception ex) {
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return entidades;
+
+    }
+
+
+
+
+
+
+
+	public void createEntidad(Entidad e) {
+        Statement stmt = null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            getConnection();
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String sql = "INSERT INTO entidad (nit,nombre,direccion,ciudad,telefono)" + "VALUES ('" + e.getNit() + "','" + e.getNombre() + "','" + e.getDireccion() + "','" + e.getCiudad() + "','" + e.getTelefono() + "');";
+            stmt.executeUpdate(sql);
+            stmt.close();
+            c.commit();
+        } catch (Exception ex) {
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+	}
+
+	public void deleteEntidad(String entidad) {
+            Statement pstmt = null;
+            try{
+                e = getEntidadByNit(entidad);
+                Class.forName("org.postgresql.Driver");
+                getConnection();
+                c.setAutoCommit(false);
+                pstmt=c.createStatement();
+                String sql = "DELETE FROM entidad WHERE nit = '" + entidad + "'";
+                pstmt = c.createStatement();
+                pstmt.executeUpdate(sql);
+                c.commit();
+                c.close();
+            }catch(Exception ex){
+                Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    
+        public Entidad getEntidadByNit(String nit) {
+            PreparedStatement pstmt = null;
+            Entidad e = null;
+            try {
+                Class.forName("org.postgresql.Driver");
+                getConnection();
+                c.setAutoCommit(false);
+                String sql = "Select * from entidad where nit = ?";
+                pstmt = c.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+                pstmt.setString(1, nit);
+                ResultSet rs = pstmt.executeQuery();
+                rs.next();
+                e = new Entidad(rs.getString("nit"), rs.getString("nombre"), rs.getString("direccion"), rs.getString("ciudad"), rs.getString("telefono"));
+                c.close();
+                pstmt.close();
+                rs.close();
+                return e;
+            } catch (Exception ex) {
+                Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return e;
+        }
+    
+
+    }
+
+
+
 	
     
 
@@ -265,4 +394,3 @@ public class EturnityDB {
 
 
     
-}
