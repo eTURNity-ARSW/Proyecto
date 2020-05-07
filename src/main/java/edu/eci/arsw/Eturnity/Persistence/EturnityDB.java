@@ -210,36 +210,31 @@ public class EturnityDB {
         }
         return allTurnosUsername;
     }
-/*
+
     public  List<Turno> getAllTurnosValidos(boolean valido) {
+        String sql = "Select * from turno where valido = true";
         List<Turno> allTurnosValidos = new ArrayList<Turno>();
-        Statement pstmt = null;
         try{
-            Class.forName("org.postgresql.Driver");
             getConnection();
             c.setAutoCommit(false);
-            String sql = "Select * from turno where valido = ?";
+            PreparedStatement pstmt=c.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,
+                ResultSet.CONCUR_UPDATABLE);
             pstmt = c.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             pstmt.setPoolable(valido);
-            ResultSet rs = pstmt.executeQuery();
-            rs.next();
-            u = new Usuario(rs.getString("username"), rs.getString("nombre"), rs.getString("correo"), rs.getString("documento"), rs.getString("contrasena"));
+            ResultSet r = pstmt.executeQuery();
+            while(r.next()){
+                t = new Turno(r.getString("identifier"),r.getString("tipo"),r.getBoolean("valido"),r.getString("fecha"),r.getString("turnouserid"),r.getString("turnosedeid"));
+                allTurnosValidos.add(t);
+            }
             c.close();
             pstmt.close();
-            rs.close();
-            return u;
         } catch (Exception ex) {
             Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return u;
+        return allTurnosValidos;
     }
-        }
-
         
-    }
     
-    */
-
 
     public void deleteTurnoByUsername(String identifier, String username){
         System.out.println("Entre borrar turno ETURNITY DB");

@@ -57,11 +57,9 @@ public class TurnoServices {
         
     }
 
-/*
+
 	public List<Turno> getAllTurnosValido(boolean valido) {
-		return tp.getAllTurnosValidos(valido);
-	}
-
-
-*/
+        return tp.getAllTurnosValido(valido);
+    }
+    
 }

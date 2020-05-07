@@ -60,16 +60,21 @@ public class TurnoController {
         }
        
     }
-    /*
-    @RequestMapping(method=RequestMethod.GET,path="turnovalido")
-    public ResponseEntity<?> getTurnosValidos(@PathVariable("valido") boolean valido){
+    
+    @RequestMapping(method=RequestMethod.GET,path="valido")
+    public ResponseEntity<?> getTurnosValidos(){
         try{
             List <Turno> turnos = new ArrayList<>();
-            turnos = ts.getAllTurnosValido(valido);
+            turnos = ts.getAllTurnosValido(true);
+            String resp = new Gson().toJson(turnos);
+            return new ResponseEntity<> (resp, HttpStatus.ACCEPTED);
+        }catch(Exception ex){
+            Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("ERROR",HttpStatus.NOT_FOUND);
         }
 
     }
-}*/
+
 
 
     @RequestMapping (method = RequestMethod.POST, path="turnocre")
