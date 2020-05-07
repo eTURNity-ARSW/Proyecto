@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+
+
+    <script type="text/javascript" src="js/apimock.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>eTURNity</title>
+    <link rel ="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <h2 class="active"> Sign In </h2>
+
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="assets/img/logo.png" id="icon" alt="User Icon" />
+        </div>
+
+        <!-- Login Form -->
+
+        <form action="menuEntidad.html" method="get" target="_blank">
+            <input type="text" id="nit" class="fadeIn second" name="login" placeholder="NIT">
+            <input type="text" id="nombre" class="fadeIn third" name="passwd" placeholder="nombre">
+
+
+
+            <a target="_blank" ><input type="button" class="fadeIn fourth" value="Entrar" href ="menuEntidad.html"></a>
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+            <a class="underlineHover" href="registro.html">Registrarse</a>
+        </div>
+
+    </div>
+</div>
+</body>
+
+</html>
+

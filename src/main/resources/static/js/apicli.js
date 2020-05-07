@@ -13,6 +13,15 @@ apicli = (function() {
             });
         },
 
+        getAllTurns: function(callback){
+            jQuery.get({
+                   dataType:"json"
+                   url:"/turno/turnos",
+                   success:function(data){
+                   callback(data)}});
+
+            },
+
         login: function(usuario,password,,callback){
             jQuery.get({
                         dataType: "json",
