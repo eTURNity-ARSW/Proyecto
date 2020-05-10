@@ -1,7 +1,7 @@
 package edu.eci.arsw.Eturnity.model;
 
 
-import java.util.ArrayList;
+import java.util.List;
 import org.springframework.data.annotation.Id;
 
 
@@ -12,7 +12,7 @@ public class Entidad {
     private String direccion;
     private String ciudad;
     private String telefono;
-    private ArrayList<Sede> sedes;
+    private List<Sede> sedes;
 
     public Entidad(){
 
@@ -23,16 +23,15 @@ public class Entidad {
         this.nit = nit;
         this.nombre = nombre;
         this.telefono = telefono;
-        this.sedes =  new ArrayList<>();
     }
 
     public boolean addSede(Sede sede){
         return sedes.add(sede);
     }
 
-    public ArrayList<Sede> getSedes(){return sedes;}
+    public List<Sede> getSedes(){return sedes;}
 
-    public void setSedes(ArrayList<Sede> sedes){this.sedes =  sedes;}
+    public void setSedes(List<Sede> sedes){this.sedes =  sedes;}
 
     public String getNit() {
         return nit;

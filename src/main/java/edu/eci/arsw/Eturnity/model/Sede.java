@@ -12,13 +12,13 @@ public class Sede {
     private String identificador;
     private String ciudad;
     private String direccion;
-    private Date horario;
+    private String horario;
     private ArrayList<Servicio> servicios;
     private String entidad;
 
     public Sede(){}
 
-    public Sede(String id, String city, String address,Date date, String entidad){
+    public Sede(String id, String city, String address, String date, String entidad){
         this.identificador =  id;
         this.ciudad =  city;
         this.direccion = address;
@@ -58,11 +58,11 @@ public class Sede {
         this.direccion = direccion;
     }
 
-    public Date getHorario() {
+    public String getHorario() {
         return horario;
     }
 
-    public void setHorario(Date horario) {
+    public void setHorario(String horario) {
         this.horario = horario;
     }
 

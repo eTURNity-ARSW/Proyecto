@@ -301,7 +301,9 @@ public class EturnityDB {
             while (rs.next()) {
                 System.out.println(rs.getString("nit"));
                 e = new Entidad(rs.getString("nit"), rs.getString("nombre"), rs.getString("direccion"), rs.getString("ciudad"), rs.getString("telefono"));
+                
                 entidades.add(e);
+            
             }
             c.close();
             stmt.close();
@@ -314,12 +316,7 @@ public class EturnityDB {
 
     }
 
-
-
-
-
-
-
+    
 	public void createEntidad(Entidad e) {
         Statement stmt = null;
         try {
@@ -375,6 +372,29 @@ public class EturnityDB {
                 Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
             }
             return e;
+        }
+
+
+        public List<Sede> getAllSedesByEntidad(String identificador){
+            String SQL = "SELECT * FROM SEDE WHERE entidad = ?";
+            List<Sede> allSedesEntidad = new ArrayList<Sede>();
+            try{
+                getConnection();
+                PreparedStatement pstmt = c.prepareStatement(SQL, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+                pstmt.setString(1, e.getNit());
+                ResultSet rs = pstmt.executeQuery();
+                c.close();
+                while(rs.next()){
+                    s = new Sede (rs.getString("id"),rs.getString("ciudad"),rs.getString("address"), rs.getString("horario"),rs.getString("entidad"));
+                    allSedesEntidad.add(s);
+                }
+                e.setSedes(allSedesEntidad);
+                pstmt.close();
+                rs.close();
+            }catch(Exception ex){
+                Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE,null,ex);
+            }
+            return allSedesEntidad;
         }
     
 

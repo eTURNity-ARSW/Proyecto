@@ -54,7 +54,7 @@ public class EntidadServices {
 
 	public List<Entidad> getAllEntidades(){
         System.out.println("SERVICIOS");
-		return esp.getAll();
+		return esp.getAllEntidades();
 	}
 
 	public void createEntidad(Entidad e) {
