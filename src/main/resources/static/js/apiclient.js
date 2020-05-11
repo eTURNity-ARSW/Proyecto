@@ -3,8 +3,8 @@ return {
         getTurnByUser:function(callback) {
             jQuery.get({
                 dataType: "json",
-                url:"/turno/turnos/julianagarzon"
-                succes :function(data)
+                url:"/turno/turnos/julianagarzon",
+                success :function(data)
                 {callback(data)
                 }
             });
