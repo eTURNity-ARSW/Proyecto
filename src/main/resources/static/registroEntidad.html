@@ -1,0 +1,48 @@
+<head>
+    <!DOCTYPE html>
+    <html lang="en" dir="ltr">
+
+    <meta charset="utf-8">
+    <title>eTURNity</title>
+    <link rel ="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/apimock.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+<body>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <h2 class="active"> Registro  </h2>
+
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="assets/img/logo.png" id="icon" alt="User Icon" />
+        </div>
+
+        <!-- Login Form -->
+
+        <form action="home.html" method="get" target="_blank">
+            <input type="text" id="nit" class="fadeIn third" name="nit" placeholder="Nit">
+            <input type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="Nombre">
+            <input type="text" id="direccion" class="fadeIn third" name="direccion" placeholder="Direccion">
+            <input type="text" id="ciudad" class="fadeIn third" name="ciudad" placeholder="Ciudad">
+            <input type="text" id="telefono" class="fadeIn third" name="telefono" placeholder="Telefono">
+
+
+
+
+
+
+            <a target="_blank" href="success.html" ><input type="button" class="fadeIn fourth" onclick="apimock.addEntity()" value="Registrarse"></a>
+
+        </form>
+
+        <!-- Remind Passowrd -->
+
+
+    </div>
+</div>
+</body>
+
+</html>

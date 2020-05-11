@@ -117,7 +117,7 @@ public class EntidadController {
         return ans;
     }
     */
-
+/*
     @RequestMapping(path="/entidad/{ciudad}",method=RequestMethod.GET)
     public ResponseEntity<?> getEntidadByCiudad(@PathVariable("city")String city) throws EntidadException{
         ResponseEntity<?> ans;

@@ -12,8 +12,10 @@ import org.springframework.stereotype.Service;
 public class MyEntidadPersistence implements EntidadPersistence {
 
     @Override
-    public Entidad getEnterprise(String nit) throws EntidadException {
-        return null;
+    public Entidad getEnterprise(String nombre) throws EntidadException {
+        EturnityDB db = new EturnityDB();
+        return db.getEntityByName(nombre);
+
     }
 
     
