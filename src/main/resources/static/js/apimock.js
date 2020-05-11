@@ -37,7 +37,7 @@ var apimock=(function () {
         }
     }
 
-    function addEnteprise(){
+    function addEntity(){
     var empty=false;
     if(document.getElementById("nit").value === ''){
     empty=true;
@@ -179,7 +179,7 @@ var apimock=(function () {
             }
 
             if(!vacio){
-            axios.get('/entidades/entities/' +document.getElementById("nit").value)
+            axios.get('/entidades/entidad/' +document.getElementById("nombre").value)
                 .then(function(input) {
 
                     if(input.data["nit"]=== document.getElementById("nit").value){
@@ -201,6 +201,7 @@ var apimock=(function () {
         validate:validate,
         logIn:logIn,
         addUser:addUser,
+        addEntity:addEntity ,
         logInEntidad:logInEntidad
 
         }
