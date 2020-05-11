@@ -1,4 +1,44 @@
+var apiclient=apiclient;
 var apimock=(function () {
+
+    var _map=function(list){
+     return mapping= list.map(function(turn){
+        return { identifier: turn.identifier, tipo: turn.tipo, fecha: turn.fecha
+
+
+            };
+            }
+
+
+
+     )}
+
+     var table= function(){
+     apiclient.getTurnByUser(createTable);
+     }
+
+     var createTable = function(turns){
+      turns=_map(turns);
+       $("#table > tbody").empty();
+       turns.map(function(c){
+     $("#table > tbody").append(
+                     "<tr> <td>" +
+
+                     c.identifier+
+                     "</td>" +
+                     "<td>" +
+                     c.tipo +
+                     "</td> " +
+                     "<td>" +
+                     c.fecha +
+                     "</td> " +
+
+                     "</tr>"
+                 )
+             });
+
+
+         }
     var mockdata =[] ;
     mockdata["sarahvieda"] =
         {
@@ -202,7 +242,9 @@ var apimock=(function () {
         logIn:logIn,
         addUser:addUser,
         addEntity:addEntity ,
-        logInEntidad:logInEntidad
+        logInEntidad:logInEntidad,
+        table:table,
+        createTable:createTable
 
         }
 
