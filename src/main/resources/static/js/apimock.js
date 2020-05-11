@@ -1,4 +1,42 @@
+var apiclient=apiclient;
 var apimock=(function () {
+     var _map=function(list){
+         return mapping= list.map(function(turn){
+            return { identifier: turn.identifier, tipo: turn.tipo, fecha: turn.fecha
+
+
+                };
+                }
+
+
+
+         )}
+     var table= function(){
+         apiclient.getTurnByUser(createTable,localStorage.getItem('Actual'));
+         }
+
+         var createTable = function(turns){
+          turns=_map(turns);
+           $("#table > tbody").empty();
+           turns.map(function(c){
+         $("#table > tbody").append(
+                         "<tr> <td>" +
+
+                         c.identifier+
+                         "</td>" +
+                         "<td>" +
+                         c.tipo +
+                         "</td> " +
+                         "<td>" +
+                         c.fecha +
+                         "</td> " +
+
+                         "</tr>"
+                     )
+                 });
+
+
+             }
     var mockdata =[] ;
     mockdata["sarahvieda"] =
         {
@@ -129,6 +167,7 @@ var apimock=(function () {
     }
     function iniciarLocalStorageUser(username) {
         localStorage.setItem('Actual', username);
+
     }
 
      function iniciarLocalStorageEntity(nombre) {
@@ -150,7 +189,6 @@ var apimock=(function () {
         if(!vacio){
         axios.get('/usuario/users/' +document.getElementById("login").value)
             .then(function(input) {
-
                 if(input.data["contrasena"]=== document.getElementById("password").value){
                 iniciarLocalStorageUser(document.getElementById("login").value);
                 location.href="home.html";
@@ -197,12 +235,16 @@ var apimock=(function () {
                 })
             }
         }
+
+
     return{
         validate:validate,
         logIn:logIn,
         addUser:addUser,
         addEntity:addEntity ,
-        logInEntidad:logInEntidad
+        logInEntidad:logInEntidad,
+        table:table,
+        createTable:createTable
 
         }
 
