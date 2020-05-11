@@ -1,6 +1,4 @@
-
 var apimock=(function () {
-
     var mockdata =[] ;
     mockdata["sarahvieda"] =
         {
@@ -204,9 +202,7 @@ var apimock=(function () {
         logIn:logIn,
         addUser:addUser,
         addEntity:addEntity ,
-        logInEntidad:logInEntidad,
-        table:table,
-        createTable:createTable
+        logInEntidad:logInEntidad
 
         }
 
