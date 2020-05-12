@@ -20,6 +20,10 @@ public class TurnoServices {
     public List<Turno> getTurnosByUsername(String user) {
       return tp.getTurnosByUsername(user); 
     }
+
+    public List<Turno> getTurnosBySede(String sede){
+        return tp.getTurnosBySede(sede);
+    }
     /*
     public List<Turno> getTurnsBySede(String sede){
         return tp.getTurnsByOffice(sede);

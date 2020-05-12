@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 import edu.eci.arsw.Eturnity.model.Entidad;
 import edu.eci.arsw.Eturnity.model.Sede;
 import edu.eci.arsw.Eturnity.model.Turno;
@@ -132,7 +134,7 @@ public class EturnityDB {
             ResultSet r = pstmt.executeQuery("SELECT * FROM turno;");
             c.close();
             while (r.next()) {
-                t = new Turno(r.getString("identifier"), r.getString("tipo"), r.getBoolean("valido"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"));
+                t = new Turno(r.getString("identifier"), r.getString("tipo"), r.getBoolean("valido"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"),r.getString("modulo"));
                 allTurnos.add(t);
             }
             pstmt.close();
@@ -179,7 +181,7 @@ public class EturnityDB {
             ResultSet r = pstmt.executeQuery();
             c.close();
             while (r.next()) {
-                t = new Turno(r.getString("identifier"), r.getString("tipo"), r.getBoolean("valido"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"));
+                t = new Turno(r.getString("identifier"), r.getString("tipo"), r.getBoolean("valido"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"),r.getString("modulo"));
                 allTurnosUsername.add(t);
             }
             u.setTurnos(allTurnosUsername);
@@ -189,6 +191,31 @@ public class EturnityDB {
         }
         return allTurnosUsername;
     }
+
+    public List<Turno> getTurnosBySede(String turnosedeid){
+        String sql = "SELECT * FROM TURNO WHERE turnosedeid = ?";
+        List<Turno> allTurnosSede = new ArrayList<Turno>();
+        try{
+            getConnection();
+            PreparedStatement pstmt = c.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,
+                ResultSet.CONCUR_UPDATABLE);
+            pstmt.setString(1, s.getIdentificador());
+            ResultSet r = pstmt.executeQuery();
+            c.close();
+            while(r.next()){
+                t = new Turno(r.getString("identifier"), r.getString("tipo"), r.getBoolean("valido"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"),r.getString("modulo"));
+                allTurnosSede.add(t);
+            }
+            s.setTurnos(allTurnosSede);
+            pstmt.close();
+        } catch(Exception ex){
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null,ex);
+        }
+        return allTurnosSede;
+    }
+
+
+
 
     public List<Turno> getTurnoByFecha(String fecha) {
         System.out.println("eturnitydb");
@@ -202,7 +229,7 @@ public class EturnityDB {
             ResultSet r = pstmt.executeQuery();
             c.close();
             while (r.next()) {
-                t = new Turno(r.getString("identifier"), r.getString("tipo"), r.getBoolean("valido"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"));
+                t = new Turno(r.getString("identifier"), r.getString("tipo"), r.getBoolean("valido"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"),r.getString("modulo"));
                 allTurnosFecha.add(t);
             }
             pstmt.close();
@@ -212,6 +239,11 @@ public class EturnityDB {
         return allTurnosFecha;
 
     }
+
+    
+
+
+
 
     public List<Turno> getAllTurnosValidos(boolean valido) {
         String sql = "Select * from turno where valido = true";
@@ -226,7 +258,7 @@ public class EturnityDB {
             ResultSet r = pstmt.executeQuery();
             c.close();
             while (r.next()) {
-                t = new Turno(r.getString("identifier"), r.getString("tipo"), r.getBoolean("valido"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"));
+                t = new Turno(r.getString("identifier"), r.getString("tipo"), r.getBoolean("valido"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"),r.getString("modulo"));
                 allTurnosValidos.add(t);
             }
             pstmt.close();

@@ -13,7 +13,8 @@ CREATE TABLE turno (
 	fecha varchar NOT NULL,
 	turnouserid varchar NOT NULL,
 	turnosedeid varchar NOT NULL,
-	CONSTRAINT turno_pk PRIMARY KEY (identifier)
+	modulo varchar NOT NULL,
+	CONSTRAINT turno_pkey PRIMARY KEY (identifier)
 );
 
 CREATE TABLE tiposervicio (

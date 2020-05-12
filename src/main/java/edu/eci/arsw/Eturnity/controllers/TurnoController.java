@@ -64,6 +64,19 @@ public class TurnoController {
        
     }
 
+    @RequestMapping (method = RequestMethod.GET, path="/turnoss/{sede}")
+    public ResponseEntity<?> getTurnosBySede(@PathVariable("sede") String sede){
+        try{
+            List<Turno> turnos = new ArrayList<>();
+            turnos = ts.getTurnosBySede(sede);
+            String resp = new Gson().toJson(turnos);
+            return new ResponseEntity<>(resp,HttpStatus.ACCEPTED);
+        }catch(Exception ex){
+            Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null,ex);
+            return new ResponseEntity<>("ERROR",HttpStatus.NOT_FOUND);
+        }
+    }
+
 
     @RequestMapping(method=RequestMethod.GET, path = {"turnofecha/{fecha}"})
     public ResponseEntity<?> getTurnosByFecha(@PathVariable("fecha") String fecha){

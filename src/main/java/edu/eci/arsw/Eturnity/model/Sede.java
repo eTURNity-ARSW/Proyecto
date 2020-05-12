@@ -2,6 +2,7 @@ package edu.eci.arsw.Eturnity.model;
 
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 import org.springframework.data.annotation.Id;
 
@@ -15,6 +16,7 @@ public class Sede {
     private String horario;
     private ArrayList<Servicio> servicios;
     private String entidad;
+    private List turnos;
 
     public Sede(){}
 
@@ -80,6 +82,14 @@ public class Sede {
 
     public void setEntidad(String entidad) {
         this.entidad = entidad;
+    }
+
+    public List getTurnos(){
+        return turnos;
+    }
+
+    public void setTurnos(List turnos){
+        this.turnos=turnos;
     }
 
     @Override

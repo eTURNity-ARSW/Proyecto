@@ -11,20 +11,21 @@ public class Turno {
     private String fecha;
     private String turnouserid;
     private String turnosedeid;
+    private String modulo;
 
     public Turno(){
     }
 
     
     
-    public Turno(String identifier, String tipo, boolean valido, String fecha, String turnouserid, String turnosedeid ){
+    public Turno(String identifier, String tipo, boolean valido, String fecha, String turnouserid, String turnosedeid,String modulo){
         this.identifier = identifier;
         this.tipo = tipo;
         this. valido = valido;
         this. fecha = fecha;
         this. turnouserid = turnouserid;
         this.turnosedeid = turnosedeid;
-       
+        this.modulo=modulo;
         
     }
 
@@ -95,6 +96,14 @@ public class Turno {
 
     public void setSede(String turnosedeid) {
         this.turnosedeid = turnosedeid;
+    }
+
+    public String getModulo(){
+        return modulo;
+    }
+
+    public void setModulo(String modulo) {
+        this.modulo = modulo;
     }
 
     @Override
