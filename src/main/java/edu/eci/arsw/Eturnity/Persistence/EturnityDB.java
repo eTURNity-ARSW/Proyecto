@@ -26,6 +26,7 @@ public class EturnityDB {
     private Entidad e;
     private Turno t;
     private Sede s;
+    private ArrayList<Turno> turnoTotal;
 
     public void getConnection() {
         try {
@@ -192,21 +193,26 @@ public class EturnityDB {
         return allTurnosUsername;
     }
 
+    /**
+     * Metodo que permite consultar los turnos de una sede y que sean validos JDNJ.
+     * @param turnosedeid Es el identificador unico de la sede.
+     * @return  Retorna una lista con los turnos validos correspondientes a la sede.
+     */
     public List<Turno> getTurnosBySede(String turnosedeid){
-        String sql = "SELECT * FROM TURNO WHERE turnosedeid = ?";
+        String sql = "SELECT * FROM TURNO WHERE turnosedeid = ? and valido = true";
         List<Turno> allTurnosSede = new ArrayList<Turno>();
         try{
             getConnection();
             PreparedStatement pstmt = c.prepareStatement(sql,ResultSet.TYPE_SCROLL_SENSITIVE,
-                ResultSet.CONCUR_UPDATABLE);
-            pstmt.setString(1, s.getIdentificador());
+                    ResultSet.CONCUR_UPDATABLE);
+            pstmt.setString(1, turnosedeid);
             ResultSet r = pstmt.executeQuery();
             c.close();
             while(r.next()){
                 t = new Turno(r.getString("identifier"), r.getString("tipo"), r.getBoolean("valido"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"),r.getString("modulo"));
                 allTurnosSede.add(t);
+                turnoTotal.add(t); //JD
             }
-            s.setTurnos(allTurnosSede);
             pstmt.close();
         } catch(Exception ex){
             Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null,ex);
@@ -239,11 +245,6 @@ public class EturnityDB {
         return allTurnosFecha;
 
     }
-
-    
-
-
-
 
     public List<Turno> getAllTurnosValidos(boolean valido) {
         String sql = "Select * from turno where valido = true";
@@ -299,10 +300,12 @@ public class EturnityDB {
             ResultSet rs = stmt.executeQuery("SELECT * FROM entidad;");
             c.close();
             while (rs.next()) {
+                turnoTotal = new ArrayList<Turno>();  //JD
                 System.out.println(rs.getString("nit"));
                 e = new Entidad(rs.getString("nit"), rs.getString("nombre"), rs.getString("direccion"), rs.getString("ciudad"), rs.getString("telefono"));
                 entidades.add(e);
                 getAllSedesByEntidad(e.getNit());
+                e.setTurnos(turnoTotal);   //JD
             }
             stmt.close();
             rs.close();
@@ -360,8 +363,10 @@ public class EturnityDB {
             ResultSet rs = pstmt.executeQuery();
             c.close();
             rs.next();
+            turnoTotal=new ArrayList<Turno>();
             e = new Entidad(rs.getString("nit"), rs.getString("nombre"), rs.getString("direccion"), rs.getString("ciudad"), rs.getString("telefono"));
             getAllSedesByEntidad(e.getNit());
+            e.setTurnos(turnoTotal);
             pstmt.close();
             rs.close();
             return e;
@@ -370,9 +375,6 @@ public class EturnityDB {
         }
         return e;
     }
-
-
-
 
     public List<Sede> getAllSedesByEntidad(String identificador) {
         String SQL = "SELECT * FROM SEDE WHERE sedesentidadid = ?";
@@ -386,6 +388,7 @@ public class EturnityDB {
             while (rs.next()) {
                 s = new Sede(rs.getString("id"), rs.getString("ciudad"), rs.getString("direccion"), rs.getString("horario"), rs.getString("sedesentidadid"));
                 allSedesEntidad.add(s);
+                s.setTurnos(getTurnosBySede(s.getIdentificador()));  //JD
             }
             e.setSedes(allSedesEntidad);
             pstmt.close();
@@ -397,7 +400,6 @@ public class EturnityDB {
     }
 
 }
-
 
 	
     
