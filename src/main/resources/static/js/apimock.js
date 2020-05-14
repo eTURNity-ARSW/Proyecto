@@ -222,7 +222,7 @@ var apimock=(function () {
 
                     if(input.data["nit"]=== document.getElementById("nit").value){
                     iniciarLocalStorageEntity(document.getElementById("nombre").value);
-                    location.href="menuEntidad.html";
+                    location.href="turnoBanco.html";
                     } else{
 
                         alert("Incorrecto");
