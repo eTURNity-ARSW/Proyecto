@@ -8,6 +8,14 @@ return {
                 {callback(data)
                 }
             });
-        }
+        },
+        getTurnByEntity:function(callback){
+            jQuery.get({
+                dataType: "json",
+                url: "/entidades/entidad/Bancolombia" ,
+                success:function(data){
+                callback(data)}
+            });
+            }
         }
 })();
