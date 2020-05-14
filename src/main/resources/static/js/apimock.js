@@ -1,4 +1,5 @@
 var apiclient=apiclient;
+var ciudad1=null;
 var apimock=(function () {
      var _map=function(list){
          return mapping= list.map(function(turn){
@@ -26,6 +27,67 @@ var apimock=(function () {
                          "</td>" +
                          "<td>" +
                          c.tipo +
+                         "</td> " +
+                         "<td>" +
+                         c.fecha +
+                         "</td> " +
+
+                         "</tr>"
+                     )
+                 });
+
+
+             }
+
+
+    var _map2 = function(lista){
+        mapping1=lista.sedes.map(function(sede){
+            ciudad1=sede.ciudad
+            }
+    )
+        return mappeo =lista.turnos.map(function(turno){
+               return {
+                    ciudad:ciudad1, sede:turno.turnosedeid, identificador:turno.identifier, tipo:turno.tipo,
+                    modulo:turno.modulo, usuario:turno.turnouserid, fecha:turno.fecha
+
+               };
+
+                })
+    }
+
+
+    var table2= function(){
+        apiclient.getTurnByEntity(createTable2,localStorage.getItem('ActualEntity'));
+        }
+
+    var createTable2=function(turns) {
+            console.info("En createTable")
+            console.info(turns)
+            console.info(turns.data)
+                 turns=_map2(turns);
+                 $("#table > tbody").empty();
+                 turns.map(function(c){
+                    console.info("QUE DIABLOS ES C")
+                    console.info(c)
+                     $("#table > tbody").append(
+                         "<tr> <td>" +
+
+                         c.ciudad+
+                         "</td>" +
+                         "<td>" +
+                         c.sede +
+                         "</td> " +
+                         "<td>" +
+                         c.identificador +
+                         "</td> " +
+                         "<td>" +
+                         c.tipo +
+                         "</td> " +
+                         "<td>" +
+                         c.modulo +
+                         "</td> " +
+                         "<td>" +
+                         c.usuario +
                          "</td> " +
                          "<td>" +
                          c.fecha +
@@ -171,7 +233,7 @@ var apimock=(function () {
     }
 
      function iniciarLocalStorageEntity(nombre) {
-            localStorage.setItem('Actual', nombre);
+            localStorage.setItem('ActualEntity', nombre);
         }
 
     function logIn(){
@@ -244,7 +306,9 @@ var apimock=(function () {
         addEntity:addEntity ,
         logInEntidad:logInEntidad,
         table:table,
-        createTable:createTable
+        createTable:createTable,
+        table2:table2,
+        createTable2:createTable2
 
         }
 

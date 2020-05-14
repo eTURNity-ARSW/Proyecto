@@ -9,10 +9,10 @@ return {
                 }
             });
         },
-        getTurnByEntity:function(callback){
+        getTurnByEntity:function(callback,entityuser){
             jQuery.get({
                 dataType: "json",
-                url: "/entidades/entidad/Bancolombia" ,
+                url: "/entidades/entidad/" +entityuser ,
                 success:function(data){
                 callback(data)}
             });
