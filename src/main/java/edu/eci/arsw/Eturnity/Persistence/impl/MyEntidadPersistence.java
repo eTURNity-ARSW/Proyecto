@@ -18,12 +18,6 @@ public class MyEntidadPersistence implements EntidadPersistence {
 
     }
 
-    
-    /*@Override
-    public Entidad getEnterpriseByName(String name) throws EntidadException {
-        return null;
-    }
-*/
     @Override
     public List<Entidad> getEnterpriseByCity(String city) throws EntidadException {
         return null;

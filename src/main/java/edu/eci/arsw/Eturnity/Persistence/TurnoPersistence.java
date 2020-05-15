@@ -15,5 +15,6 @@ public interface TurnoPersistence {
    public List<Turno> getAllTurnosValido(boolean valido);
    public List<Turno> getTurnoByFecha(String fecha);
    public List<Turno> getTurnosBySede(String sede);
+   public int getSiguienteTurno(String idSede);
 
 }

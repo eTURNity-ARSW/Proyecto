@@ -13,7 +13,6 @@ public class Entidad {
     private String ciudad;
     private String telefono;
     private List<Sede> sedes;
-    private List<Turno> turnos;
 
     public Entidad(){
 
@@ -73,16 +72,6 @@ public class Entidad {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
-    public List<Turno> getTurnos() {
-        return turnos;
-    }
-
-    public void setTurnos(List<Turno> turnos) {
-        this.turnos = turnos;
-    }
-
-
 
     @Override
     public String toString() {

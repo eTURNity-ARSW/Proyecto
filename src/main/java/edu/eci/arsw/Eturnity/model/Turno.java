@@ -12,16 +12,19 @@ public class Turno {
     private String turnouserid;
     private String turnosedeid;
     private String modulo;
+    private int id;
+    
+    //Atributos solo para consulta del usuario
+    private Sede sede;
+    private Entidad entidad;
 
     public Turno(){
     }
 
     
     
-    public Turno(String identifier, String tipo, boolean valido, String fecha, String turnouserid, String turnosedeid,String modulo){
-        this.identifier = identifier;
+    public Turno(String tipo, String fecha, String turnouserid, String turnosedeid,String modulo){
         this.tipo = tipo;
-        this. valido = valido;
         this. fecha = fecha;
         this. turnouserid = turnouserid;
         this.turnosedeid = turnosedeid;
@@ -54,8 +57,8 @@ public class Turno {
         return identifier;
     }
 
-    public void setIdentifier(String id) {
-        this.identifier = id;
+    public void setIdentifier(String identifier) {
+        this.identifier = identifier;
     }
 
     public String getTipo() {
@@ -64,14 +67,6 @@ public class Turno {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public String getUser() {
-        return turnouserid;
-    }
-
-    public void setUser(String turnouserid) {
-        this.turnouserid = turnouserid;
     }
 
     public boolean isValido() {
@@ -90,21 +85,55 @@ public class Turno {
         this.fecha = fecha;
     }
 
-    public String getSede() {
+    public String getTurnouserid() {
+        return turnouserid;
+    }
+
+    public void setTurnouserid(String turnouserid) {
+        this.turnouserid = turnouserid;
+    }
+
+    public String getTurnosedeid() {
         return turnosedeid;
     }
 
-    public void setSede(String turnosedeid) {
+    public void setTurnosedeid(String turnosedeid) {
         this.turnosedeid = turnosedeid;
     }
 
-    public String getModulo(){
+    public String getModulo() {
         return modulo;
     }
 
     public void setModulo(String modulo) {
         this.modulo = modulo;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Sede getSede() {
+        return sede;
+    }
+
+    public void setSede(Sede sede) {
+        this.sede = sede;
+    }
+
+    public Entidad getEntidad() {
+        return entidad;
+    }
+
+    public void setEntidad(Entidad entidad) {
+        this.entidad = entidad;
+    }
+    
+    
 
     @Override
     public String toString() {

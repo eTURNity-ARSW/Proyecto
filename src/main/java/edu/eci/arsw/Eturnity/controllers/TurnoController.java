@@ -20,6 +20,7 @@ import edu.eci.arsw.Eturnity.model.Turno;
 import edu.eci.arsw.Eturnity.model.Usuario;
 import edu.eci.arsw.Eturnity.services.TurnoServices;
 import edu.eci.arsw.Eturnity.services.UserServices;
+import org.bson.types.ObjectId;
 
 import org.hibernate.internal.ExceptionConverterImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,10 +92,7 @@ public class TurnoController {
             return new ResponseEntity<>("ERROR",HttpStatus.NOT_FOUND);
         }
     }
-        
 
-    
-    
     @RequestMapping(method=RequestMethod.GET,path="valido")
     public ResponseEntity<?> getTurnosValidos(){
         try{
@@ -118,6 +116,16 @@ public class TurnoController {
             Map<String,Turno> resp = new Gson().fromJson(turno, lisType);
             Object [] key = resp.keySet().toArray();
             Turno turn = resp.get(key[0]);
+            
+            //Turno Valido
+            turn.setValido(true);
+            //Asignar identifier 
+            ObjectId newObjectIdUser = new ObjectId(new Date());
+            turn.setIdentifier(newObjectIdUser.toHexString());
+            
+            //Asignar id correcto.
+            turn.setId(ts.getSiguienteTurno(turn.getTurnosedeid()));
+            
             ts.createTurno(turn);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch(Exception ex){
@@ -137,46 +145,5 @@ public class TurnoController {
             return new ResponseEntity<>("ERROR AL ELIMINAR EL TURNO"+identifier,HttpStatus.FORBIDDEN);
         }
     }
-
-
-    
-
-    
-
-   
-
-
-    /*
-
-    @RequestMapping(path="/turno/{fecha}",method=RequestMethod.GET)
-    public ResponseEntity<?> getTurnosByFecha(@PathVariable("fecha") Date fecha) throws TurnoException{
-        ResponseEntity<?> ans;
-        try{
-            List<Turno> turnos=ts.getTurnosFecha(fecha);
-            ans= new ResponseEntity<>(turnos,HttpStatus.ACCEPTED);
-        }catch(Exception ex){
-            Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null, ex);
-            ans= new ResponseEntity<>("ERROR",HttpStatus.NOT_FOUND);
-        }
-        return ans;
-    }
-
-    @RequestMapping(path="/turno/{sede}",method=RequestMethod.GET)
-    public ResponseEntity<?> getTurnosBySede(@PathVariable("sede") String sede) throws TurnoException{
-        ResponseEntity<?> ans;
-        try{
-            List<Turno> turnos=ts.getTurnsBySede(sede);
-            ans = new ResponseEntity<>(turnos,HttpStatus.ACCEPTED);
-        }catch(Exception ex){
-            Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null, ex);
-            ans= new ResponseEntity<>("ERROR",HttpStatus.NOT_FOUND);
-
-        }   
-        return ans;
-
-    }
-*/
-
-
 }
 

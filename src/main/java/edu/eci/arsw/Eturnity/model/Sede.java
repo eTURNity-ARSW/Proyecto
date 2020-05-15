@@ -3,7 +3,6 @@ package edu.eci.arsw.Eturnity.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
 import org.springframework.data.annotation.Id;
 
 
@@ -11,6 +10,7 @@ import org.springframework.data.annotation.Id;
 public class Sede {
     @Id
     private String identificador;
+    private String nombre;
     private String ciudad;
     private String direccion;
     private String horario;
@@ -20,8 +20,9 @@ public class Sede {
 
     public Sede(){}
 
-    public Sede(String id, String city, String address, String date, String entidad){
-        this.identificador =  id;
+    public Sede(String identificador,String nombre, String city, String address, String date, String entidad){
+        this.identificador =  identificador;
+        this.nombre = nombre;
         this.ciudad =  city;
         this.direccion = address;
         this.horario = date;
@@ -92,6 +93,14 @@ public class Sede {
         this.turnos=turnos;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
     @Override
     public String toString() {
         return "Sede{" +

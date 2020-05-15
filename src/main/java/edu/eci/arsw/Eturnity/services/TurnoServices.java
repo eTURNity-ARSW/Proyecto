@@ -11,64 +11,44 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 
-
 @Service
 public class TurnoServices {
+
     @Autowired
     private TurnoPersistence tp;
 
     public List<Turno> getTurnosByUsername(String user) {
-      return tp.getTurnosByUsername(user); 
+        return tp.getTurnosByUsername(user);
     }
 
-    public List<Turno> getTurnosBySede(String sede){
+    public List<Turno> getTurnosBySede(String sede) {
         return tp.getTurnosBySede(sede);
     }
-    /*
-    public List<Turno> getTurnsBySede(String sede){
-        return tp.getTurnsByOffice(sede);
-    }
-    public Turno getTurn(String id){
-        try {
-            return tp.getTurnoById(id);
-        } catch (TurnoException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    */
 
- 
-	/*public List<Turno> getAllValidTurnos()throws TurnoException{
-		return tp.getAllValidTurnos();
-	}
-	public List<Turno> getTurnosFecha(Date fecha) throws TurnoException {
-		return tp.getTurnosFecha(fecha);
-    }*/
-    
-    public void createTurno(Turno t){
+    public void createTurno(Turno t) {
         tp.createTurno(t);
-   }
-    
-    
-    public List<Turno> getAllTurnos(){
+    }
+
+    public List<Turno> getAllTurnos() {
         return tp.getAllTurnos();
     }
-    
-    public void  deleteTurnoByUsername(String identifier, String username){
+
+    public void deleteTurnoByUsername(String identifier, String username) {
         System.out.println("ENTRE A SERVICE");
         tp.deleteTurnoByUsername(identifier, username);
-        
+
     }
 
-
-	public List<Turno> getAllTurnosValido(boolean valido) {
+    public List<Turno> getAllTurnosValido(boolean valido) {
         return tp.getAllTurnosValido(valido);
     }
 
-
-	public List<Turno> getTurnoByFecha(String fecha) {
-		return tp.getTurnoByFecha(fecha);
-	}
+    public List<Turno> getTurnoByFecha(String fecha) {
+        return tp.getTurnoByFecha(fecha);
+    }
+    
+    public int getSiguienteTurno(String idSede){
+        return tp.getSiguienteTurno(idSede);
+    }
 
 }
