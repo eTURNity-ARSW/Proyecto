@@ -23,13 +23,11 @@ public class Turno {
 
     
     
-    public Turno(String tipo, String fecha, String turnouserid, String turnosedeid,String modulo){
+    public Turno(String tipo, String fecha, String turnouserid, String turnosedeid){
         this.tipo = tipo;
         this. fecha = fecha;
         this. turnouserid = turnouserid;
-        this.turnosedeid = turnosedeid;
-        this.modulo=modulo;
-        
+        this.turnosedeid = turnosedeid;        
     }
 
     public int CompareTo(Turno turno){

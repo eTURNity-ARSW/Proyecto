@@ -134,10 +134,11 @@ public class EturnityDB {
             ResultSet r = pstmt.executeQuery("SELECT * FROM turno;");
             c.close();
             while (r.next()) {
-                t = new Turno(r.getString("tipo"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"),r.getString("modulo"));
+                t = new Turno(r.getString("tipo"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"));
                 t.setIdentifier(r.getString("identifier"));
                 t.setValido(r.getBoolean("valido"));
                 t.setId(r.getInt("id"));
+                t.setModulo(r.getString("modulo"));
                 allTurnos.add(t);
             }
             pstmt.close();
@@ -184,9 +185,10 @@ public class EturnityDB {
             ResultSet r = pstmt.executeQuery();
             c.close();
             while (r.next()) {
-                t = new Turno(r.getString("tipo"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"),r.getString("modulo"));
+                t = new Turno(r.getString("tipo"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"));
                 t.setIdentifier(r.getString("identifier"));
                 t.setValido(r.getBoolean("valido"));
+                t.setModulo(r.getString("modulo"));
                 t.setId(r.getInt("id"));
                 t.setSede(getSedeById(t.getTurnosedeid()));
                 t.setEntidad(getEntidadByNit(t.getSede().getEntidad()));
@@ -200,33 +202,6 @@ public class EturnityDB {
         return allTurnosUsername;
     }
     
-    /**
-     * Metodo que permite consultar una sede por su id.  JDNJ
-     * @param id    Es el id de la sede que se quiere buscar.
-     * @return  Retorna la sede asociada a el identifier.
-     */
-    public Sede getSedeById(String id) {
-        PreparedStatement pstmt = null;
-        s = null;
-        try {
-            Class.forName("org.postgresql.Driver");
-            getConnection();
-            c.setAutoCommit(false);
-            String sql = "Select * from sede where id = ?";
-            pstmt = c.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            pstmt.setString(1, id);
-            ResultSet rs = pstmt.executeQuery();
-            c.close();
-            if (rs.next()){
-                s = new Sede(rs.getString("id"),rs.getString("nombre"), rs.getString("ciudad"), rs.getString("direccion"), rs.getString("horario"), rs.getString("sedesentidadid"));
-            }
-            pstmt.close();
-            rs.close();
-        } catch (Exception ex) {
-            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return s;
-    }
     
     /**
      * Metodo que permite consultar una entidad por su nit
@@ -257,7 +232,7 @@ public class EturnityDB {
     }
 
     /**
-     * Metodo que permite consultar los turnos de una sede y que sean validos JDNJ.
+     * Metodo que permite consultar los turnos de una sede y que sean validos 
      * @param turnosedeid Es el identificador unico de la sede.
      * @return  Retorna una lista con los turnos validos correspondientes a la sede.
      */
@@ -272,9 +247,10 @@ public class EturnityDB {
             ResultSet r = pstmt.executeQuery();
             c.close();
             while(r.next()){
-                t = new Turno(r.getString("tipo"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"),r.getString("modulo"));
+                t = new Turno(r.getString("tipo"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"));
                 t.setIdentifier(r.getString("identifier"));
                 t.setValido(r.getBoolean("valido"));
+                t.setModulo(r.getString("modulo"));
                 allTurnosSede.add(t);
                 t.setId(r.getInt("id"));
             }
@@ -300,9 +276,10 @@ public class EturnityDB {
             ResultSet r = pstmt.executeQuery();
             c.close();
             while (r.next()) {
-                t = new Turno(r.getString("tipo"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"),r.getString("modulo"));
+                t = new Turno(r.getString("tipo"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"));
                 t.setIdentifier(r.getString("identifier"));
                 t.setValido(r.getBoolean("valido"));
+                t.setModulo(r.getString("modulo"));
                 t.setId(r.getInt("id"));
                 allTurnosFecha.add(t);
             }
@@ -327,9 +304,10 @@ public class EturnityDB {
             ResultSet r = pstmt.executeQuery();
             c.close();
             while (r.next()) {
-                t = new Turno(r.getString("tipo"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"),r.getString("modulo"));
+                t = new Turno(r.getString("tipo"), r.getString("fecha"), r.getString("turnouserid"), r.getString("turnosedeid"));
                 t.setIdentifier(r.getString("identifier"));
                 t.setValido(r.getBoolean("valido"));
+                t.setModulo(r.getString("modulo"));
                 t.setId(r.getInt("id"));
                 allTurnosValidos.add(t);
             }
@@ -359,7 +337,7 @@ public class EturnityDB {
     }
     
     /**
-     * Metodo que permite consultar el ultimo turno entregado por la sede.  JDNJ
+     * Metodo que permite consultar el ultimo turno entregado por la sede.  
      * @param idSede Es el id de la sede donde se quiere consultar su turno actual.
      * @return  Retorna el ultimo turno entregado por la sede.
      */
@@ -471,6 +449,133 @@ public class EturnityDB {
         return e;
     }
 
+    //CONSULTAS SEDE
+    
+    
+    /**
+     * Metodo que permite consultar todas las sedes. 
+     * @return  Retorna todas las sedes.
+     */
+    public List<Sede> getAllSedes() {
+        String SQL = "SELECT * FROM SEDE ;";
+        List<Sede> allSedesEntidad = new ArrayList<Sede>();
+        try {
+            getConnection();
+            PreparedStatement pstmt = c.prepareStatement(SQL, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = pstmt.executeQuery();
+            c.close();
+            while (rs.next()) {
+                s = new Sede(rs.getString("nombre"), rs.getString("ciudad"), rs.getString("direccion"), rs.getString("horario"), rs.getString("sedesentidadid"));
+                s.setIdentificador(rs.getString("id"));
+                allSedesEntidad.add(s);
+                s.setTurnos(getTurnosBySede(s.getIdentificador()));  //JD
+            }
+            pstmt.close();
+            rs.close();
+        } catch (Exception ex) {
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return allSedesEntidad;
+    }
+    
+    /**
+     * Metodo que permite consultar todas las sedes de una entidad por ciudad.    
+     * @param idEntidad Es el id de la entidad.
+     * @param ciudad    Es el la ciudad donde se encuentra la sede
+     * @return  Retorna todas las sedes de una entidad por ciudad.
+     */
+    public List<Sede> getSedesByEntidadYCiudad(String idEntidad, String ciudad) {
+        String SQL = "SELECT * FROM SEDE WHERE sedesentidadid = '" + idEntidad + "' and ciudad = '"+ ciudad +"'";
+        List<Sede> allSedesEntidad = new ArrayList<Sede>();
+        try {
+            getConnection();
+            PreparedStatement pstmt = c.prepareStatement(SQL, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = pstmt.executeQuery();
+            c.close();
+            while (rs.next()) {
+                s = new Sede(rs.getString("nombre"), rs.getString("ciudad"), rs.getString("direccion"), rs.getString("horario"), rs.getString("sedesentidadid"));
+                s.setIdentificador(rs.getString("id"));
+                allSedesEntidad.add(s);
+                s.setTurnos(getTurnosBySede(s.getIdentificador()));  //JD
+            }
+            pstmt.close();
+            rs.close();
+        } catch (Exception ex) {
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return allSedesEntidad;
+    }
+    
+    /**
+     * Metodo que permite crear una nueva sede
+     * @param sd Es la Sede que se va a agregar a la base de datos.
+     */
+    public void createSede(Sede sd) {
+        Statement stmt = null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            getConnection();
+            c.setAutoCommit(false);
+            stmt = c.createStatement();
+            String sql = "INSERT INTO sede (id,ciudad,direccion,horario,sedesentidadid,nombre)" + "VALUES ('" + sd.getIdentificador() + "','" + sd.getCiudad() + "','" + sd.getDireccion() + "','" + sd.getHorario() + "','" + sd.getEntidad() + "','" + sd.getNombre() + "');";
+            stmt.executeUpdate(sql);
+            stmt.close();
+            c.commit();
+        } catch (Exception ex) {
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Metodo que permite eliminar una sede
+     * @param id
+     */
+    public void deleteSede(String id) {
+        Statement pstmt = null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            getConnection();
+            c.setAutoCommit(false);
+            pstmt = c.createStatement();
+            String sql = "DELETE FROM sede WHERE id = '" + id + "'";
+            pstmt = c.createStatement();
+            pstmt.executeUpdate(sql);
+            c.commit();
+            c.close();
+        } catch (Exception ex) {
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Metodo que permite consultar una sede por su id. 
+     * @param id    Es el id de la sede que se quiere buscar.
+     * @return  Retorna la sede asociada a el identifier.
+     */
+    public Sede getSedeById(String id) {
+        PreparedStatement pstmt = null;
+        s = null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            getConnection();
+            c.setAutoCommit(false);
+            String sql = "Select * from sede where id = ?";
+            pstmt = c.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            pstmt.setString(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            c.close();
+            if (rs.next()){
+                s = new Sede(rs.getString("nombre"), rs.getString("ciudad"), rs.getString("direccion"), rs.getString("horario"), rs.getString("sedesentidadid"));
+                s.setIdentificador(rs.getString("id"));
+            }
+            pstmt.close();
+            rs.close();
+        } catch (Exception ex) {
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return s;
+    }
+    
     public List<Sede> getAllSedesByEntidad(String identificador) {
         String SQL = "SELECT * FROM SEDE WHERE sedesentidadid = ?";
         List<Sede> allSedesEntidad = new ArrayList<Sede>();
@@ -481,7 +586,8 @@ public class EturnityDB {
             ResultSet rs = pstmt.executeQuery();
             c.close();
             while (rs.next()) {
-                s = new Sede(rs.getString("id"),rs.getString("nombre"), rs.getString("ciudad"), rs.getString("direccion"), rs.getString("horario"), rs.getString("sedesentidadid"));
+                s = new Sede(rs.getString("nombre"), rs.getString("ciudad"), rs.getString("direccion"), rs.getString("horario"), rs.getString("sedesentidadid"));
+                s.setIdentificador(rs.getString("id"));
                 allSedesEntidad.add(s);
                 s.setTurnos(getTurnosBySede(s.getIdentificador()));  //JD
             }

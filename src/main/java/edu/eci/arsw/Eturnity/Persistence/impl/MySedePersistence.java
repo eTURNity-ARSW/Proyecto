@@ -1,5 +1,6 @@
 package edu.eci.arsw.Eturnity.Persistence.impl;
 
+import edu.eci.arsw.Eturnity.Persistence.EturnityDB;
 import edu.eci.arsw.Eturnity.Persistence.SedeException;
 import edu.eci.arsw.Eturnity.Persistence.SedePersistence;
 import edu.eci.arsw.Eturnity.model.Sede;
@@ -8,35 +9,38 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MySedePersistence implements SedePersistence {
-    /*
-        @Override
-        public Sede getSede(String identificador) throws SedeException{
-            List<Sede> sede = sederep.findByIdentifier(identificador);
-            if(!sede.isEmpty()){
-                sede.forEach(x -> System.out.println(x));
-                return sede.get(0);
-            }
-            throw new SedeException(SedeException.INVALID_IDENTIFIER);
-        }
-    */
+    
     @Override
-    public List<Sede> getAll(){
-        return null;
+    public List<Sede> getAllSedes(){
+        EturnityDB db = new EturnityDB();
+        return db.getAllSedes();
     }
 
-
     @Override
-    public List<Sede> getSedeByCiudad(String ciudad) throws SedeException {
-        return null;
+    public List<Sede> getSedesByEntidad(String idEntidad) {
+        EturnityDB db = new EturnityDB();
+        return db.getAllSedesByEntidad(idEntidad);
     }
 
-    /*@Override
-    public boolean Save(Sede s) throws SedeException {
-        if(sederep.findByIdentifier(s.getIdentificador())!= null) throw new SedeException(SedeException.ALREDY_EXISTS);
-        Sede save = sederep.save(s);
-        if(save != null) return true;
-        return false;
-    }*/
+    @Override
+    public List<Sede> getSedesByEntidadYCiudad(String idEntidad, String ciudad) {
+        EturnityDB db = new EturnityDB();
+        return db.getSedesByEntidadYCiudad(idEntidad, ciudad);
+    }
+
+    @Override
+    public void createSede(Sede sd) {
+        EturnityDB db = new EturnityDB();
+        db.createSede(sd);
+    }
+
+    @Override
+    public void deleteSede(String id) {
+        EturnityDB db = new EturnityDB();
+        db.deleteSede(id);
+
+    }
+
 }
 
 

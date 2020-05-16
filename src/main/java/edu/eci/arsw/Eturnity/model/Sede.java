@@ -20,14 +20,12 @@ public class Sede {
 
     public Sede(){}
 
-    public Sede(String identificador,String nombre, String city, String address, String date, String entidad){
-        this.identificador =  identificador;
+    public Sede(String nombre, String ciudad, String direccion, String horario, String entidad){
         this.nombre = nombre;
-        this.ciudad =  city;
-        this.direccion = address;
-        this.horario = date;
+        this.ciudad =  ciudad;
+        this.direccion = direccion;
+        this.horario = horario;
         this.entidad = entidad;
-        this.servicios =  new ArrayList<>();
     }
 
     public boolean addService(Servicio s){

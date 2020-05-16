@@ -5,13 +5,11 @@ import java.util.List;
 import edu.eci.arsw.Eturnity.model.Sede;
 
 public interface SedePersistence {
-    //public Sede getSede(String identificador) throws SedeException;
-    public List<Sede> getAll();
-    public List<Sede> getSedeByCiudad(String ciudad) throws SedeException;
-    /*public boolean Save(Sede s) throws SedeException;
-    */
     
-    
-
+    public List<Sede> getAllSedes();
+    public List<Sede> getSedesByEntidad(String idEntidad);
+    public List<Sede> getSedesByEntidadYCiudad(String idEntidad, String ciudad);
+    public void createSede(Sede sd);
+	public void deleteSede(String id);
 }
 

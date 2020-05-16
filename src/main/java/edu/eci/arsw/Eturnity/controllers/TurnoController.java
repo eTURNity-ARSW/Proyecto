@@ -20,6 +20,7 @@ import edu.eci.arsw.Eturnity.model.Turno;
 import edu.eci.arsw.Eturnity.model.Usuario;
 import edu.eci.arsw.Eturnity.services.TurnoServices;
 import edu.eci.arsw.Eturnity.services.UserServices;
+import java.util.Random;
 import org.bson.types.ObjectId;
 
 import org.hibernate.internal.ExceptionConverterImpl;
@@ -122,7 +123,12 @@ public class TurnoController {
             //Asignar identifier 
             ObjectId newObjectIdUser = new ObjectId(new Date());
             turn.setIdentifier(newObjectIdUser.toHexString());
-            
+            //Asignar Modulo
+            Random rn = new Random();
+            int randomNum = rn.nextInt((10 - 1) + 1) + 1;
+            String num= String.valueOf(randomNum);
+            turn.setModulo(num);
+            System.out.println(turn.getModulo() + "  <.----- el modulo");
             //Asignar id correcto.
             turn.setId(ts.getSiguienteTurno(turn.getTurnosedeid()));
             
