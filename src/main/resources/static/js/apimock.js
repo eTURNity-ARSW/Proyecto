@@ -14,6 +14,15 @@ var apimock = (function () {
         apiclient.getTurnByUser(createTable, localStorage.getItem('Actual'));
     }
 
+    var _mapEntidad=function(entities) {
+          return { eNombre:entities.nombre
+                    }
+    }
+
+    var entityMenu=function(entities){
+           entities=_mapEntidad(entities);
+
+           }
     var createTable = function (turns) {
         turns = _map(turns);
         $("#table > tbody").empty();
@@ -256,7 +265,7 @@ var apimock = (function () {
                     .then(function (input) {
                         if (input.data["contrasena"] === document.getElementById("password").value) {
                             iniciarLocalStorageUser(document.getElementById("login").value);
-                            location.href = "home.html";
+                            location.href = "crearTurno.html";
                         } else {
 
                             alert("Incorrecto");
