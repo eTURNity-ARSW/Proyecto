@@ -28,7 +28,7 @@ var apimock = (function () {
         stompClient.connect({},function(frame){
             console.log('Connected: '+frame);
             console.log(localStorage.getItem('ActualEntity'));
-            stompClient.suscribe('/topic/'+localStorage.getItem('ActualEntity'), function(ws){
+            stompClient.subscribe('/topic/'+localStorage.getItem('ActualEntity'), function(ws){
            console.log('holi') })
 
         });
@@ -127,6 +127,7 @@ var apimock = (function () {
     }
 
     var loadSelect = function () {
+        connectAndSuscribe();
         document.getElementById("cCiudad").disabled = true;
         document.getElementById("cSede").disabled = true;
         console.log("Entre")
@@ -359,9 +360,16 @@ var apimock = (function () {
                         var message = ["Registro exitoso", "turno registado"];
                         var next = "login.html";
                         alert(message[1]);
-                    }) 
-            var turno = new turno($("#cTipo :selected").text(),document.getElementById("date").value,localStorage.getItem('Actual'),response.data.identificador);
-            stompClient.send("/topic/" + localStorage.getItem('ActualEntity'), {}, JSON.stringify(turno));
+                    })
+
+            console.log($("#cTipo :selected").text());
+            console.log(document.getElementById("date").value);
+            console.log(localStorage.getItem('Actual'));
+            console.log(response.data.identificador);
+            var turnoWebSocket = new turnoWs($("#cTipo :selected").text(),document.getElementById("date").value,localStorage.getItem('Actual'),response.data.identificador);
+            console.log(turnoWebSocket);
+            console.log(JSON.stringify(turnoWebSocket));
+            stompClient.send("/topic/" + localStorage.getItem('ActualEntity'), {}, JSON.stringify(turnoWebSocket));
          
         } else {
             alert("error");
@@ -437,7 +445,7 @@ var apimock = (function () {
                     })
         }
     }
-    class turno{
+    class turnoWs{
         constructor(tipo, fecha,  turnouserid, turnosedeid){
             this.tipo = tipo;
             this. fecha = fecha;
