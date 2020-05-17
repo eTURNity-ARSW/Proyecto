@@ -85,9 +85,6 @@ var apimock = (function () {
                         c.ciudad +
                         "</td>" +
                         "<td>" +
-                        c.sede +
-                        "</td> " +
-                        "<td>" +
                         c.nombre +
                         "</td> " +
                         "<td>" +
@@ -111,6 +108,77 @@ var apimock = (function () {
         });
 
     }
+
+    var loadSelect = function () {
+        document.getElementById("cCiudad").disabled = true;
+        document.getElementById("cSede").disabled = true;
+        console.log("Entre")
+        apiclient.getAllEntity(loadSelectEntity);
+        //apiclient.getTurnByEntity(createTable2, localStorage.getItem('ActualEntity'));
+    }
+
+    var _mapE = function (entities) {
+        return mapping = entities.map(function (entity) {
+            return {
+                nombre: entity.nombre
+            }          
+        }
+        )
+    }
+
+    var loadSelectEntity = function (entities) {
+        entities = _mapE(entities);
+        $("#cEntidad").empty();
+        entities.map(function (c) {
+            $("#cEntidad").append(new Option(c.nombre, entities.indexOf(c)));         
+        });
+    }
+    
+    var loadCiudad = function () {
+        document.getElementById("cCiudad").disabled = false;
+        apiclient.getTurnByEntity(loadSelectCity,$("#cEntidad :selected").text());
+    }
+
+    var loadSelectCity = function (entities) {
+        cities = _mapC(entities);
+        $("#cCiudad").empty();
+        cities.map(function (c) {
+            $("#cCiudad").append(new Option(c.nombre, cities.indexOf(c)));         
+        });
+    }
+
+    var _mapC = function (city) {
+        return mapping = city.sedes.map(function (sedes) {
+            return {
+                nombre: sedes.ciudad
+            }          
+        }
+        )
+    }
+
+    var loadSede = function () {
+        document.getElementById("cSede").disabled = false;
+        console.log("EntreACargarLaSede")
+        apiclient.getAllSedesByEntityAndCity(loadSelectSedes,$("#cEntidad :selected").text(),$("#cCiudad :selected").text());
+    }
+
+    var loadSelectSedes = function (sedes) {
+        sedes = _mapS(sedes);
+        $("#cSede").empty();
+        sedes.map(function (c) {
+            $("#cSede").append(new Option(c.nombre, cities.indexOf(c)));         
+        });
+    }
+
+    var _mapS = function (sedes) {
+        return mapping = sedes.map(function (sede) {
+            return {
+                nombre: sede.nombre
+            }          
+        }
+        )
+    }
+    
     var mockdata = [];
     mockdata["sarahvieda"] =
             {
@@ -239,6 +307,46 @@ var apimock = (function () {
             alert("error");
         }
     }
+
+    async function addTurn() {
+        var empty = false;
+        if (document.getElementById("cEntidad").value === '') {
+            empty = true;
+            alert = 'Ingrese la entidad'
+        }
+        if (document.getElementById("cCiudad").value === '') {
+            empty = true;
+            alert = 'Ingrese la ciudad'
+        }
+        if (document.getElementById("cSede").value === '') {
+            empty = true;
+            alert = 'Ingrese la sede'
+        }
+        if (document.getElementById("cTipo").value === '') {
+            empty = true;
+            alert = 'Ingrese el tipo'
+        }
+        console.log(document.getElementById("date").value)
+        if (!empty) {
+            var response = await axios.get('/sede/'+ $("#cEntidad :selected").text() + '/' + $("#cCiudad :selected").text() + '/' + $("#cSede :selected").text() )
+            console.log(localStorage.getItem('Actual'))
+            axios.post('/turno/turnocre/', {
+                "1": {tipo: $("#cTipo :selected").text(),
+                    fecha: document.getElementById("date").value,
+                    turnouserid: localStorage.getItem('Actual'),
+                    turnosedeid: response.data.identificador
+                }
+            })
+                    .then(function (input) {
+                        console.log(input.data);
+                        var message = ["Registro exitoso", "turno registado"];
+                        var next = "login.html";
+                        alert(message[1]);
+                    })
+        } else {
+            alert("error");
+        }
+    }
     function iniciarLocalStorageUser(username) {
         localStorage.setItem('Actual', username);
 
@@ -320,8 +428,11 @@ var apimock = (function () {
         table: table,
         createTable: createTable,
         table2: table2,
-        createTable2: createTable2
-
+        createTable2: createTable2,
+        loadSelect: loadSelect,
+        loadCiudad: loadCiudad,
+        loadSede: loadSede,
+        addTurn: addTurn
     }
 
 

@@ -9,6 +9,22 @@ return {
                 }
             });
         },
+        getAllEntity:function(callback){
+            jQuery.get({
+                dataType: "json",
+                url: "/entidades/entities" ,
+                success:function(data){
+                callback(data)}
+            });
+        },
+        getAllSedesByEntityAndCity:function(callback,entityName,city){
+            jQuery.get({
+                dataType: "json",
+                url: "/sede/sedes/" + entityName + "/" + city,
+                success:function(data){
+                callback(data)}
+            });
+        },
         getTurnByEntity:function(callback,entityuser){
             jQuery.get({
                 dataType: "json",
@@ -16,6 +32,6 @@ return {
                 success:function(data){
                 callback(data)}
             });
-            }
         }
+    }        
 })();

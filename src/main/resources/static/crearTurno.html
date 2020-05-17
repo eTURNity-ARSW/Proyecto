@@ -5,6 +5,8 @@
 
 
     <script type="text/javascript" src="js/apimock.js"></script>
+    <script type="text/javascript" src="js/apiclient.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>eTURNity</title>
 
@@ -16,9 +18,9 @@
     <!-- Third party plugin CSS-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
     <link rel ="stylesheet" href="css/style.css">
-    <
+
 </head>
-<body>
+<body onload="apimock.loadSelect()">
 
 
 <div class="wrapper fadeInDown">
@@ -32,29 +34,25 @@
 
         <form action="prueba.html" method="get" target="_blank">
             <input type="date" id="date" class="fadeIn first" name="date" placeholder="date">
-            <select class="select-entidad">
+            <select class="select-entidad" id="cEntidad" onchange="apimock.loadCiudad()">
                 <option>Seleccione la entidad</option>
 
             </select>
-            <select class="select-ciudad">
+            <select class="select-ciudad" id="cCiudad" onchange="apimock.loadSede()">
                 <option>Seleccione la ciudad</option>
 
             </select>
-            <select class="select-sede">
+            <select class="select-sede" id="cSede">
                 <option>Seleccione la sede</option>
 
             </select>
-            <select class="select-tipo">
+            <select class="select-tipo" id="cTipo">
                 <option>Seleccione el tipo de turno</option>
                 <option id="Asesoria"> Asesoria </option>
                 <option id="Caja"> Caja</option>
                 <option id="Solicitud"> Solicitud</option>
-
             </select>
-
-
-
-            <a target="_blank" ><input type="button" class="fadeIn fourth" onclick="" value="Pedir Turno"></a>
+            <a target="_blank" ><input type="button" class="fadeIn fourth" onclick="apimock.addTurn()" value="Pedir Turno"></a>
         </form>
 
         <!-- Remind Passowrd -->

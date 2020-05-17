@@ -478,14 +478,39 @@ public class EturnityDB {
         return allSedesEntidad;
     }
     
+    public Sede getSedeByEntidadNameYSedeName(String nombreEntidad, String ciudad, String nombreSede) {
+        e = getEntityByNameS(nombreEntidad);
+        PreparedStatement pstmt = null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            getConnection();
+            c.setAutoCommit(false);
+            String sql = "Select * from sede where nombre = '"+nombreSede+"' and sedesentidadid = '"+ e.getNit()+"' and ciudad = '"+ciudad+"'";
+            pstmt = c.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = pstmt.executeQuery();
+            c.close();
+            if(rs.next()){
+                s = new Sede(rs.getString("nombre"), rs.getString("ciudad"), rs.getString("direccion"), rs.getString("horario"), rs.getString("sedesentidadid"));
+                s.setIdentificador(rs.getString("id"));
+            }
+            pstmt.close();
+            rs.close();
+        } catch (Exception ex) {
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return s;
+    }
+    
+    
     /**
      * Metodo que permite consultar todas las sedes de una entidad por ciudad.    
-     * @param idEntidad Es el id de la entidad.
+     * @param nombreEntidad Es el nombre de la entidad.
      * @param ciudad    Es el la ciudad donde se encuentra la sede
      * @return  Retorna todas las sedes de una entidad por ciudad.
      */
-    public List<Sede> getSedesByEntidadYCiudad(String idEntidad, String ciudad) {
-        String SQL = "SELECT * FROM SEDE WHERE sedesentidadid = '" + idEntidad + "' and ciudad = '"+ ciudad +"'";
+    public List<Sede> getSedesByEntidadYCiudad(String nombreEntidad, String ciudad) {
+        e = getEntityByNameS(nombreEntidad);
+        String SQL = "SELECT * FROM SEDE WHERE sedesentidadid = '" + e.getNit() + "' and ciudad = '"+ ciudad +"'";
         List<Sede> allSedesEntidad = new ArrayList<Sede>();
         try {
             getConnection();
@@ -496,7 +521,6 @@ public class EturnityDB {
                 s = new Sede(rs.getString("nombre"), rs.getString("ciudad"), rs.getString("direccion"), rs.getString("horario"), rs.getString("sedesentidadid"));
                 s.setIdentificador(rs.getString("id"));
                 allSedesEntidad.add(s);
-                s.setTurnos(getTurnosBySede(s.getIdentificador()));  //JD
             }
             pstmt.close();
             rs.close();
@@ -504,6 +528,28 @@ public class EturnityDB {
             Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         return allSedesEntidad;
+    }
+    
+    private Entidad getEntityByNameS(String nombre) {
+        PreparedStatement pstmt = null;
+        e = null;
+        try {
+            Class.forName("org.postgresql.Driver");
+            getConnection();
+            c.setAutoCommit(false);
+            String sql = "Select * from entidad where nombre = ?";
+            pstmt = c.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            pstmt.setString(1, nombre);
+            ResultSet rs = pstmt.executeQuery();
+            c.close();
+            rs.next();
+            e = new Entidad(rs.getString("nit"), rs.getString("nombre"), rs.getString("direccion"), rs.getString("ciudad"), rs.getString("telefono"));
+            pstmt.close();
+            rs.close();
+        } catch (Exception ex) {
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return e;
     }
     
     /**

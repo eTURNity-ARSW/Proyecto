@@ -54,9 +54,20 @@ public class SedeController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/sedes/{entidad}/{ciudad}")
-    public ResponseEntity<?> getSedesByEntidadYCiudad(@PathVariable("entidad") String idEntidad, @PathVariable("ciudad") String ciudad) {
+    public ResponseEntity<?> getSedesByEntidadYCiudad(@PathVariable("entidad") String nombreEntidad, @PathVariable("ciudad") String ciudad) {
         try {
-            String resp = new Gson().toJson(sService.getSedesByEntidadYCiudad(idEntidad, ciudad));
+            String resp = new Gson().toJson(sService.getSedesByEntidadYCiudad(nombreEntidad, ciudad));
+            return new ResponseEntity<>(resp, HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("ERROR", HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, path = "/{nombreEntidad}/{ciudad}/{nombreSede}")
+    public ResponseEntity<?> getSedeByEntidadNameYSedeName(@PathVariable("nombreEntidad") String nombreEntidad,@PathVariable("ciudad") String ciudad, @PathVariable("nombreSede") String nombreSede) {
+        try {
+            String resp = new Gson().toJson(sService.getSedeByEntidadNameYSedeName(nombreEntidad, ciudad, nombreSede));
             return new ResponseEntity<>(resp, HttpStatus.ACCEPTED);
         } catch (Exception ex) {
             Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null, ex);

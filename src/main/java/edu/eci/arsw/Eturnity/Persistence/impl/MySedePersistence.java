@@ -23,9 +23,9 @@ public class MySedePersistence implements SedePersistence {
     }
 
     @Override
-    public List<Sede> getSedesByEntidadYCiudad(String idEntidad, String ciudad) {
+    public List<Sede> getSedesByEntidadYCiudad(String nombreEntidad, String ciudad) {
         EturnityDB db = new EturnityDB();
-        return db.getSedesByEntidadYCiudad(idEntidad, ciudad);
+        return db.getSedesByEntidadYCiudad(nombreEntidad, ciudad);
     }
 
     @Override
@@ -39,6 +39,12 @@ public class MySedePersistence implements SedePersistence {
         EturnityDB db = new EturnityDB();
         db.deleteSede(id);
 
+    }
+
+    @Override
+    public Sede getSedeByEntidadNameYSedeName(String nombreEntidad, String ciudad, String nombreSede){
+        EturnityDB db = new EturnityDB();
+        return db.getSedeByEntidadNameYSedeName(nombreEntidad, ciudad, nombreSede);
     }
 
 }
