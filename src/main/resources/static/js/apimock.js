@@ -1,4 +1,5 @@
 var apiclient = apiclient;
+var stompClient=null;
 var apimock = (function () {
     var _map = function (turns) {
         return mapping = turns.map(function (turn) {
@@ -17,6 +18,18 @@ var apimock = (function () {
     var _mapEntidad=function(entities) {
           return { eNombre:entities.nombre
                     }
+    }
+
+        
+    var connectAndSuscribe=function(){
+        console.info('Connecting to Eturnity...');
+        var socket = new SockJS('/stompendpoint');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({},function(frame){
+            console.log('Connected: '+frame);
+            stompClient.suscribe("/topic/"+localStorage.getItem('ActualEntity'));
+
+        });
     }
 
     var entityMenu=function(entities){
@@ -73,7 +86,9 @@ var apimock = (function () {
     }
 
     var table2 = function () {
+        connectAndSuscribe();
         apiclient.getTurnByEntity(createTable2, localStorage.getItem('ActualEntity'));
+
     }
     var createTable2 = function (turns) {
         turns = _map2(turns);
@@ -342,7 +357,10 @@ var apimock = (function () {
                         var message = ["Registro exitoso", "turno registado"];
                         var next = "login.html";
                         alert(message[1]);
-                    })
+                    }) 
+            var turno = new turno($("#cTipo :selected").text(),document.getElementById("date").value,localStorage.getItem('Actual'),response.data.identificador);
+            stompClient.send("/topic/" + localStorage.getItem('ActualEntity'), {}, JSON.stringify(turno));
+         
         } else {
             alert("error");
         }
@@ -417,8 +435,14 @@ var apimock = (function () {
                     })
         }
     }
-
-
+    class turno{
+        constructor(tipo, fecha,  turnouserid, turnosedeid){
+            this.tipo = tipo;
+            this. fecha = fecha;
+            this. turnouserid = turnouserid;
+            this.turnosedeid = turnosedeid; 
+        }
+    }
     return{
         validate: validate,
         logIn: logIn,
