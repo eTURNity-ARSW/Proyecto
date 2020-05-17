@@ -23,11 +23,13 @@ var apimock = (function () {
         
     var connectAndSuscribe=function(){
         console.info('Connecting to Eturnity...');
-        var socket = new SockJS('/stompendpoint');
+        var socket = new SockJS('/et');
         stompClient = Stomp.over(socket);
         stompClient.connect({},function(frame){
             console.log('Connected: '+frame);
-            stompClient.suscribe("/topic/"+localStorage.getItem('ActualEntity'));
+            console.log(localStorage.getItem('ActualEntity'));
+            stompClient.suscribe('/topic/'+localStorage.getItem('ActualEntity'), function(ws){
+           console.log('holi') })
 
         });
     }

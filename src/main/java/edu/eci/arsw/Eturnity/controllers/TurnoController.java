@@ -23,7 +23,6 @@ import edu.eci.arsw.Eturnity.services.UserServices;
 import java.util.Random;
 import org.bson.types.ObjectId;
 
-import org.hibernate.internal.ExceptionConverterImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
