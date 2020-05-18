@@ -29,18 +29,21 @@
         <!-- Tabs Titles -->
         <h2 class="active"> Registrar Sede </h2>
 
-
+        <div class="fadeIn first">
+        <img src="assets/img/logo.png" id="icon" alt="User Icon" />
+    </div>
 
         <!-- Login Form -->
 
         <form action="prueba.html" method="get" target="_blank">
+
             <input type="text" id="nombre" class="fadeIn second" name="nombre" placeholder="nombre">
             <input type="text" id="ciudad" class="fadeIn second" name="ciudad" placeholder="ciudad">
             <input type="text" id="direccion" class="fadeIn second" name="direccion" placeholder="direccion">
             <input type="text" id="horario" class="fadeIn second" name="horario" placeholder="horario">
             <input type="text" id="nit" class="fadeIn second" name="nit" placeholder="nit">
 
-            <a target="_blank" ><input type="button" class="fadeIn fourth" onclick="" value="Registrar Sede"></a>
+            <a target="_blank" ><input type="button" class="fadeIn fourth" onclick="apimock.addSede();" value="Registrar Sede"></a>
         </form>
 
         <!-- Remind Passowrd -->

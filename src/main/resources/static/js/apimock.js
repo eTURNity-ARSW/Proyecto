@@ -304,7 +304,54 @@ var apimock = (function () {
             alert("error");
         }
     }
+        function addSede() {
+            var empty = false;
 
+            if (document.getElementById("nombre").value === '') {
+                empty = true;
+                alert("Ingrese nombre de la sede");
+            }
+            if (document.getElementById("ciudad").value === '') {
+                empty = true;
+                alert("Ingrese la ciudad");
+            }
+            if (document.getElementById("direccion").value === '') {
+                empty = true;
+                alert("Ingrese la direccion");
+            }
+
+            if (document.getElementById("horario").value === '') {
+                empty = true;
+                alert("Ingrese el horario");
+            }
+
+            if (document.getElementById("nit").value === '') {
+                empty = true;
+                alert("Ingrese el nit de la entidad");
+            }
+
+            if (!empty) {
+                axios.post('/sede', {
+                    "1": {
+                         ciudad: document.getElementById("ciudad").value,
+                         direccion: document.getElementById("direccion").value,
+                         horario: document.getElementById("horario").value,
+                         entidad: document.getElementById("nit").value,
+                         nombre: document.getElementById("nombre").value
+
+
+
+                    }})
+                        .then(function (input) {
+                            console.log(input.data);
+                            var message = ["Registro exitoso", "entidad registado"];
+                            var next = "entidadLogin.html";
+                            alert(message[1]);
+                        })
+            } else {
+                alert("error");
+            }
+        }
     function addUser() {
         var empty = false;
         if (document.getElementById("nombre").value === '') {
@@ -484,7 +531,8 @@ var apimock = (function () {
         logIn: logIn,
         addUser: addUser,
         addEntity: addEntity,
-        logInEntidad: logInEntidad,
+        addSede:addSede,
+        logInEntidad:logInEntidad,
         table: table,
         createTable: createTable,
         table2: table2,

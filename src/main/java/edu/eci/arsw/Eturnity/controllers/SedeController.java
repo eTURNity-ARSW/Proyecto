@@ -100,6 +100,7 @@ public class SedeController {
             //Asignar identifier 
             ObjectId newObjectIdUser = new ObjectId(new Date());
             sd.setIdentificador(newObjectIdUser.toHexString());
+            System.out.println(sd.getIdentificador());
             
             sService.createSede(sd);
             return new ResponseEntity<>(HttpStatus.CREATED);
