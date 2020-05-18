@@ -1,13 +1,12 @@
 var apiclient = apiclient;
-var stompClient=null;
 var apimock = (function () {
     var _map = function (turns) {
         return mapping = turns.map(function (turn) {
             return {
                 nSede:turn.sede.nombre, nEntidad:turn.entidad.nombre,
                 ciudad:turn.sede.ciudad, turno:turn.id, tipo:turn.tipo,
-                modulo:turn.modulo, fecha:turn.fecha, activo:turn.valido 
-            }          
+                modulo:turn.modulo, fecha:turn.fecha, activo:turn.valido
+            }
         }
         )
     }
@@ -20,19 +19,6 @@ var apimock = (function () {
                     }
     }
 
-        
-    var connectAndSuscribe=function(){
-        console.info('Connecting to Eturnity...');
-        var socket = new SockJS('/et');
-        stompClient = Stomp.over(socket);
-        stompClient.connect({},function(frame){
-            console.log('Connected: '+frame);
-            console.log(localStorage.getItem('ActualEntity'));
-            stompClient.subscribe('/topic/'+localStorage.getItem('ActualEntity'), function(ws){
-           console.log('holi') })
-
-        });
-    }
 
     var entityMenu=function(entities){
            entities=_mapEntidad(entities);
@@ -88,7 +74,6 @@ var apimock = (function () {
     }
 
     var table2 = function () {
-        connectAndSuscribe();
         apiclient.getTurnByEntity(createTable2, localStorage.getItem('ActualEntity'));
 
     }
@@ -134,12 +119,52 @@ var apimock = (function () {
         apiclient.getAllEntity(loadSelectEntity);
         //apiclient.getTurnByEntity(createTable2, localStorage.getItem('ActualEntity'));
     }
+        var _map3=function(misede){
+            return mapsede=misede.map(function(lasede){
+                return{
+                    identificador: lasede.identificador, nombre:lasede.nombre, ciudad:lasede.ciudad,
+                    direccion:lasede.direccion, horario:lasede.horario
+                    }
+
+                     })
+
+            }
+
+
+        var createTable3 = function (lassedes) {
+                lassedes = _map3(lassedes);
+                $("#table > tbody").empty();
+                lassedes.map(function (c) {
+                    $("#table > tbody").append(
+                            "<tr> <td>" +
+                            c.identificador +
+                            "</td>" +
+                            "<td>" +
+                            c.nombre +
+                            "</td> " +
+                            "<td>" +
+                            c.ciudad +
+                            "</td> " +
+                            "<td>" +
+                            c.direccion +
+                            "</td> " +
+                            "<td>" +
+                            c.horario +
+                            "</td> " +
+
+                            "</tr>"
+                            )
+                });
+            }
+        var table3 =function(){
+            apiclient.getSedesByEntity(createTable3,localStorage.getItem('ActualEntity'));
+            }
 
     var _mapE = function (entities) {
         return mapping = entities.map(function (entity) {
             return {
                 nombre: entity.nombre
-            }          
+            }
         }
         )
     }
@@ -148,10 +173,10 @@ var apimock = (function () {
         entities = _mapE(entities);
         $("#cEntidad").empty();
         entities.map(function (c) {
-            $("#cEntidad").append(new Option(c.nombre, entities.indexOf(c)));         
+            $("#cEntidad").append(new Option(c.nombre, entities.indexOf(c)));
         });
     }
-    
+
     var loadCiudad = function () {
         document.getElementById("cCiudad").disabled = false;
         apiclient.getTurnByEntity(loadSelectCity,$("#cEntidad :selected").text());
@@ -161,7 +186,7 @@ var apimock = (function () {
         cities = _mapC(entities);
         $("#cCiudad").empty();
         cities.map(function (c) {
-            $("#cCiudad").append(new Option(c.nombre, cities.indexOf(c)));         
+            $("#cCiudad").append(new Option(c.nombre, cities.indexOf(c)));
         });
     }
 
@@ -169,7 +194,7 @@ var apimock = (function () {
         return mapping = city.sedes.map(function (sedes) {
             return {
                 nombre: sedes.ciudad
-            }          
+            }
         }
         )
     }
@@ -184,7 +209,7 @@ var apimock = (function () {
         sedes = _mapS(sedes);
         $("#cSede").empty();
         sedes.map(function (c) {
-            $("#cSede").append(new Option(c.nombre, cities.indexOf(c)));         
+            $("#cSede").append(new Option(c.nombre, cities.indexOf(c)));
         });
     }
 
@@ -192,11 +217,11 @@ var apimock = (function () {
         return mapping = sedes.map(function (sede) {
             return {
                 nombre: sede.nombre
-            }          
+            }
         }
         )
     }
-    
+
     var mockdata = [];
     mockdata["sarahvieda"] =
             {
@@ -346,9 +371,6 @@ var apimock = (function () {
         }
         console.log(document.getElementById("date").value)
         if (!empty) {
-            console.log(localStorage.getItem('Actual'));
-            localStorage.setItem('ActualEntity',$("#cEntidad :selected").text());
-            connectAndSuscribe();
             var response = await axios.get('/sede/'+ $("#cEntidad :selected").text() + '/' + $("#cCiudad :selected").text() + '/' + $("#cSede :selected").text() )
             console.log(localStorage.getItem('Actual'))
             axios.post('/turno/turnocre/', {
@@ -364,15 +386,13 @@ var apimock = (function () {
                         var next = "login.html";
                         alert(message[1]);
                     })
-
             console.log($("#cTipo :selected").text());
             console.log(document.getElementById("date").value);
             console.log(localStorage.getItem('Actual'));
             console.log(response.data.identificador);
-            var turnoWebSocket = new turnoWs($("#cTipo :selected").text(),document.getElementById("date").value,localStorage.getItem('Actual'),response.data.identificador);
+            var turnoWebSocket = new TurnoWs($("#cTipo :selected").text(),document.getElementById("date").value,localStorage.getItem('Actual'),response.data.identificador);
             console.log(turnoWebSocket);
-            console.log(JSON.stringify(turnoWebSocket));
-            stompClient.send("/topic/" + localStorage.getItem('ActualEntity'), {}, JSON.stringify(turnoWebSocket));
+            sendRequest("newTurn",turnoWebSocket);
 
         } else {
             alert("error");
@@ -436,7 +456,7 @@ var apimock = (function () {
 
                         if (input.data["nit"] === document.getElementById("nit").value) {
                             iniciarLocalStorageEntity(document.getElementById("nombre").value);
-                            location.href = "turnoBanco.html";
+                            location.href = "homeBanco.html";
                         } else {
 
                             alert("Incorrecto");
@@ -449,12 +469,12 @@ var apimock = (function () {
                     })
         }
     }
-    class turnoWs{
+    class TurnoWs{
         constructor(tipo, fecha,  turnouserid, turnosedeid){
             this.tipo = tipo;
             this. fecha = fecha;
             this. turnouserid = turnouserid;
-            this.turnosedeid = turnosedeid; 
+            this.turnosedeid = turnosedeid;
         }
     }
     return{
@@ -470,7 +490,9 @@ var apimock = (function () {
         loadSelect: loadSelect,
         loadCiudad: loadCiudad,
         loadSede: loadSede,
-        addTurn: addTurn
+        addTurn: addTurn,
+        table3:table3,
+        createTable3:createTable3
     }
 
 

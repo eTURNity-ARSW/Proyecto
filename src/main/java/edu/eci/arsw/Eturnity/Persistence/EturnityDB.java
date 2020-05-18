@@ -201,8 +201,8 @@ public class EturnityDB {
         }
         return allTurnosUsername;
     }
-    
-    
+
+
     /**
      * Metodo que permite consultar una entidad por su nit
      * @param nit Es el nit de la entidad 
@@ -312,7 +312,7 @@ public class EturnityDB {
                 allTurnosValidos.add(t);
             }
             pstmt.close();
-            
+
         } catch (Exception ex) {
             Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -335,7 +335,7 @@ public class EturnityDB {
             Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * Metodo que permite consultar el ultimo turno entregado por la sede.  
      * @param idSede Es el id de la sede donde se quiere consultar su turno actual.
@@ -450,8 +450,8 @@ public class EturnityDB {
     }
 
     //CONSULTAS SEDE
-    
-    
+
+
     /**
      * Metodo que permite consultar todas las sedes. 
      * @return  Retorna todas las sedes.
@@ -477,7 +477,7 @@ public class EturnityDB {
         }
         return allSedesEntidad;
     }
-    
+
     public Sede getSedeByEntidadNameYSedeName(String nombreEntidad, String ciudad, String nombreSede) {
         e = getEntityByNameS(nombreEntidad);
         PreparedStatement pstmt = null;
@@ -500,8 +500,8 @@ public class EturnityDB {
         }
         return s;
     }
-    
-    
+
+
     /**
      * Metodo que permite consultar todas las sedes de una entidad por ciudad.    
      * @param nombreEntidad Es el nombre de la entidad.
@@ -529,7 +529,7 @@ public class EturnityDB {
         }
         return allSedesEntidad;
     }
-    
+
     private Entidad getEntityByNameS(String nombre) {
         PreparedStatement pstmt = null;
         e = null;
@@ -551,7 +551,7 @@ public class EturnityDB {
         }
         return e;
     }
-    
+
     /**
      * Metodo que permite crear una nueva sede
      * @param sd Es la Sede que se va a agregar a la base de datos.
@@ -621,7 +621,7 @@ public class EturnityDB {
         }
         return s;
     }
-    
+
     public List<Sede> getAllSedesByEntidad(String identificador) {
         String SQL = "SELECT * FROM SEDE WHERE sedesentidadid = ?";
         List<Sede> allSedesEntidad = new ArrayList<Sede>();
@@ -638,6 +638,28 @@ public class EturnityDB {
                 s.setTurnos(getTurnosBySede(s.getIdentificador()));  //JD
             }
             e.setSedes(allSedesEntidad);
+            pstmt.close();
+            rs.close();
+        } catch (Exception ex) {
+            Logger.getLogger(EturnityDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return allSedesEntidad;
+    }
+
+    public List<Sede> getMySedesByEntidad(String nombreEntidad) {
+        e = getEntityByNameS(nombreEntidad);
+        String SQL = "SELECT * FROM SEDE WHERE sedesentidadid = '" + e.getNit() + "'";
+        List<Sede> allSedesEntidad = new ArrayList<Sede>();
+        try {
+            getConnection();
+            PreparedStatement pstmt = c.prepareStatement(SQL, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = pstmt.executeQuery();
+            c.close();
+            while (rs.next()) {
+                s = new Sede(rs.getString("nombre"), rs.getString("ciudad"), rs.getString("direccion"), rs.getString("horario"), rs.getString("sedesentidadid"));
+                s.setIdentificador(rs.getString("id"));
+                allSedesEntidad.add(s);
+            }
             pstmt.close();
             rs.close();
         } catch (Exception ex) {

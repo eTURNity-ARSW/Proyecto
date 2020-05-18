@@ -53,6 +53,18 @@ public class SedeController {
         }
     }
 
+
+    @RequestMapping(method = RequestMethod.GET, path = "/sedes/misedes/{entidad}")
+    public ResponseEntity<?> getMySedesByEntidad(@PathVariable("entidad") String nombreEntidad) {
+        try {
+            String resp = new Gson().toJson(sService.getMySedesByEntidad(nombreEntidad));
+            return new ResponseEntity<>(resp, HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(SedeController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("ERROR", HttpStatus.NOT_FOUND);
+        }
+    }
+
     @RequestMapping(method = RequestMethod.GET, path = "/sedes/{entidad}/{ciudad}")
     public ResponseEntity<?> getSedesByEntidadYCiudad(@PathVariable("entidad") String nombreEntidad, @PathVariable("ciudad") String ciudad) {
         try {

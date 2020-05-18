@@ -25,10 +25,19 @@ return {
                 callback(data)}
             });
         },
+          getSedesByEntity:function(callback,entityName){
+                    jQuery.get({
+                        dataType: "json",
+                        url: "/sede/sedes/misedes/"+entityName ,
+                        success:function(data){
+                        callback(data)}
+                    });
+                },
+
         getTurnByEntity:function(callback,entityuser){
             jQuery.get({
                 dataType: "json",
-                url: "/entidades/entidad/" +entityuser ,
+                url: "/entidades/entidad/"+entityuser ,
                 success:function(data){
                 callback(data)}
             });

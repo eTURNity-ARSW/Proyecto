@@ -16,6 +16,10 @@ public class SedeServices {
         return sp.getAllSedes();
     }
 
+    public List<Sede> getMySedesByEntidad (String nombreEntidad){
+        return  sp.getMySedesByEntidad(nombreEntidad);
+    }
+
     public List<Sede> getSedesByEntidad(String idEntidad) {
         return sp.getSedesByEntidad(idEntidad);
     }

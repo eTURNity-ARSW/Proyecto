@@ -17,6 +17,12 @@ public class MySedePersistence implements SedePersistence {
     }
 
     @Override
+    public List<Sede> getMySedesByEntidad(String nombreEntidad) {
+        EturnityDB db =new EturnityDB();
+        return db.getMySedesByEntidad(nombreEntidad);
+    }
+
+    @Override
     public List<Sede> getSedesByEntidad(String idEntidad) {
         EturnityDB db = new EturnityDB();
         return db.getAllSedesByEntidad(idEntidad);

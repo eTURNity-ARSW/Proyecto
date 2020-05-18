@@ -8,6 +8,8 @@ public interface SedePersistence {
 
     public List<Sede> getAllSedes();
 
+    public List<Sede> getMySedesByEntidad(String nombreEntidad);
+
     public List<Sede> getSedesByEntidad(String idEntidad);
 
     public List<Sede> getSedesByEntidadYCiudad(String nombreEntidad, String ciudad);
