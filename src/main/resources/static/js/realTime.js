@@ -32,7 +32,7 @@ function showMessage(message) {
 
     console.log('Mensaje guardado ');
     console.log(message);
-    aleet("Se ha creado un nuevo turno")
+    alert("Se ha creado un nuevo turno")
     apimock.table2();
 }
 
