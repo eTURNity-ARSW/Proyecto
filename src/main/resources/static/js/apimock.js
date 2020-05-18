@@ -127,7 +127,7 @@ var apimock = (function () {
     }
 
     var loadSelect = function () {
-        connectAndSuscribe();
+        console.log(localStorage.getItem('Actual'));
         document.getElementById("cCiudad").disabled = true;
         document.getElementById("cSede").disabled = true;
         console.log("Entre")
@@ -346,6 +346,9 @@ var apimock = (function () {
         }
         console.log(document.getElementById("date").value)
         if (!empty) {
+            console.log(localStorage.getItem('Actual'));
+            localStorage.setItem('ActualEntity',$("#cEntidad :selected").text());
+            connectAndSuscribe();
             var response = await axios.get('/sede/'+ $("#cEntidad :selected").text() + '/' + $("#cCiudad :selected").text() + '/' + $("#cSede :selected").text() )
             console.log(localStorage.getItem('Actual'))
             axios.post('/turno/turnocre/', {
@@ -370,7 +373,7 @@ var apimock = (function () {
             console.log(turnoWebSocket);
             console.log(JSON.stringify(turnoWebSocket));
             stompClient.send("/topic/" + localStorage.getItem('ActualEntity'), {}, JSON.stringify(turnoWebSocket));
-         
+
         } else {
             alert("error");
         }
@@ -401,6 +404,7 @@ var apimock = (function () {
                     .then(function (input) {
                         if (input.data["contrasena"] === document.getElementById("password").value) {
                             iniciarLocalStorageUser(document.getElementById("login").value);
+                            console.log(localStorage.getItem('Actual'));
                             location.href = "crearTurno.html";
                         } else {
 
