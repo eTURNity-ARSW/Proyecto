@@ -407,6 +407,8 @@ var apimock = (function () {
         localStorage.setItem('ActualEntity', nombre);
     }
 
+
+
     function logIn() {
         var vacio = false;
         if (document.getElementById("login").value === '') {
