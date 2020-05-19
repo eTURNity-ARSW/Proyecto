@@ -66,14 +66,9 @@ Para la organización hemos decidido los siguientes:
 
 ![image](https://user-images.githubusercontent.com/43153078/80939627-dec6a480-8da2-11ea-874a-15b0490b2f2f.png)
 
-
-
-
-
 ## Diagrama de Base de Datos 
 
-![Captura](https://user-images.githubusercontent.com/48154086/79061261-e8516680-7c53-11ea-95aa-9041e8ec2bb1.PNG)
-
+![BASE DE DATOS](https://user-images.githubusercontent.com/48154086/82384180-eae27100-99f4-11ea-8453-211fd4c78375.PNG)
 
 
 ## Backlog
