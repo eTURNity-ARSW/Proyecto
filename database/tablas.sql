@@ -7,28 +7,17 @@ CREATE TABLE usuario (
 );
 
 CREATE TABLE turno (
-	identifier varchar NOT NULL,
+	identifier varchar(50) NOT NULL,
 	tipo varchar NOT NULL,
 	valido bool NOT NULL,
 	fecha varchar NOT NULL,
 	turnouserid varchar NOT NULL,
 	turnosedeid varchar NOT NULL,
 	modulo varchar NOT NULL,
+	id int2 NOT NULL,
 	CONSTRAINT turno_pkey PRIMARY KEY (identifier)
 );
 
-CREATE TABLE tiposervicio (
-	sede varchar NOT NULL,
-	servicio varchar NOT NULL,
-	CONSTRAINT pk_tipo_servicio PRIMARY KEY (sede, servicio)
-);
-
-CREATE TABLE servicio (
-	typeservicio varchar NOT NULL,
-	description varchar NOT NULL,
-	serviciosedeid varchar NOT NULL,
-	CONSTRAINT servicio_pk PRIMARY KEY (typeservicio)
-);
 
 CREATE TABLE sede (
 	id varchar NOT NULL,
@@ -36,11 +25,13 @@ CREATE TABLE sede (
 	direccion varchar NOT NULL,
 	horario varchar NOT NULL,
 	sedesentidadid varchar NOT NULL,
+	nombre varchar NOT NULL,
 	CONSTRAINT sede_pk PRIMARY KEY (id)
 );
 
 
 CREATE TABLE entidad (
+	
 	nit varchar NOT NULL,
 	nombre varchar NOT NULL,
 	direccion varchar NOT NULL,
