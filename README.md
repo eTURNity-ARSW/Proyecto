@@ -15,6 +15,7 @@ Nuestra aplicación web busca resolver la problemática de los largos tiempos de
 Para asegurarnos de que el usuario se presente en el momento del turno, lo mantendremos informado respecto a tiempos de estimación y generando avisos o recordatorios en momentos que se consideren necesarios antes de que el usuario sea atendido. 
 
 ## Despliegue 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/58af5118463a4aa4916e547f166cd945)](https://app.codacy.com/gh/eTURNity-ARSW/Proyecto?utm_source=github.com&utm_medium=referral&utm_content=eTURNity-ARSW/Proyecto&utm_campaign=Badge_Grade_Dashboard)
 [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://eturnity.herokuapp.com)
 
 [![CircleCI](https://circleci.com/gh/julianagarzond/AREP-LAB4.svg?style=svg)](https://circleci.com/gh/julianagarzond/AREP-LAB4)
