@@ -4,6 +4,7 @@ import edu.eci.arsw.Eturnity.Persistence.TurnoException;
 import edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
 import edu.eci.arsw.Eturnity.Persistence.UserException;
 import edu.eci.arsw.Eturnity.Persistence.UserPersistence;
+import edu.eci.arsw.Eturnity.cache.UsuarioCache;
 import edu.eci.arsw.Eturnity.model.Entidad;
 import edu.eci.arsw.Eturnity.model.Turno;
 import edu.eci.arsw.Eturnity.model.Usuario;
@@ -20,6 +21,8 @@ public class UserServices {
     private UserPersistence usp;
     @Autowired
     private TurnoPersistence tsp;
+    @Autowired
+    private UsuarioCache usc;
 
     public boolean saveUser(Usuario user) throws UserException {
         return usp.saveUser(user);
@@ -27,7 +30,10 @@ public class UserServices {
     public Usuario getUser(String username) throws UserException {
         System.out.println("Entre a try");
         System.out.println("username"+username);
-        return usp.getUsuarioByUsername(username);
+        if (!usc.findUser(username)){
+            usc.addUserCache(usp.getUsuarioByUsername(username));
+        }
+        return usc.getCacheUser(username);
     }
 
     public List<Usuario> getAllUsers() throws UserException {

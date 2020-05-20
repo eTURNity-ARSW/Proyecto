@@ -4,6 +4,7 @@ import edu.eci.arsw.Eturnity.Persistence.EntidadException;
 import edu.eci.arsw.Eturnity.Persistence.EntidadPersistence;
 import edu.eci.arsw.Eturnity.Persistence.TurnoException;
 import edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
+import edu.eci.arsw.Eturnity.cache.TurnoCache;
 import edu.eci.arsw.Eturnity.model.Entidad;
 import edu.eci.arsw.Eturnity.model.Sede;
 import edu.eci.arsw.Eturnity.model.Servicio;
@@ -21,10 +22,13 @@ public class EntidadServices {
     private EntidadPersistence esp;
     @Autowired
     private TurnoPersistence tsp;
+    @Autowired
+    private TurnoCache tc;
 
     
 
     public Entidad getEnterprise(String nombre) throws EntidadException {
+
         return esp.getEnterprise(nombre);
 
     }

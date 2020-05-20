@@ -2,6 +2,7 @@ package edu.eci.arsw.Eturnity.services;
 
 import edu.eci.arsw.Eturnity.Persistence.TurnoException;
 import edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
+import edu.eci.arsw.Eturnity.cache.TurnoCache;
 import edu.eci.arsw.Eturnity.model.Turno;
 //import edu.eci.arsw.Eturnity.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ public class TurnoServices {
 
     @Autowired
     private TurnoPersistence tp;
+    @Autowired
+    private TurnoCache tc;
 
     public List<Turno> getTurnosByUsername(String user) {
         return tp.getTurnosByUsername(user);
@@ -23,6 +26,7 @@ public class TurnoServices {
 
     public List<Turno> getTurnosBySede(String sede) {
         return tp.getTurnosBySede(sede);
+
     }
 
     public void createTurno(Turno t) {
