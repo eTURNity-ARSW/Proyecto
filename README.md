@@ -42,8 +42,7 @@ Para asegurarnos de que el usuario se presente en el momento del turno, lo mante
 <img width="489" alt="Login Enterprise" src="https://user-images.githubusercontent.com/49318314/75055605-545ced00-54a3-11ea-8a13-743e24248a5e.png">
 
 Como historias de Usuario deseamos tomar a los clientes de los bancos y los bancos mismos como parte de nuestro segmento de clientes, de esta manera podremos ofrecer un mejor servicio a los usuarios de la aplicación.
-### Usuario
-Para el usuario de la app hemos pensado en los siguientes casos de uso:
+
 
 ![Casos Usuario](https://user-images.githubusercontent.com/49318314/75055597-5030cf80-54a3-11ea-81c0-0bc95fef9ca4.png)
 ### Empresa
@@ -59,6 +58,16 @@ Para la organización hemos decidido los siguientes:
 ## Diagrama Clases
 
 ![diagramaclases](https://user-images.githubusercontent.com/48154086/82404197-45e08c00-9a26-11ea-92a3-fc1dc3bcb53f.PNG)
+
+## Diagrama Casos de Uso 
+
+El usuario tiene los siguientes casos de uso:
+
+![casosusuario](https://user-images.githubusercontent.com/48154086/82404470-01a1bb80-9a27-11ea-9cde-aff802ed27a5.PNG)
+
+La entidad tiene los siguientes casos de uso:
+
+
 
 ## Diagrama de Componentes
 
