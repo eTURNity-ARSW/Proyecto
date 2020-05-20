@@ -3,6 +3,7 @@ package edu.eci.arsw.Eturnity.services;
 import edu.eci.arsw.Eturnity.Persistence.EntidadPersistence;
 
 import edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
+import edu.eci.arsw.Eturnity.cache.EntidadCache;
 import edu.eci.arsw.Eturnity.cache.TurnoCache;
 import edu.eci.arsw.Eturnity.exceptions.EntidadException;
 import edu.eci.arsw.Eturnity.model.Entidad;
@@ -23,12 +24,17 @@ public class EntidadServices {
     private TurnoPersistence tsp;
     @Autowired
     private TurnoCache tc;
+    @Autowired
+    private EntidadCache ec;
 
     
 
     public Entidad getEnterprise(String nombre) throws EntidadException {
+        if (!ec.findEntity(nombre)){
+            ec.addEntityCache(esp.getEnterprise(nombre));
+        }
 
-        return esp.getEnterprise(nombre);
+        return ec.getCacheEntity(nombre);
 
     }
     public List<Sede> getOfficeByEnterprise(String nit) throws EntidadException {
