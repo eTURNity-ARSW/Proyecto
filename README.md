@@ -50,13 +50,15 @@ Para el usuario de la app hemos pensado en los siguientes casos de uso:
 Para la organización hemos decidido los siguientes:
 ![Organizacion](https://user-images.githubusercontent.com/49318314/75055607-54f58380-54a3-11ea-824c-4aa5e91e9a08.png)
 
-### Diagramas
+## Diagramas
 
 ## Diagrama Entidad-Relación
 
 ![diagrama entidad-relacion](https://user-images.githubusercontent.com/48154086/82403772-44fb2a80-9a25-11ea-8a68-e64eaa1ef71d.PNG)
 
-![Diagrama E_R BD Extendido](https://user-images.githubusercontent.com/49318314/75055599-5161fc80-54a3-11ea-9650-97bb46c032ae.png)
+## Diagrama Clases
+
+![diagramaclases](https://user-images.githubusercontent.com/48154086/82404197-45e08c00-9a26-11ea-92a3-fc1dc3bcb53f.PNG)
 
 ## Diagrama de Componentes
 
