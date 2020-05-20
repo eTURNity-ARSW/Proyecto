@@ -34,8 +34,20 @@ return {
                     });
                 },
 
+         deleteTurn :function(callback,username,turn){
+                           jQuery.remove({
+
+                               dataType: "json",
+                               url: "/turno/turnodeleted/"+username+"/"+turn,
+                               success:function(data){
+                               callback(data)
+                               console.log("/turno/turnodeleted/"+username+"/"+turn);}
+                           });
+             },
+
         getTurnByEntity:function(callback,entityuser){
             jQuery.get({
+
                 dataType: "json",
                 url: "/entidades/entidad/"+entityuser ,
                 success:function(data){

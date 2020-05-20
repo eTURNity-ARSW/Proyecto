@@ -4,7 +4,7 @@ var apimock = (function () {
         return mapping = turns.map(function (turn) {
             return {
                 nSede:turn.sede.nombre, nEntidad:turn.entidad.nombre,
-                ciudad:turn.sede.ciudad, turno:turn.id, tipo:turn.tipo,
+                ciudad:turn.sede.ciudad,identifier:turn.identifier, turno:turn.id, tipo:turn.tipo,
                 modulo:turn.modulo, fecha:turn.fecha, activo:turn.valido
             }
         }
@@ -30,6 +30,9 @@ var apimock = (function () {
         turns.map(function (c) {
             $("#table > tbody").append(
                     "<tr> <td>" +
+                    c.identifier +
+                    "</td>"+
+                    "<td>" +
                     c.nEntidad +
                     "</td>" +
                     "<td>" +
@@ -53,10 +56,22 @@ var apimock = (function () {
                     "<td>" +
                     c.activo +
                     "</td> " +
+                     "<td ><button onclick='apimock.deleteTurn("+ c.identifier +")'></button></td>"
+                     +
+
                     "</tr>"
+
                     )
         });
     }
+
+    var deleteTurn= function(idturn){
+
+        console.log(idturn);
+        axios.delete('/turno/turnodeleted/'+ localStorage.getItem('Actual') + '/' + idturn);
+        }
+
+
 
     var _map2 = function (entidad) {
         var ciudad1 = null;
@@ -542,7 +557,8 @@ var apimock = (function () {
         loadSede: loadSede,
         addTurn: addTurn,
         table3:table3,
-        createTable3:createTable3
+        createTable3:createTable3,
+        deleteTurn:deleteTurn
     }
 
 
