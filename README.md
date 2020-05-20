@@ -34,6 +34,8 @@ Para asegurarnos de que el usuario se presente en el momento del turno, lo mante
   ![proyecto4](https://user-images.githubusercontent.com/43153078/74982683-9550f500-5402-11ea-9b06-f15cb1361528.PNG)
 
   ![proyecto5](https://user-images.githubusercontent.com/43153078/74982684-9550f500-5402-11ea-81af-b8e9e4f0ee00.PNG)
+  
+  
 ### Servicios de la empresa
 <img width="494" alt="eTURNity" src="https://user-images.githubusercontent.com/49318314/75055601-52932980-54a3-11ea-945d-b38910d55d6b.png">
 
@@ -41,13 +43,7 @@ Para asegurarnos de que el usuario se presente en el momento del turno, lo mante
 
 <img width="489" alt="Login Enterprise" src="https://user-images.githubusercontent.com/49318314/75055605-545ced00-54a3-11ea-8a13-743e24248a5e.png">
 
-Como historias de Usuario deseamos tomar a los clientes de los bancos y los bancos mismos como parte de nuestro segmento de clientes, de esta manera podremos ofrecer un mejor servicio a los usuarios de la aplicación.
 
-
-![Casos Usuario](https://user-images.githubusercontent.com/49318314/75055597-5030cf80-54a3-11ea-81c0-0bc95fef9ca4.png)
-### Empresa
-Para la organización hemos decidido los siguientes:
-![Organizacion](https://user-images.githubusercontent.com/49318314/75055607-54f58380-54a3-11ea-824c-4aa5e91e9a08.png)
 
 ## Diagramas
 
@@ -61,11 +57,15 @@ Para la organización hemos decidido los siguientes:
 
 ## Diagrama Casos de Uso 
 
+Como historias de Usuario deseamos tomar a los clientes de los bancos y los bancos mismos como parte de nuestro segmento de clientes, de esta manera podremos ofrecer un mejor servicio a los usuarios de la aplicación.
+
 El usuario tiene los siguientes casos de uso:
 
 ![casosusuario](https://user-images.githubusercontent.com/48154086/82404470-01a1bb80-9a27-11ea-9cde-aff802ed27a5.PNG)
 
 La entidad tiene los siguientes casos de uso:
+
+![casosentidad](https://user-images.githubusercontent.com/48154086/82404879-04e97700-9a28-11ea-8df3-5509b6bfbfd5.PNG)
 
 
 
