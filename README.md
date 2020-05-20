@@ -75,18 +75,13 @@ La entidad tiene los siguientes casos de uso:
 
 ## Diagrama de Despliegue
 
-![image](https://user-images.githubusercontent.com/43153078/80939627-dec6a480-8da2-11ea-874a-15b0490b2f2f.png)
+![diagramadespligue](https://user-images.githubusercontent.com/48154086/82413507-1720e080-9a3b-11ea-9462-a03c1c7ba769.PNG)
+
 
 ## Diagrama de Base de Datos 
 
 ![BASE DE DATOS](https://user-images.githubusercontent.com/48154086/82384180-eae27100-99f4-11ea-8453-211fd4c78375.PNG)
 
-
-## Backlog
-
-La tareas que se realizaran a lo largo del proyecto, se presentan a continuación por medio de Taiga. 
-
-https://tree.taiga.io/project/julianagarzond-eturnity/backlog
 
 ## Heroku 
 
