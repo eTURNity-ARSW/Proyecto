@@ -28,11 +28,9 @@ var apimock = (function () {
         turns = _map(turns);
         $("#table > tbody").empty();
         turns.map(function (c) {
+            var idturno = '"' + String(c.identifier) + '"';
             $("#table > tbody").append(
                     "<tr> <td>" +
-                    c.identifier +
-                    "</td>"+
-                    "<td>" +
                     c.nEntidad +
                     "</td>" +
                     "<td>" +
@@ -56,9 +54,8 @@ var apimock = (function () {
                     "<td>" +
                     c.activo +
                     "</td> " +
-                     "<td ><button onclick='apimock.deleteTurn("+ c.identifier +")'></button></td>"
+                     "<td ><button onclick='apimock.deleteTurn("+ idturno +")'>cancelar </button></td>"
                      +
-
                     "</tr>"
 
                     )
@@ -469,6 +466,10 @@ var apimock = (function () {
         localStorage.setItem('ActualEntity', nombre);
     }
 
+    function cerrarSesion(){
+        localStorage.clear();
+    }
+
 
 
     function logIn() {
@@ -489,7 +490,7 @@ var apimock = (function () {
                         if (input.data["contrasena"] === document.getElementById("password").value) {
                             iniciarLocalStorageUser(document.getElementById("login").value);
                             console.log(localStorage.getItem('Actual'));
-                            location.href = "crearTurno.html";
+                            location.href = "home.html";
                         } else {
 
                             alert("Incorrecto");
@@ -558,7 +559,8 @@ var apimock = (function () {
         addTurn: addTurn,
         table3:table3,
         createTable3:createTable3,
-        deleteTurn:deleteTurn
+        deleteTurn:deleteTurn,
+        cerrarSesion:cerrarSesion
     }
 
 
