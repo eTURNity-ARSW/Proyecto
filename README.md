@@ -68,10 +68,9 @@ La entidad tiene los siguientes casos de uso:
 ![casosentidad](https://user-images.githubusercontent.com/48154086/82404879-04e97700-9a28-11ea-8df3-5509b6bfbfd5.PNG)
 
 
-
 ## Diagrama de Componentes
 
-![image](https://user-images.githubusercontent.com/43153078/81284914-5f480800-9024-11ea-8a03-0c22bec89dfa.png)
+![diagrama de componentes](https://user-images.githubusercontent.com/48154086/82412043-83e6ab80-9a38-11ea-889c-9532b146f559.PNG)
 
 
 ## Diagrama de Despliegue
