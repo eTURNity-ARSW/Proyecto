@@ -52,8 +52,9 @@ Para la organización hemos decidido los siguientes:
 
 ### Diagramas
 
+## Diagrama Entidad-Relación
 
-![Diagrama E_R BD](https://user-images.githubusercontent.com/49318314/75055600-51fa9300-54a3-11ea-96de-2509ce1252e1.png)
+![diagrama entidad-relacion](https://user-images.githubusercontent.com/48154086/82403772-44fb2a80-9a25-11ea-8a68-e64eaa1ef71d.PNG)
 
 ![Diagrama E_R BD Extendido](https://user-images.githubusercontent.com/49318314/75055599-5161fc80-54a3-11ea-9650-97bb46c032ae.png)
 
