@@ -1,4 +1,4 @@
-package edu.eci.arsw.Eturnity.Persistence;
+package edu.eci.arsw.Eturnity.exceptions;
 
 public class EntidadException extends Exception {
     public static final String INVALID_NIT = "No existe la empresa solicitada";

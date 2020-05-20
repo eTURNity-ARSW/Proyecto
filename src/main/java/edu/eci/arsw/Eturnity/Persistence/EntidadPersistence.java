@@ -1,5 +1,6 @@
 package edu.eci.arsw.Eturnity.Persistence;
 
+import edu.eci.arsw.Eturnity.exceptions.EntidadException;
 import edu.eci.arsw.Eturnity.model.Entidad;
 
 import java.util.List;

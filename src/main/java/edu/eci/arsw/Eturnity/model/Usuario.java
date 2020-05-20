@@ -1,7 +1,5 @@
 package edu.eci.arsw.Eturnity.model;
 
-
-import edu.eci.arsw.Eturnity.Persistence.UserException;
 import org.springframework.data.annotation.Id;
 
 import java.util.List;

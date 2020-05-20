@@ -1,8 +1,8 @@
 package edu.eci.arsw.Eturnity.Persistence.impl;
 
 import edu.eci.arsw.Eturnity.Persistence.EturnityDB;
-import edu.eci.arsw.Eturnity.Persistence.UserException;
 import edu.eci.arsw.Eturnity.Persistence.UserPersistence;
+import edu.eci.arsw.Eturnity.exceptions.UserException;
 import edu.eci.arsw.Eturnity.model.Turno;
 import edu.eci.arsw.Eturnity.model.Usuario;
 

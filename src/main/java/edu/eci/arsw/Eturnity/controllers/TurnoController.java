@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.lang.reflect.Type;
 import com.google.gson.reflect.TypeToken;
 import java.util.Map;
-import edu.eci.arsw.Eturnity.Persistence.TurnoException;
 import edu.eci.arsw.Eturnity.model.Turno;
 import edu.eci.arsw.Eturnity.model.Usuario;
 import edu.eci.arsw.Eturnity.services.TurnoServices;

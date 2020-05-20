@@ -1,5 +1,6 @@
 package edu.eci.arsw.Eturnity.Persistence;
 
+import edu.eci.arsw.Eturnity.exceptions.UserException;
 import edu.eci.arsw.Eturnity.model.Usuario;
 
 

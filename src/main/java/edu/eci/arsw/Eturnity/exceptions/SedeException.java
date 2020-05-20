@@ -1,4 +1,4 @@
-package edu.eci.arsw.Eturnity.Persistence;
+package edu.eci.arsw.Eturnity.exceptions;
 
 public class SedeException extends Exception {
     public static final String INVALID_IDENTIFIER = "No existe la sede solicitada";

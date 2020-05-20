@@ -1,8 +1,6 @@
 package edu.eci.arsw.Eturnity.Persistence.impl;
 
 import edu.eci.arsw.Eturnity.Persistence.EturnityDB;
-import edu.eci.arsw.Eturnity.Persistence.TurnoException;
-import static edu.eci.arsw.Eturnity.Persistence.TurnoException.INVALID;
 import edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
 import edu.eci.arsw.Eturnity.model.Turno;
 

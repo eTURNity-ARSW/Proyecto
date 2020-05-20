@@ -1,7 +1,6 @@
 package edu.eci.arsw.Eturnity.Persistence.impl;
 
 import edu.eci.arsw.Eturnity.Persistence.EturnityDB;
-import edu.eci.arsw.Eturnity.Persistence.SedeException;
 import edu.eci.arsw.Eturnity.Persistence.SedePersistence;
 import edu.eci.arsw.Eturnity.model.Sede;
 import java.util.List;

@@ -1,4 +1,4 @@
-package edu.eci.arsw.Eturnity.Persistence;
+package edu.eci.arsw.Eturnity.exceptions;
 
 
 public class TurnoException extends Exception {

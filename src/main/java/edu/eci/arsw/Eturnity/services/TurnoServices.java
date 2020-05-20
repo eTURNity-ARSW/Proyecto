@@ -1,6 +1,5 @@
 package edu.eci.arsw.Eturnity.services;
 
-import edu.eci.arsw.Eturnity.Persistence.TurnoException;
 import edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
 import edu.eci.arsw.Eturnity.cache.TurnoCache;
 import edu.eci.arsw.Eturnity.model.Turno;

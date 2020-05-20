@@ -1,10 +1,9 @@
 package edu.eci.arsw.Eturnity.services;
 
-import edu.eci.arsw.Eturnity.Persistence.TurnoException;
 import edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
-import edu.eci.arsw.Eturnity.Persistence.UserException;
 import edu.eci.arsw.Eturnity.Persistence.UserPersistence;
 import edu.eci.arsw.Eturnity.cache.UsuarioCache;
+import edu.eci.arsw.Eturnity.exceptions.UserException;
 import edu.eci.arsw.Eturnity.model.Entidad;
 import edu.eci.arsw.Eturnity.model.Turno;
 import edu.eci.arsw.Eturnity.model.Usuario;

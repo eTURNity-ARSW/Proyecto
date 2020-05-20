@@ -1,13 +1,12 @@
 package edu.eci.arsw.Eturnity.services;
 
-import edu.eci.arsw.Eturnity.Persistence.EntidadException;
 import edu.eci.arsw.Eturnity.Persistence.EntidadPersistence;
-import edu.eci.arsw.Eturnity.Persistence.TurnoException;
+
 import edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
 import edu.eci.arsw.Eturnity.cache.TurnoCache;
+import edu.eci.arsw.Eturnity.exceptions.EntidadException;
 import edu.eci.arsw.Eturnity.model.Entidad;
 import edu.eci.arsw.Eturnity.model.Sede;
-import edu.eci.arsw.Eturnity.model.Servicio;
 import edu.eci.arsw.Eturnity.model.Turno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,17 +38,7 @@ public class EntidadServices {
 
     }
 
-    public List<Servicio> getServicesByEnterprise(String nit) throws EntidadException {
 
-        ArrayList<Servicio> servicios = new ArrayList<>();
-        for (Sede x : esp.getEnterprise(nit).getSedes()) {
-            for (Servicio z: x.getServicios()){
-                if(!servicios.contains(z)) servicios.add(z);
-            }
-        }
-        return servicios;
-
-    }
     public List<Entidad> getEnterpriseByCity(String city) throws EntidadException {
 
         return esp.getEnterpriseByCity(city);

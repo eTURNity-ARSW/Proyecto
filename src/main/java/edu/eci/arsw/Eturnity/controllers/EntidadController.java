@@ -12,11 +12,10 @@ import javax.xml.ws.Response;
 import java.lang.reflect.Type;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.Gson;
-import edu.eci.arsw.Eturnity.Persistence.EntidadException;
-import edu.eci.arsw.Eturnity.Persistence.TurnoException;
+
+import edu.eci.arsw.Eturnity.exceptions.EntidadException;
 import edu.eci.arsw.Eturnity.model.Entidad;
 import edu.eci.arsw.Eturnity.model.Sede;
-import edu.eci.arsw.Eturnity.model.Servicio;
 import edu.eci.arsw.Eturnity.model.Turno;
 import edu.eci.arsw.Eturnity.services.EntidadServices;
 import org.springframework.beans.factory.annotation.Autowired;

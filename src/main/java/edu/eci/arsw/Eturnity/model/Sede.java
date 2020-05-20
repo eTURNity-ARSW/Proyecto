@@ -14,7 +14,6 @@ public class Sede {
     private String ciudad;
     private String direccion;
     private String horario;
-    private ArrayList<Servicio> servicios;
     private String entidad;
     private List turnos;
 
@@ -28,13 +27,7 @@ public class Sede {
         this.entidad = entidad;
     }
 
-    public boolean addService(Servicio s){
-        return servicios.add(s);
-    }
-
-    public boolean removeService(Servicio s){
-        return servicios.remove(s);
-    }
+    
     public String getIdentificador() {
         return identificador;
     }
@@ -67,13 +60,7 @@ public class Sede {
         this.horario = horario;
     }
 
-    public ArrayList<Servicio> getServicios() {
-        return servicios;
-    }
-
-    public void setServicios(ArrayList<Servicio> servicios) {
-        this.servicios = servicios;
-    }
+    
 
     public String getEntidad() {
         return entidad;

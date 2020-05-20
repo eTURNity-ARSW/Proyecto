@@ -1,4 +1,4 @@
-package edu.eci.arsw.Eturnity.Persistence;
+package edu.eci.arsw.Eturnity.exceptions;
 
 public class UserException extends Exception {
     public static String USUARIO_REGISTRADO ="El usuario ya existe";

@@ -20,8 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import edu.eci.arsw.Eturnity.Persistence.UserException;
+import edu.eci.arsw.Eturnity.exceptions.UserException;
 import edu.eci.arsw.Eturnity.model.Usuario;
 import edu.eci.arsw.Eturnity.services.UserServices;
 
