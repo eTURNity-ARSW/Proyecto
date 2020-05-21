@@ -89,6 +89,10 @@ La entidad tiene los siguientes casos de uso:
 
 ## Rendimiento 
 
+Para medir el rendimiento se hizo uso de una herramienta llamada "Jmeter" la cual permite realizar peticiones de manera concurrente al recurso que se le asigne, en este caso tomamos 1000 hilos y realizamos las consultas a la información que contienen las entidades como sus turnos,sedes e información y el resultado de la ejecución es que al enviar 1000 peticiones hay un porcentaje de error de aproximadamente 9,4% lo cual quiere decir que de 1000 peticiones aproximadamente 90 no responden.
+
+En el siguiente video queda registrada la prueba realizada
+
 [![Watch the video](https://img.youtube.com/vi/7FnxyIx0OgM/maxresdefault.jpg)](https://www.youtube.com/watch?v=7FnxyIx0OgM)
 
 
