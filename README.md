@@ -89,7 +89,7 @@ La entidad tiene los siguientes casos de uso:
 
 ## Rendimiento 
 
-[![Watch the video](https://img.youtube.com/vi/7FnxyIx0OgM&feature=youtu.be/maxresdefault.jpg)](https://youtu.be/7FnxyIx0OgM&feature=youtu.be)
+[![Watch the video](https://img.youtube.com/vi/7FnxyIx0OgM/maxresdefault.jpg)](https://www.youtube.com/watch?v=7FnxyIx0OgM)
 
 
 ## Heroku 
