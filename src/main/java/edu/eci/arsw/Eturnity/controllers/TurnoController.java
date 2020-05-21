@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.lang.reflect.Type;
 import com.google.gson.reflect.TypeToken;
 import java.util.Map;
+
+import edu.eci.arsw.Eturnity.exceptions.TurnoException;
+import edu.eci.arsw.Eturnity.exceptions.UserException;
 import edu.eci.arsw.Eturnity.model.Turno;
 import edu.eci.arsw.Eturnity.model.Usuario;
 import edu.eci.arsw.Eturnity.services.TurnoServices;
@@ -44,7 +47,7 @@ public class TurnoController {
         try{
             String resp = new Gson().toJson(ts.getAllTurnos());
             return new ResponseEntity<>(resp,HttpStatus.ACCEPTED);       
-        }catch(Exception ex){
+        }catch(TurnoException ex){
             Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE,null,ex);
             return new ResponseEntity<> ("ERROR",HttpStatus.NOT_FOUND);
         }
@@ -57,7 +60,7 @@ public class TurnoController {
             turnos = ts.getTurnosByUsername(usuario);
             String resp = new Gson().toJson(turnos);
             return  new ResponseEntity<>(resp,HttpStatus.ACCEPTED);
-        } catch(Exception ex){
+        } catch(TurnoException ex){
             Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<> ("ERROR",HttpStatus.NOT_FOUND);
         }
@@ -71,7 +74,7 @@ public class TurnoController {
             turnos = ts.getTurnosBySede(sede);
             String resp = new Gson().toJson(turnos);
             return new ResponseEntity<>(resp,HttpStatus.ACCEPTED);
-        }catch(Exception ex){
+        }catch(TurnoException ex){
             Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null,ex);
             return new ResponseEntity<>("ERROR",HttpStatus.NOT_FOUND);
         }
@@ -86,7 +89,7 @@ public class TurnoController {
             turnos = ts.getTurnoByFecha(fecha);
             String resp = new Gson().toJson(turnos);
             return new ResponseEntity<>(resp,HttpStatus.ACCEPTED);
-        }catch(Exception ex){
+        }catch(TurnoException ex){
             Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("ERROR",HttpStatus.NOT_FOUND);
         }
@@ -99,7 +102,7 @@ public class TurnoController {
             turnos = ts.getAllTurnosValido(true);
             String resp = new Gson().toJson(turnos);
             return new ResponseEntity<> (resp, HttpStatus.ACCEPTED);
-        }catch(Exception ex){
+        }catch(TurnoException ex){
             Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("ERROR",HttpStatus.NOT_FOUND);
         }
@@ -132,19 +135,19 @@ public class TurnoController {
             
             ts.createTurno(turn);
             return new ResponseEntity<>(HttpStatus.CREATED);
-        }catch(Exception ex){
+        }catch(TurnoException ex){
             Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("ERROR",HttpStatus.NOT_FOUND);
         }
     }
 
     @RequestMapping(method = RequestMethod.DELETE, path="turnodeleted/{username}/{identifier}")
-    public ResponseEntity<?> deleteTurnoByUsername(@PathVariable ("identifier") String identifier, @PathVariable ("username") String username){
+    public ResponseEntity<?> deleteTurnoByUsername(@PathVariable ("identifier") String identifier, @PathVariable ("username") String username) throws UserException{
         try{
             Usuario u = us.getUser(username);
             ts.deleteTurnoByUsername(identifier, u.getUsername());
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        }catch(Exception ex){
+        }catch(TurnoException ex){
             Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("ERROR AL ELIMINAR EL TURNO"+identifier,HttpStatus.FORBIDDEN);
         }

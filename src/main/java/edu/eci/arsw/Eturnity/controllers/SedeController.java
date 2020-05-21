@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import edu.eci.arsw.Eturnity.model.Sede;
 import edu.eci.arsw.Eturnity.services.SedeServices;
+import edu.eci.arsw.Eturnity.exceptions.SedeException;
 import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.Map;
@@ -36,7 +37,7 @@ public class SedeController {
         try {
             String resp = new Gson().toJson(sService.getAllSedes());
             return new ResponseEntity<>(resp, HttpStatus.ACCEPTED);
-        } catch (Exception ex) {
+        } catch (SedeException ex) {
             Logger.getLogger(SedeController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("ERROR", HttpStatus.NOT_FOUND);
         }
@@ -47,7 +48,7 @@ public class SedeController {
         try {
             String resp = new Gson().toJson(sService.getSedesByEntidad(idEntidad));
             return new ResponseEntity<>(resp, HttpStatus.ACCEPTED);
-        } catch (Exception ex) {
+        } catch (SedeException ex) {
             Logger.getLogger(SedeController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("ERROR", HttpStatus.NOT_FOUND);
         }
@@ -59,7 +60,7 @@ public class SedeController {
         try {
             String resp = new Gson().toJson(sService.getMySedesByEntidad(nombreEntidad));
             return new ResponseEntity<>(resp, HttpStatus.ACCEPTED);
-        } catch (Exception ex) {
+        } catch (SedeException ex) {
             Logger.getLogger(SedeController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("ERROR", HttpStatus.NOT_FOUND);
         }
@@ -70,7 +71,7 @@ public class SedeController {
         try {
             String resp = new Gson().toJson(sService.getSedesByEntidadYCiudad(nombreEntidad, ciudad));
             return new ResponseEntity<>(resp, HttpStatus.ACCEPTED);
-        } catch (Exception ex) {
+        } catch (SedeException ex) {
             Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("ERROR", HttpStatus.NOT_FOUND);
         }
@@ -81,7 +82,7 @@ public class SedeController {
         try {
             String resp = new Gson().toJson(sService.getSedeByEntidadNameYSedeName(nombreEntidad, ciudad, nombreSede));
             return new ResponseEntity<>(resp, HttpStatus.ACCEPTED);
-        } catch (Exception ex) {
+        } catch (SedeException ex) {
             Logger.getLogger(TurnoController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("ERROR", HttpStatus.NOT_FOUND);
         }
@@ -104,7 +105,7 @@ public class SedeController {
             
             sService.createSede(sd);
             return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (Exception ex) {
+        } catch (SedeException ex) {
             Logger.getLogger(SedeController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("ERROR", HttpStatus.NOT_FOUND);
         }
@@ -117,7 +118,7 @@ public class SedeController {
         try{
             sService.deleteSede(id);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        }catch(Exception ex){
+        }catch(SedeException ex){
             Logger.getLogger(SedeController.class.getName()).log(Level.SEVERE,null,ex);
             return new ResponseEntity<>(ex.getMessage(),HttpStatus.ALREADY_REPORTED);
         }

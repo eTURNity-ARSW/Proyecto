@@ -2,6 +2,7 @@ package edu.eci.arsw.Eturnity.Persistence.impl;
 
 import edu.eci.arsw.Eturnity.Persistence.EturnityDB;
 import edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
+import edu.eci.arsw.Eturnity.exceptions.TurnoException;
 import edu.eci.arsw.Eturnity.model.Turno;
 
 import java.util.Date;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class MyTurnPersistence implements TurnoPersistence {
 
     @Override
-    public void createTurno(Turno turn) {
+    public void createTurno(Turno turn) throws TurnoException{
         System.out.println("Entro a crear turno");
         EturnityDB db = new EturnityDB();
         db.createTurno(turn);
@@ -22,47 +23,47 @@ public class MyTurnPersistence implements TurnoPersistence {
     }
 
     @Override
-    public List<Turno> getAllTurnos() {
+    public List<Turno> getAllTurnos() throws TurnoException {
         System.out.println("Entro get allturnos");
         EturnityDB db = new EturnityDB();
         return db.getAllTurnos();
     }
 
     @Override
-    public List<Turno> getTurnosByUsername(String username) {
+    public List<Turno> getTurnosByUsername(String username) throws TurnoException {
         System.out.println("Entro a turnos by name");
         EturnityDB db = new EturnityDB();
         return db.getTurnosByUsername(username);
     }
 
     @Override
-    public void deleteTurnoByUsername(String identifier, String username) {
+    public void deleteTurnoByUsername(String identifier, String username) throws TurnoException {
         System.out.println("Entro a eliminar turno MYPERSISTENCE");
         EturnityDB db = new EturnityDB();
         db.deleteTurnoByUsername(identifier, username);
     }
 
     @Override
-    public List<Turno> getAllTurnosValido(boolean valido) {
+    public List<Turno> getAllTurnosValido(boolean valido) throws TurnoException {
         System.out.println("Entro a consultar turnos validos");
         EturnityDB db = new EturnityDB();
         return db.getAllTurnosValidos(valido);
     }
 
     @Override
-    public List<Turno> getTurnoByFecha(String fecha) {
+    public List<Turno> getTurnoByFecha(String fecha) throws TurnoException {
         EturnityDB db = new EturnityDB();
         return db.getTurnoByFecha(fecha);
     }
 
     @Override
-    public List<Turno> getTurnosBySede(String sede) {
+    public List<Turno> getTurnosBySede(String sede) throws TurnoException {
         EturnityDB db = new EturnityDB();
         return db.getTurnosBySede(sede);
     }
 
     @Override
-    public int getSiguienteTurno(String idSede) {
+    public int getSiguienteTurno(String idSede) throws TurnoException {
         EturnityDB db = new EturnityDB();
         int actual = db.getTurnoActual(idSede);
         int ans;

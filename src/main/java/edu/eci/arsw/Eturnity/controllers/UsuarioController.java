@@ -53,7 +53,7 @@ public class UsuarioController {
             Usuario user = resp.get(key[0]);
             us.createNewUser(user);
             return new ResponseEntity<>(HttpStatus.CREATED);
-        }catch(Exception e){
+        }catch(UserException e){
             Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, e);
             return new ResponseEntity<>(e.getMessage(),HttpStatus.ALREADY_REPORTED);
         }
@@ -66,7 +66,7 @@ public class UsuarioController {
         try{
             us.deleteUser(username);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        } catch(Exception ex){
+        } catch(UserException ex){
             Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(ex.getMessage(),HttpStatus.ALREADY_REPORTED);
         }

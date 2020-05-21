@@ -10,8 +10,6 @@ import edu.eci.arsw.Eturnity.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-//import java.util.Collections;
-//import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -39,49 +37,15 @@ public class UserServices {
         return usp.getAll();
     }
 
-    public void createNewUser(Usuario u){
+    public void createNewUser(Usuario u) throws UserException{
          usp.createNewUser(u);
     }
 
-    public void deleteUser(String u){
+    public void deleteUser(String u) throws UserException{
         usp.deleteUser(u);
     }
 
-    
-
-
-
-
-
-
-    public List<Turno> ConsultTurnsByUser(String username) throws UserException {
-        return usp.getUsuarioByUsername(username).getTurnos();
-    }
-
-    public List<Entidad> ConsultEnterpriseByUser(String username) throws UserException {
-        return usp.getUsuarioByUsername(username).getEntidades();
-    }
-    /*
-    public Turno consultCurrentTurnBySede(String sede) throws TurnoException {
-        List<Turno> turnos = tsp.getTurnsByOffice(sede);
-        Turno currentTurn = null;
-        if(turnos.get(0).isValido()) currentTurn = turnos.get(0);
-        for(int i = 0; i<turnos.size();i++){
-            if(turnos.get(i).CompareTo(currentTurn)>0) currentTurn = turnos.get(i);
-        }
-        return currentTurn;
-    }
-
-    public Turno consultCurrentTurnBySedeAndService(String sede, char service) throws TurnoException{
-        List<Turno> turnos = tsp.getTurnsByOffice(sede);
-        Turno currentTurn = null;
-        if(turnos.get(0).isValido() && turnos.get(0).getIdentifier().charAt(0)==service) currentTurn = turnos.get(0);
-        for(int i = 0; i<turnos.size();i++){
-            if(turnos.get(i).CompareTo(currentTurn, service)>0) currentTurn = turnos.get(i);
-        }
-        return currentTurn;
-
-    }*/
+   
 
 }
 

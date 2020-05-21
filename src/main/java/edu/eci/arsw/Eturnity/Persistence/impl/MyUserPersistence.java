@@ -23,10 +23,7 @@ public class MyUserPersistence implements UserPersistence {
 
     }
 
-    @Override
-    public Usuario getUserByName(String name) {
-        return null;
-    }
+  
 
     @Override
     public boolean saveUser(Usuario user) throws UserException {
@@ -35,13 +32,15 @@ public class MyUserPersistence implements UserPersistence {
 
     public List<Turno> getTurnosByUsername(String username) throws UserException {
         Usuario usuarioByUsername = getUsuarioByUsername(username);
-        if (usuarioByUsername!=null) {return usuarioByUsername.getTurnos();}
+        if (usuarioByUsername!=null) {
+            return usuarioByUsername.getTurnos();
+        }
         throw new UserException(UserException.USUARIO_INVALIDO);
     }
 
 
     //@Override
-    public void createNewUser(Usuario u) {
+    public void createNewUser(Usuario u) throws UserException {
         System.out.println("Entro a crear user");
         EturnityDB db = new EturnityDB();
         try {
@@ -61,7 +60,7 @@ public class MyUserPersistence implements UserPersistence {
     }
 
     @Override
-    public List<Usuario> getAll() {
+    public List<Usuario> getAll() throws UserException{
         System.out.println("Entro3");
         EturnityDB db = new EturnityDB();
         return db.getAllUsers();
@@ -69,7 +68,7 @@ public class MyUserPersistence implements UserPersistence {
 
 
 
-    public void deleteUser(String u){
+    public void deleteUser(String u) throws UserException{
         System.out.println("Entro a borrar user");
         EturnityDB db=new EturnityDB();
         db.deleteUser(u);

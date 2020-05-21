@@ -45,37 +45,19 @@ public class EntidadServices {
 
     }
 
-	public List<Entidad> getAllEntidades(){
+	public List<Entidad> getAllEntidades() throws EntidadException{
         System.out.println("SERVICIOS");
 		return esp.getAllEntidades();
 	}
 
-	public void createEntidad(Entidad e) {
+	public void createEntidad(Entidad e) throws EntidadException{
         esp.createEntidad(e);
     }
-    public void deleteEntidad(String e){
+    public void deleteEntidad(String e) throws EntidadException{
         esp.deleteEntidad(e);
     }
 
-    /*
-    public HashMap<Sede, ArrayList<Turno>> getTurnByEnterprise(String nit) throws EntidadException, TurnoException {
-        HashMap<Sede, ArrayList<Turno>> turnos = new HashMap<>();
-        for (Sede sede : esp.getEnterprise(nit).getSedes()){
-            for(Turno t: tsp.getTotalTurnos()){
-                if(t.getSede().equals(sede.getIdentificador())) {
-                    if(turnos.containsKey(sede)){
-                        turnos.get(sede).add(t);
-                    }else{
-                        ArrayList<Turno> nuevoTurno = new ArrayList<>();
-                        nuevoTurno.add(t);
-                        turnos.put(sede,nuevoTurno);
-                    }
-
-                }
-            }
-        }
-        return turnos;
-    }*/
+    
 
 
 }

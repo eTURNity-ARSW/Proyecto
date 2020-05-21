@@ -40,7 +40,7 @@ public class EntidadController {
             String resp = new Gson().toJson(es.getAllEntidades());
             System.out.println("Lo mande al servicio");
             return new ResponseEntity<>(resp, HttpStatus.ACCEPTED);
-        }catch(Exception ex){
+        }catch(EntidadException ex){
             Logger.getLogger(EntidadController.class.getName()).log(Level.SEVERE,null,ex);
             return new ResponseEntity<> ("ERROR",HttpStatus.NOT_FOUND);
         }
@@ -71,7 +71,7 @@ public class EntidadController {
             Entidad e = resp.get(key[0]);
             es.createEntidad(e);
             return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch(Exception ex){
+        } catch(EntidadException ex){
             Logger.getLogger(EntidadController.class.getName()).log(Level.SEVERE,null,ex);
             return new ResponseEntity<>("ERROR",HttpStatus.NOT_FOUND);
         }
