@@ -89,24 +89,23 @@ La entidad tiene los siguientes casos de uso:
 
 ![BASE DE DATOS](https://user-images.githubusercontent.com/48154086/82384180-eae27100-99f4-11ea-8453-211fd4c78375.PNG)
 
-
 ## Atributos no Funcionales
 ## Usabilidad
 Teniendo en cuenta las heuristicas nuestra aplicación se enfoca en las siguientes:  
   - Coincidencia entre el sistema y el mundo real , nuestra aplicación cuenta con un lenguaje que habla el usuario y se utilizan conceptos familiares 
-  ![image](https://user-images.githubusercontent.com/43153078/82528610-cd013300-9afe-11ea-8362-180d1da05792.png)
+    ![image](https://user-images.githubusercontent.com/43153078/82528610-cd013300-9afe-11ea-8362-180d1da05792.png)
   - Diseño estético y minimalista , nuestra aplicación no contiene información irrelevante o innecesaria .
-  ![image](https://user-images.githubusercontent.com/43153078/82528893-64668600-9aff-11ea-96c9-701f7a62771a.png)
+    ![image](https://user-images.githubusercontent.com/43153078/82528893-64668600-9aff-11ea-96c9-701f7a62771a.png)
   - Prevención de errores nuestra aplicación cuenta con mensajes de error para informar al usuario si está realizando mal algún registro o proceso 
-  ![image](https://user-images.githubusercontent.com/43153078/82529153-f8385200-9aff-11ea-9d07-831b5329c087.png)
+    ![image](https://user-images.githubusercontent.com/43153078/82529153-f8385200-9aff-11ea-9d07-831b5329c087.png)
   - Visibilidad del estado del sistema, nuestra aplicación cuenta con mensajes de éxito o si no se presento satisfactoriamente una acción.
-  ![image](https://user-images.githubusercontent.com/43153078/82529857-8e20ac80-9b01-11ea-8d44-d310d833a0d3.png)
-  ![image](https://user-images.githubusercontent.com/43153078/82529990-d3dd7500-9b01-11ea-847f-9574eb05f681.png)
+    ![image](https://user-images.githubusercontent.com/43153078/82529857-8e20ac80-9b01-11ea-8d44-d310d833a0d3.png)
+    ![image](https://user-images.githubusercontent.com/43153078/82529990-d3dd7500-9b01-11ea-847f-9574eb05f681.png)
   - Control del usuario y libertad el usuario tiene posibilidad de cerrar sesiones en varias páginas o volver a las principales 
   
-  ![image](https://user-images.githubusercontent.com/43153078/82530396-cf658c00-9b02-11ea-8e44-2bfde21c4bb5.png)
+    ![image](https://user-images.githubusercontent.com/43153078/82530396-cf658c00-9b02-11ea-8e44-2bfde21c4bb5.png)
   
-  ![image](https://user-images.githubusercontent.com/43153078/82530681-7c400900-9b03-11ea-93ee-b41daa7888d0.png)
+    ![image](https://user-images.githubusercontent.com/43153078/82530681-7c400900-9b03-11ea-93ee-b41daa7888d0.png)
 
 ## Rendimiento 
 
@@ -120,6 +119,7 @@ En el siguiente video queda registrada la prueba realizada
 
 
 ## Manual de Usuario 
+
 [![Watch the video](https://img.youtube.com/vi/UEPQ8RvSs3A/maxresdefault.jpg)](https://youtube.com/watch?v=UEPQ8RvSs3A)
 
 
