@@ -99,9 +99,11 @@ Teniendo en cuenta las heuristicas nuestra aplicación se enfoca en las siguient
   - Prevención de errores nuestra aplicación cuenta con mensajes de error para informar al usuario si está realizando mal algún registro o proceso 
     ![image](https://user-images.githubusercontent.com/43153078/82529153-f8385200-9aff-11ea-9d07-831b5329c087.png)
   - Visibilidad del estado del sistema, nuestra aplicación cuenta con mensajes de éxito o si no se presento satisfactoriamente una acción.
+  
     ![image](https://user-images.githubusercontent.com/43153078/82529857-8e20ac80-9b01-11ea-8d44-d310d833a0d3.png)
     ![image](https://user-images.githubusercontent.com/43153078/82529990-d3dd7500-9b01-11ea-847f-9574eb05f681.png)
-  - Control del usuario y libertad el usuario tiene posibilidad de cerrar sesiones en varias páginas o volver a las principales 
+  - Control del usuario y libertad el usuario tiene posibilidad de cerrar sesiones en varias páginas o volver a las principales.
+  
   
     ![image](https://user-images.githubusercontent.com/43153078/82530396-cf658c00-9b02-11ea-8e44-2bfde21c4bb5.png)
   
