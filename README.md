@@ -16,6 +16,17 @@ Nuestra aplicación web busca resolver la problemática de los largos tiempos de
 
 Para asegurarnos de que el usuario se presente en el momento del turno, lo mantendremos informado respecto a tiempos de estimación y generando avisos o recordatorios en momentos que se consideren necesarios antes de que el usuario sea atendido. 
 
+## Usuarios 
+
+username: julianagarzon 
+contrasena: juliana1234
+
+username: sarahvieda
+contrasena: sarah1234
+
+username: sebastian.h
+contrasena: sebastian1234
+
 ## Despliegue 
 
 ### Heroku
