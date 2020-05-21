@@ -66,6 +66,7 @@ var apimock = (function () {
 
         console.log(idturn);
         axios.delete('/turno/turnodeleted/'+ localStorage.getItem('Actual') + '/' + idturn);
+        alert("Turno eliminado");
         }
 
 
@@ -129,6 +130,7 @@ var apimock = (function () {
     var deleteTurnEntity=function(username,idturn){
     console.log('/turno/turnodeleted/'+ username + '/' + idturn);
     axios.delete('/turno/turnodeleted/'+ username + '/' + idturn);
+    alert('Turno eliminado');
     }
 
     var loadSelect = function () {
