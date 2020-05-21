@@ -96,6 +96,19 @@ En el siguiente video queda registrada la prueba realizada
 [![Watch the video](https://img.youtube.com/vi/7FnxyIx0OgM/maxresdefault.jpg)](https://www.youtube.com/watch?v=7FnxyIx0OgM)
 
 
+
+
+## Manual de Usuario 
+[![Watch the video](https://img.youtube.com/vi/UEPQ8RvSs3A/maxresdefault.jpg)](https://youtube.com/watch?v=UEPQ8RvSs3A)
+
+
+
+## Manual de Entidad
+
+[![Watch the video](https://img.youtube.com/vi/Fs-uxkFI3Gc/maxresdefault.jpg)](https://youtube.com/watch?v=Fs-uxkFI3Gc)
+
+
+
 ## Heroku 
 
 https://eturnity.herokuapp.com/
