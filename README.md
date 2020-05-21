@@ -92,11 +92,14 @@ La entidad tiene los siguientes casos de uso:
 ## Atributos no Funcionales
 ## Usabilidad
 Teniendo en cuenta las heuristicas nuestra aplicación se enfoca en las siguientes:  
-  - Coincidencia entre el sistema y el mundo real , nuestra aplicación cuenta con un lenguaje que habla el usuario y se utilizan conceptos familiares 
+  - Coincidencia entre el sistema y el mundo real , nuestra aplicación cuenta con un lenguaje que habla el usuario y se utilizan conceptos familiares.
+  
     ![image](https://user-images.githubusercontent.com/43153078/82528610-cd013300-9afe-11ea-8362-180d1da05792.png)
-  - Diseño estético y minimalista , nuestra aplicación no contiene información irrelevante o innecesaria .
+  - Diseño estético y minimalista , nuestra aplicación no contiene información irrelevante o innecesaria.
+  
     ![image](https://user-images.githubusercontent.com/43153078/82528893-64668600-9aff-11ea-96c9-701f7a62771a.png)
-  - Prevención de errores nuestra aplicación cuenta con mensajes de error para informar al usuario si está realizando mal algún registro o proceso 
+  - Prevención de errores nuestra aplicación cuenta con mensajes de error para informar al usuario si está realizando mal algún registro o proceso.
+  
     ![image](https://user-images.githubusercontent.com/43153078/82529153-f8385200-9aff-11ea-9d07-831b5329c087.png)
   - Visibilidad del estado del sistema, nuestra aplicación cuenta con mensajes de éxito o si no se presento satisfactoriamente una acción.
   
