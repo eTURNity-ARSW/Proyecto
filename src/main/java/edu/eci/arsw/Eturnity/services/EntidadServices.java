@@ -3,17 +3,12 @@ package edu.eci.arsw.Eturnity.services;
 import edu.eci.arsw.Eturnity.Persistence.EntidadPersistence;
 
 import edu.eci.arsw.Eturnity.Persistence.TurnoPersistence;
-import edu.eci.arsw.Eturnity.cache.EntidadCache;
-import edu.eci.arsw.Eturnity.cache.TurnoCache;
 import edu.eci.arsw.Eturnity.exceptions.EntidadException;
 import edu.eci.arsw.Eturnity.model.Entidad;
 import edu.eci.arsw.Eturnity.model.Sede;
-import edu.eci.arsw.Eturnity.model.Turno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -22,19 +17,12 @@ public class EntidadServices {
     private EntidadPersistence esp;
     @Autowired
     private TurnoPersistence tsp;
-    @Autowired
-    private TurnoCache tc;
-    @Autowired
-    private EntidadCache ec;
+
 
     
 
     public Entidad getEnterprise(String nombre) throws EntidadException {
-        if (!ec.findEntity(nombre)){
-            ec.addEntityCache(esp.getEnterprise(nombre));
-        }
-
-        return ec.getCacheEntity(nombre);
+        return esp.getEnterprise(nombre);
 
     }
     public List<Sede> getOfficeByEnterprise(String nit) throws EntidadException {
