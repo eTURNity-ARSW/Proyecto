@@ -3,7 +3,9 @@
 # Proyecto ARSW
 ![Capture](https://user-images.githubusercontent.com/43153078/74990273-dea84100-5410-11ea-9347-56698d71c23f.PNG)
 
+## Asignatura 
 
+Arquitectura de Software 
 
 ## Integrantes
 - Juliana Garzón Duque
@@ -81,6 +83,8 @@ La entidad tiene los siguientes casos de uso:
 ## Diagrama de Base de Datos 
 
 ![BASE DE DATOS](https://user-images.githubusercontent.com/48154086/82384180-eae27100-99f4-11ea-8453-211fd4c78375.PNG)
+
+
 
 
 ## Heroku 
