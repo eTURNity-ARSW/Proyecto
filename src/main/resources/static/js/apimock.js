@@ -78,7 +78,7 @@ var apimock = (function () {
             nombre1 = sede.nombre
             return sede.turnos.map(function (turno) {
                 return {
-                    ciudad: ciudad1, nombre: nombre1, sede: turno.turnosedeid, identificador: turno.id, tipo: turno.tipo,
+                    id: turno.identifier, ciudad: ciudad1, nombre: nombre1, sede: turno.turnosedeid, identificador: turno.id, tipo: turno.tipo,
                     modulo: turno.modulo, usuario: turno.turnouserid, fecha: turno.fecha
                 }
             })
@@ -94,6 +94,8 @@ var apimock = (function () {
         $("#table > tbody").empty();
         turns.map(function (turno) {
             turno.map(function (c) {
+            var idturno = '"' + String(c.id) + '"';
+            var user = '"' + String(c.usuario) + '"';
                 $("#table > tbody").append(
                         "<tr> <td>" +
                         c.ciudad +
@@ -111,16 +113,22 @@ var apimock = (function () {
                         c.modulo +
                         "</td> " +
                         "<td>" +
-                        c.usuario +
+                         user +
                         "</td> " +
                         "<td>" +
                         c.fecha +
                         "</td> " +
+                        "<td ><button onclick='apimock.deleteTurnEntity(" + user +','+ idturno + ")'>cancelar </button></td>" +
                         "</tr>"
                         )
             })
         });
 
+    }
+
+    var deleteTurnEntity=function(username,idturn){
+    console.log('/turno/turnodeleted/'+ username + '/' + idturn);
+    axios.delete('/turno/turnodeleted/'+ username + '/' + idturn);
     }
 
     var loadSelect = function () {
@@ -560,7 +568,8 @@ var apimock = (function () {
         table3:table3,
         createTable3:createTable3,
         deleteTurn:deleteTurn,
-        cerrarSesion:cerrarSesion
+        cerrarSesion:cerrarSesion,
+        deleteTurnEntity:deleteTurnEntity
     }
 
 
