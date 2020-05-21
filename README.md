@@ -85,6 +85,11 @@ La entidad tiene los siguientes casos de uso:
 ![BASE DE DATOS](https://user-images.githubusercontent.com/48154086/82384180-eae27100-99f4-11ea-8453-211fd4c78375.PNG)
 
 
+## Atributos no Funcionales
+
+## Rendimiento 
+
+[![Watch the video](https://img.youtube.com/vi/7FnxyIx0OgM&feature=youtu.be/maxresdefault.jpg)](https://youtu.be/7FnxyIx0OgM&feature=youtu.be)
 
 
 ## Heroku 
