@@ -18,10 +18,15 @@ Para asegurarnos de que el usuario se presente en el momento del turno, lo mante
 
 ## Despliegue 
 
+### Heroku
 [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://eturnity.herokuapp.com)
 
+
+### CircleCI
 [![CircleCI](https://circleci.com/gh/julianagarzond/AREP-LAB4.svg?style=svg)](https://circleci.com/gh/julianagarzond/AREP-LAB4)
 
+
+###Codacy
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/acbe20c5b1e9464399a8154f1cc73b2e)](https://www.codacy.com/gh/eTURNity-ARSW/Proyecto?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=eTURNity-ARSW/Proyecto&amp;utm_campaign=Badge_Grade)
 
 
